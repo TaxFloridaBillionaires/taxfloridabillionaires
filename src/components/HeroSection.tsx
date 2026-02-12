@@ -59,7 +59,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
             Of the state's 15 wealthiest, 14 moved in recent years. Combined wealth:
           </p>
           <div className="font-mono text-5xl md:text-7xl text-gold font-bold ticker-glow">
-            <AnimatedCounter end={totalBillionaireWealth} prefix="$" suffix="B" decimals={1} />
+            <AnimatedCounter end={716} prefix="$" suffix="B" decimals={0} />
           </div>
         </motion.div>
 
