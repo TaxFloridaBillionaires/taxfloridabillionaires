@@ -67,21 +67,9 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="text-muted-foreground max-w-2xl mx-auto mb-4 text-base"
+          className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg"
         >
-          Florida has <strong className="text-foreground">no income tax, no estate tax, no inheritance tax</strong>.
-          Meanwhile, proposed federal Medicaid cuts threaten to blow a{" "}
-          <strong className="text-crimson">$3 billion hole</strong> in Florida's economy and{" "}
-          <strong className="text-crimson">33,000 jobs</strong>.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.0 }}
-          className="text-muted-foreground text-sm max-w-xl mx-auto mb-10 italic"
-        >
-          {zuckerbergContext.detail}
+          How could a tax on billionaires fund Florida's future?
         </motion.p>
 
         <motion.button
