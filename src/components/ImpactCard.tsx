@@ -92,7 +92,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
             className="text-3xl sm:text-4xl tracking-wide text-background"
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
-            YOUR FLORIDA IMPACT REPORT
+            YOUR FUNDED FLORIDA VISION
           </h3>
           <p className="text-background/70 text-sm mt-1 font-medium">
             What a {taxRate}% wealth tax on Florida billionaires could fund
