@@ -55,7 +55,7 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
         </div>
 
         {/* Rate display */}
-        <div className="font-mono text-8xl md:text-9xl text-gold font-bold ticker-glow mb-2">
+        <div className="font-mono text-6xl sm:text-8xl md:text-9xl text-gold font-bold ticker-glow mb-2">
           {rate}%
         </div>
         <p className="text-muted-foreground text-lg mb-6">annual wealth tax</p>

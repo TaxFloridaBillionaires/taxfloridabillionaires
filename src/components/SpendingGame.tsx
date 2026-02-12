@@ -182,7 +182,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
             <h3 className="font-display text-4xl md:text-5xl text-foreground mb-6">
               YOUR <span className="text-gold">IMPACT</span>
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
               {Object.entries(purchases).map(([id, qty]) => {
                 const item = spendingItems.find(i => i.id === id)!;
                 return (

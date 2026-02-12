@@ -33,12 +33,12 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase">
             ⚡ Breaking
           </span>
-          <span className="text-foreground text-sm font-medium">
+          <span className="text-foreground text-xs sm:text-sm font-medium">
             {zuckerbergContext.headline}
           </span>
         </motion.div>
 
-        <h1 className="font-display text-6xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
           SPENDING THE
           <br />
           <span className="text-gold ticker-glow">FLORIDA BILLIONAIRE</span>
