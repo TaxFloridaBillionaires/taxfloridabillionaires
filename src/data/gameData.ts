@@ -31,6 +31,7 @@ export const billionaires: Billionaire[] = [
   { name: "Stephen Bisciotti", netWorth: 8.5, source: "Staffing / Ravens", industry: "Sports", city: "Hobe Sound", movedFrom: "Maryland", movedYear: "Unknown", whyMoved: "Established FL residence", emoji: "🏈" },
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
+  { name: "Mark Zuckerberg", netWorth: 221.8, source: "Meta / Facebook", industry: "Technology", city: "Indian Creek Island", movedFrom: "Palo Alto, CA", movedYear: "2025", whyMoved: "Relocated amid tax concerns; bought $100M+ estate", emoji: "👤" },
 ];
 
 export const totalBillionaireWealth = billionaires.reduce((sum, b) => sum + b.netWorth, 0);
