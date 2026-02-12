@@ -88,31 +88,6 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
           ))}
         </div>
 
-        {/* Context comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 text-left">
-          <div className="bg-card border border-crimson/30 p-4 rounded-sm">
-            <p className="text-crimson font-display text-2xl">$3B</p>
-            <p className="text-muted-foreground text-xs">Medicaid cuts hole in FL economy</p>
-            <p className="text-emerald text-xs mt-1">
-              {revenue >= 3 ? "✅ Covered!" : `❌ Need ${((3 / revenue) * rate).toFixed(1)}% to cover`}
-            </p>
-          </div>
-          <div className="bg-card border border-crimson/30 p-4 rounded-sm">
-            <p className="text-crimson font-display text-2xl">33,000</p>
-            <p className="text-muted-foreground text-xs">Jobs at risk from Medicaid cuts</p>
-            <p className="text-emerald text-xs mt-1">
-              Could save {Math.min(33000, Math.floor(revenueMillions / 0.055)).toLocaleString()} jobs
-            </p>
-          </div>
-          <div className="bg-card border border-crimson/30 p-4 rounded-sm">
-            <p className="text-crimson font-display text-2xl">$177M</p>
-            <p className="text-muted-foreground text-xs">Local tax revenue at risk</p>
-            <p className="text-emerald text-xs mt-1">
-              {revenueMillions >= 177 ? "✅ Covered!" : `❌ Need more`}
-            </p>
-          </div>
-        </div>
-
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
