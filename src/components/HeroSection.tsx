@@ -56,7 +56,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           className="mt-8 mb-6"
         >
           <p className="text-muted-foreground text-lg mb-2">
-            {movedCount} of Florida's 20 richest residents moved there from other states. Combined wealth:
+            Of the state's 15 wealthiest, 14 moved in recent years. Combined wealth:
           </p>
           <div className="font-mono text-5xl md:text-7xl text-gold font-bold ticker-glow">
             <AnimatedCounter end={totalBillionaireWealth} prefix="$" suffix="B" decimals={1} />
