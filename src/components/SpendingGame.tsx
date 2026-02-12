@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { spendingItems, categoryLabels, totalBillionaireWealth, type SpendingItem } from "@/data/gameData";
+import { ImpactCard } from "./ImpactCard";
 
 interface SpendingGameProps {
   taxRate: number;
@@ -174,34 +175,12 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
 
         {/* Impact Summary */}
         {spent > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-16 bg-card border border-gold/30 rounded-sm p-8 text-center"
-          >
-            <h3 className="font-display text-4xl md:text-5xl text-foreground mb-6">
-              YOUR <span className="text-gold">IMPACT</span>
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-              {Object.entries(purchases).map(([id, qty]) => {
-                const item = spendingItems.find(i => i.id === id)!;
-                return (
-                  <div key={id} className="bg-muted p-3 rounded-sm">
-                    <span className="text-2xl">{item.emoji}</span>
-                    <p className="font-mono text-gold text-lg font-bold">{qty.toLocaleString()}</p>
-                    <p className="text-muted-foreground text-xs">{item.unit}{qty !== 1 ? "s" : ""}</p>
-                  </div>
-                );
-              })}
-            </div>
-            <p className="text-muted-foreground text-sm max-w-lg mx-auto">
-              All of this funded by a <span className="text-gold font-bold">{taxRate}% annual wealth tax</span> on
-              Florida's billionaires — who moved there specifically to <em>avoid</em> paying taxes like these.
-            </p>
-            <p className="text-muted-foreground text-xs mt-4 italic">
-              For educational purposes. Data sourced from Forbes, Billionaire Reporter, Stacker, and the Commonwealth Fund/WUSF.
-            </p>
-          </motion.div>
+          <ImpactCard
+            purchases={purchases}
+            taxRate={taxRate}
+            spent={spent}
+            totalBudget={totalBudgetMillions}
+          />
         )}
       </motion.div>
     </section>
