@@ -123,18 +123,16 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
               <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2 font-semibold">
                 {label}
               </p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 {items.map(({ item, qty }) => (
-                  <div key={item.id} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-2">
-                    <span className="text-lg">{item.emoji}</span>
-                    <div className="min-w-0">
-                      <p className="text-gold text-sm font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                        {qty.toLocaleString()}
-                      </p>
-                      <p className="text-muted-foreground text-xs leading-tight truncate">
-                        {pluralize(item.unit, qty)}
-                      </p>
-                    </div>
+                  <div key={item.id} className="flex flex-col items-center text-center bg-muted rounded-sm px-3 py-3 gap-1">
+                    <span className="text-2xl">{item.emoji}</span>
+                    <p className="text-gold text-lg font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                      {qty.toLocaleString()}
+                    </p>
+                    <p className="text-muted-foreground text-sm leading-tight">
+                      {pluralize(item.unit, qty)}
+                    </p>
                   </div>
                 ))}
               </div>
