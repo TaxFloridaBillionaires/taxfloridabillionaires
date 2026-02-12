@@ -1,0 +1,84 @@
+import { motion } from "framer-motion";
+import { billionaires, type Billionaire } from "@/data/gameData";
+
+interface BillionaireCardsProps {
+  onContinue: () => void;
+}
+
+const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
+  const isLocalBorn = b.movedFrom === "Born in FL (rare!)";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      className="bg-card border border-border rounded-sm p-4 hover:border-gold/50 transition-colors group"
+    >
+      <div className="flex items-start justify-between mb-2">
+        <span className="text-3xl">{b.emoji}</span>
+        <span className="font-mono text-gold text-lg font-bold">${b.netWorth}B</span>
+      </div>
+      <h3 className="font-display text-xl text-foreground mb-1">{b.name}</h3>
+      <p className="text-muted-foreground text-xs mb-2">{b.source} · {b.industry}</p>
+      <div className="text-xs space-y-1">
+        <div className="flex items-center gap-1">
+          <span className="text-muted-foreground">📍</span>
+          <span className="text-foreground">{b.city}, FL</span>
+        </div>
+        {!isLocalBorn ? (
+          <div className="flex items-center gap-1">
+            <span className="text-crimson">✈️</span>
+            <span className="text-crimson">From {b.movedFrom} ({b.movedYear})</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-1">
+            <span className="text-emerald">🌴</span>
+            <span className="text-emerald">Actually from Florida!</span>
+          </div>
+        )}
+      </div>
+      <p className="text-muted-foreground text-xs mt-2 italic opacity-0 group-hover:opacity-100 transition-opacity">
+        "{b.whyMoved}"
+      </p>
+    </motion.div>
+  );
+};
+
+export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
+  return (
+    <section className="py-20 px-4 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
+        <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
+          MEET THE <span className="text-gold">TAX REFUGEES</span>
+        </h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Almost every Florida billionaire relocated from a higher-tax state. Hover over each card to see why they moved.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+        {billionaires.map((b, i) => (
+          <BillionaireCard key={b.name} b={b} index={i} />
+        ))}
+      </div>
+
+      <div className="text-center">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={onContinue}
+          className="gradient-gold text-primary-foreground font-display text-2xl px-10 py-4 rounded-sm tracking-wider hover:brightness-110 transition-all"
+        >
+          NOW LET'S TAX THEM →
+        </motion.button>
+      </div>
+    </section>
+  );
+};
