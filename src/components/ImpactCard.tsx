@@ -94,7 +94,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
           >
             YOUR FLORIDA IMPACT REPORT
           </h3>
-          <p className="text-background/70 text-xs mt-1 font-medium">
+          <p className="text-background/70 text-sm mt-1 font-medium">
             What a {taxRate}% wealth tax on Florida billionaires could fund
           </p>
         </div>
@@ -107,20 +107,20 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
               <p className="text-gold text-2xl sm:text-3xl font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                 {formatMoney(spent)}
               </p>
-              <p className="text-muted-foreground text-xs mt-1">allocated</p>
+              <p className="text-muted-foreground text-sm mt-1">allocated</p>
             </div>
             <div className="bg-muted rounded-sm p-3 text-center">
               <p className="text-emerald text-2xl sm:text-3xl font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                 {percentUsed}%
               </p>
-              <p className="text-muted-foreground text-xs mt-1">of budget used</p>
+              <p className="text-muted-foreground text-sm mt-1">of budget used</p>
             </div>
           </div>
 
           {/* Itemized by category */}
           {grouped.map(({ cat, label, items }) => (
             <div key={cat}>
-              <p className="text-muted-foreground text-[10px] uppercase tracking-widest mb-2 font-semibold">
+              <p className="text-muted-foreground text-xs uppercase tracking-widest mb-2 font-semibold">
                 {label}
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -131,7 +131,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
                       <p className="text-gold text-sm font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
                         {qty.toLocaleString()}
                       </p>
-                      <p className="text-muted-foreground text-[10px] leading-tight truncate">
+                      <p className="text-muted-foreground text-xs leading-tight truncate">
                         {pluralize(item.unit, qty)}
                       </p>
                     </div>
@@ -143,11 +143,11 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
 
           {/* Footer */}
           <div className="border-t border-border pt-4 text-center">
-            <p className="text-muted-foreground text-[11px] leading-relaxed max-w-sm mx-auto">
+            <p className="text-muted-foreground text-xs leading-relaxed max-w-sm mx-auto">
               Funded by a <span className="text-gold font-bold">{taxRate}% annual wealth tax</span> on
               Florida's billionaires — who moved there to <em>avoid</em> taxes.
             </p>
-            <p className="text-muted-foreground/50 text-[9px] mt-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+            <p className="text-muted-foreground/50 text-xs mt-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
               taxfloridabillionaires.lovable.app
             </p>
           </div>
