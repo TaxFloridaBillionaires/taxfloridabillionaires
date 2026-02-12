@@ -14,7 +14,8 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="bg-card border border-border rounded-sm p-4 hover:border-gold/50 transition-colors group"
+      tabIndex={0}
+      className="bg-card border border-border rounded-sm p-4 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer"
     >
       <div className="flex items-start justify-between mb-2">
         <span className="text-3xl">{b.emoji}</span>
@@ -39,7 +40,7 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
           </div>
         )}
       </div>
-      <p className="text-muted-foreground text-xs mt-2 italic opacity-0 group-hover:opacity-100 transition-opacity">
+      <p className="text-muted-foreground text-xs mt-2 italic opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
         "{b.whyMoved}"
       </p>
     </motion.div>
@@ -59,7 +60,7 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
           MEET THE <span className="text-gold">TAX REFUGEES</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Almost every Florida billionaire relocated from a higher-tax state. Hover over each card to see why they moved.
+          Almost every Florida billionaire relocated from a higher-tax state. Tap or hover over each card to see why they moved.
         </p>
       </motion.div>
 
