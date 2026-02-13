@@ -39,14 +39,11 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
         </motion.div>
 
         <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
-          SPENDING THE
+          TAX THE
           <br />
-          <span className="text-gold ticker-glow">FLORIDA BILLIONAIRE</span>
+          <span className="text-gold ticker-glow">FLORIDA</span>
           <br />
-          TAX
-          <span className="inline-block ml-2 sm:ml-4 text-crimson text-lg sm:text-2xl md:text-3xl rotate-[-6deg] translate-y-[-8px]" style={{ fontFamily: "'Caveat', cursive" }}>
-            (coming soon)
-          </span>
+          BILLIONAIRES
         </h1>
 
         <motion.div
