@@ -73,10 +73,10 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
         <div className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border py-4 mb-8 -mx-4 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex justify-between items-center mb-2">
-              <span className="font-mono text-sm text-muted-foreground">
+              <span className="font-mono text-base text-muted-foreground">
                 SPENT: <span className="text-crimson font-bold">{formatMoney(spent)}</span>
               </span>
-              <span className="font-mono text-sm text-muted-foreground">
+              <span className="font-mono text-base text-muted-foreground">
                 REMAINING: <span className="text-emerald font-bold">{formatMoney(remaining)}</span>
               </span>
             </div>
@@ -88,7 +88,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
               />
             </div>
             <div className="text-center mt-1">
-              <span className="font-mono text-xs text-muted-foreground">
+              <span className="font-mono text-sm text-muted-foreground">
                 {percentSpent.toFixed(1)}% allocated
               </span>
             </div>
