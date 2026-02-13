@@ -66,9 +66,6 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
           <div className="font-mono text-5xl md:text-6xl text-gold font-bold">
             ${revenue.toFixed(1)}B
           </div>
-          <p className="text-muted-foreground text-sm mt-2">
-            That's <span className="text-foreground font-bold">${revenueMillions.toFixed(0)} million</span> per year
-          </p>
         </div>
 
         {/* Presets */}
