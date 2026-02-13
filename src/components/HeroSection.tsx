@@ -53,7 +53,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           className="mt-8 mb-6"
         >
           <p className="text-muted-foreground text-lg mb-2">
-            Of the state's 15 wealthiest, 14 moved in recent years. Combined wealth:
+            14 moved to Florida in recent years. Their combined wealth:
           </p>
           <div className="font-mono text-5xl md:text-7xl text-gold font-bold ticker-glow">
             <AnimatedCounter end={716} prefix="$" suffix="B" decimals={0} />
