@@ -78,7 +78,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           onClick={onStart}
           className="gradient-gold text-primary-foreground font-display text-3xl px-12 py-5 rounded-sm tracking-wider hover:brightness-110 transition-all shadow-lg shadow-gold/20"
         >
-          START THE GAME →
+          LEARN MORE →
         </motion.button>
       </motion.div>
 
