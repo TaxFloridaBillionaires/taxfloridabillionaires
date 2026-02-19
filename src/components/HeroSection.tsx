@@ -30,7 +30,7 @@ const SlotMachineWord = () => {
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className="block"
           style={
-            words[index] === "CALIFORNIA"
+            words[index] === "FLORIDA"
               ? {
                   background: "linear-gradient(180deg, hsl(var(--gold)) 0%, hsl(var(--gold) / 0.5) 40%, hsl(var(--gold) / 0.08) 80%, transparent 100%)",
                   WebkitBackgroundClip: "text",
@@ -40,7 +40,7 @@ const SlotMachineWord = () => {
               : undefined
           }
         >
-          <span className={words[index] === "FLORIDA" ? "text-gold ticker-glow" : ""}>
+          <span className={words[index] === "CALIFORNIA" ? "text-white" : ""}>
             {words[index]}
           </span>
         </motion.span>
