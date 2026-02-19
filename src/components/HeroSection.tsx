@@ -86,7 +86,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ delay: 0.9 }}
           className="text-muted-foreground max-w-2xl mx-auto mb-10 text-base sm:text-lg"
         >
-          How could a tax on billionaires fund Florida's future?
+          How could a tax on 100 billionaires fund Florida's future?
         </motion.p>
 
         <motion.button
