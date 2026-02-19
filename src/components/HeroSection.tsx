@@ -84,7 +84,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="text-muted-foreground max-w-2xl mx-auto mb-10 text-base sm:text-lg"
+          className="text-muted-foreground max-w-2xl mx-auto mb-10 text-sm sm:text-lg px-2 leading-relaxed"
         >
           How could a tax on 100 billionaires fund Florida's future?
         </motion.p>
