@@ -1,14 +1,72 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { AnimatedCounter } from "./AnimatedCounter";
-import { totalBillionaireWealth, zuckerbergContext, billionaires } from "@/data/gameData";
+import { totalBillionaireWealth, breakingHeadlines, billionaires } from "@/data/gameData";
 
 interface HeroSectionProps {
   onStart: () => void;
 }
 
-export const HeroSection = ({ onStart }: HeroSectionProps) => {
-  const movedCount = billionaires.filter(b => b.movedFrom !== "Born in FL (rare!)").length;
+const SlotMachineWord = () => {
+  const words = ["FLORIDA", "CALIFORNIA"];
+  // 60% Florida, 40% California timing
+  const durations = [3600, 2400]; // ms on each word
+  const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, durations[index]);
+    return () => clearTimeout(timeout);
+  }, [index]);
+
+  return (
+    <span className="inline-block relative overflow-hidden h-[1.1em] align-bottom">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={words[index]}
+          initial={{ y: "100%", opacity: 0.2 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0.15 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className={`block ${words[index] === "FLORIDA" ? "text-gold ticker-glow" : "text-muted-foreground/40"}`}
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+};
+
+const TickerBar = () => {
+  const combinedText = breakingHeadlines.join("   ●   ");
+  // Duplicate for seamless loop
+  const tickerContent = `${combinedText}   ●   ${combinedText}`;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.3 }}
+      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-8 max-w-full overflow-hidden"
+    >
+      <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase shrink-0">
+        ⚡ Breaking
+      </span>
+      <div className="overflow-hidden whitespace-nowrap">
+        <motion.span
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+          className="inline-block text-foreground text-xs sm:text-sm font-medium"
+        >
+          {tickerContent}
+        </motion.span>
+      </div>
+    </motion.div>
+  );
+};
+
+export const HeroSection = ({ onStart }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
       {/* Background grid */}
@@ -23,25 +81,13 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
         transition={{ duration: 0.8 }}
         className="text-center max-w-5xl relative z-10"
       >
-        {/* Breaking news bar */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-          className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-8"
-        >
-          <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase">
-            ⚡ Breaking
-          </span>
-          <span className="text-foreground text-xs sm:text-sm font-medium">
-            {zuckerbergContext.headline}
-          </span>
-        </motion.div>
+        {/* Breaking news ticker */}
+        <TickerBar />
 
         <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
           TAX THE
           <br />
-          <span className="text-gold ticker-glow">FLORIDA</span>
+          <SlotMachineWord />
           <br />
           BILLIONAIRES
         </h1>
