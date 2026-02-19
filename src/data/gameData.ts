@@ -32,9 +32,16 @@ export const billionaires: Billionaire[] = [
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
   { name: "Mark Zuckerberg", netWorth: 221.8, source: "Meta / Facebook", industry: "Technology", city: "Indian Creek Island", movedFrom: "Palo Alto, CA", movedYear: "2025", whyMoved: "Relocated amid tax concerns; bought $100M+ estate", emoji: "👤" },
+  { name: "Peter Thiel", netWorth: 25.0, source: "PayPal / Palantir / Founders Fund", industry: "Technology", city: "Miami Beach", movedFrom: "Los Angeles, CA", movedYear: "2020", whyMoved: "Bought Miami Beach home in 2020; moved Thiel Capital to Wynwood", emoji: "🏛️" },
 ];
 
 export const totalBillionaireWealth = billionaires.reduce((sum, b) => sum + b.netWorth, 0);
+
+// Breaking news headlines
+export const breakingHeadlines = [
+  "Zuckerberg joins Florida billionaire exodus — buys $100M+ Indian Creek estate",
+  "Peter Thiel moves Thiel Capital to Miami's Wynwood as Palantir HQ shifts to Aventura",
+];
 
 // Mark Zuckerberg context
 export const zuckerbergContext = {
