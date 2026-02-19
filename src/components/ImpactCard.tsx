@@ -143,7 +143,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
           <div className="border-t border-border pt-4 text-center">
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
               Funded by a <span className="text-gold font-bold">{taxRate}% annual wealth tax</span> on
-              Florida's billionaires — who moved there to <em>avoid</em> taxes.
+              Florida's billionaires — who moved to <em>avoid</em> taxes.
             </p>
             <p className="text-muted-foreground/50 text-xs mt-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
               taxfloridabillionaires.com
