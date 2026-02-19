@@ -1,25 +1,65 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X, Send, CheckCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export const CommunityInput = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [suggestion, setSuggestion] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!suggestion.trim()) return;
-    // For now, log it — persistence can be added with Cloud
-    console.log("Community suggestion:", { suggestion, email });
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setSuggestion("");
-      setEmail("");
-      setIsOpen(false);
-    }, 2500);
+    if (!suggestion.trim() || submitting) return;
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from("community_suggestions").insert({
+        suggestion: suggestion.trim(),
+        email: email.trim() || null,
+      });
+      if (error) throw error;
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setSuggestion("");
+        setEmail("");
+        setIsOpen(false);
+      }, 2500);
+    } catch (err) {
+      console.error("Failed to submit suggestion:", err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleEmailSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const input = e.currentTarget.querySelector("input") as HTMLInputElement;
+    const formEmail = input?.value?.trim();
+    if (!formEmail) return;
+
+    const btn = e.currentTarget.querySelector("button") as HTMLButtonElement;
+    try {
+      const { error } = await supabase.from("email_signups").insert({ email: formEmail });
+      if (error && error.code === "23505") {
+        // duplicate email
+        if (btn) {
+          btn.textContent = "Already signed up! ✊";
+          setTimeout(() => { btn.textContent = "Count Me In"; }, 2000);
+        }
+        return;
+      }
+      if (error) throw error;
+      input.value = "";
+      if (btn) {
+        btn.textContent = "You're in! ✊";
+        setTimeout(() => { btn.textContent = "Count Me In"; }, 2000);
+      }
+    } catch (err) {
+      console.error("Failed to save email:", err);
+    }
   };
 
   return (
@@ -36,9 +76,7 @@ export const CommunityInput = () => {
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.99 }}
         >
-          {/* Hover gradient background */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[hsl(50,80%,55%)]/10 via-[hsl(48,70%,45%)]/5 to-transparent" />
-          
           <div className="relative z-10 w-14 h-14 rounded-full border-2 border-dashed border-muted-foreground/30 group-hover:border-[hsl(50,90%,60%)] flex items-center justify-center transition-colors duration-300">
             <Plus className="w-7 h-7 text-muted-foreground/50 group-hover:text-[hsl(50,90%,60%)] transition-colors duration-300" />
           </div>
@@ -59,22 +97,7 @@ export const CommunityInput = () => {
           <p className="text-muted-foreground text-xs md:text-sm mb-4">
             Want to keep pushing for billionaire accountability in the Sunshine State? Drop your email.
           </p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const formEmail = (e.currentTarget.elements.namedItem("fight-email") as HTMLInputElement).value;
-              if (!formEmail.trim()) return;
-              console.log("Email signup:", formEmail);
-              (e.currentTarget.elements.namedItem("fight-email") as HTMLInputElement).value = "";
-              // Show brief confirmation
-              const btn = e.currentTarget.querySelector("button");
-              if (btn) {
-                btn.textContent = "You're in! ✊";
-                setTimeout(() => { btn.textContent = "Count Me In"; }, 2000);
-              }
-            }}
-            className="flex gap-2"
-          >
+          <form onSubmit={handleEmailSignup} className="flex gap-2">
             <input
               name="fight-email"
               type="email"
@@ -109,12 +132,8 @@ export const CommunityInput = () => {
               onClick={(e) => e.stopPropagation()}
               className="bg-card border border-border rounded-sm w-full max-w-md overflow-hidden"
             >
-              {/* Header */}
               <div className="gradient-gold px-6 py-4 flex items-center justify-between">
-                <h3
-                  className="text-xl tracking-wide text-background"
-                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-                >
+                <h3 className="text-xl tracking-wide text-background" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   SUGGEST A SPENDING IDEA
                 </h3>
                 <button onClick={() => setIsOpen(false)} className="text-background/70 hover:text-background">
@@ -122,7 +141,6 @@ export const CommunityInput = () => {
                 </button>
               </div>
 
-              {/* Form */}
               <div className="p-6">
                 {submitted ? (
                   <motion.div
@@ -168,10 +186,11 @@ export const CommunityInput = () => {
 
                     <button
                       type="submit"
-                      className="w-full h-10 rounded-sm gradient-gold text-background font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                      disabled={submitting}
+                      className="w-full h-10 rounded-sm gradient-gold text-background font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       <Send className="w-4 h-4" />
-                      Submit Idea
+                      {submitting ? "Submitting..." : "Submit Idea"}
                     </button>
                   </form>
                 )}
