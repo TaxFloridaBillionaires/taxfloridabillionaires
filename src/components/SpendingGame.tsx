@@ -14,8 +14,10 @@ interface Purchase {
 
 const formatMoney = (millions: number): string => {
   if (millions >= 1000) return `$${(millions / 1000).toFixed(1)}B`;
-  if (millions >= 1) return `$${millions.toFixed(0)}M`;
-  return `$${(millions * 1000).toFixed(0)}K`;
+  if (millions >= 100) return `$${millions.toFixed(0)}M`;
+  if (millions >= 1) return `$${millions.toFixed(1)}M`;
+  if (millions >= 0.1) return `$${(millions * 1000).toFixed(0)}K`;
+  return `$${(millions * 1000).toFixed(1)}K`;
 };
 
 export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
