@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { spendingItems, categoryLabels, totalBillionaireWealth, type SpendingItem } from "@/data/gameData";
 import { ImpactCard } from "./ImpactCard";
+import { CommunityInput } from "./CommunityInput";
 
 interface SpendingGameProps {
   taxRate: number;
@@ -174,6 +175,9 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
             </div>
           );
         })}
+
+        {/* Community Input */}
+        <CommunityInput />
 
         {/* Impact Summary */}
         {spent > 0 && (
