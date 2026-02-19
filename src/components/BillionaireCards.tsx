@@ -59,9 +59,6 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
         <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
           MEET THE <span className="text-gold">TAX REFUGEES</span>
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Almost every Florida billionaire relocated from a higher-tax state. Tap or hover over each card to see why they moved.
-        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
