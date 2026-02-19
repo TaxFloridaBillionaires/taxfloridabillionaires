@@ -36,7 +36,7 @@ const TickerBar = () => {
 
 export const HeroSection = ({ onStart }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 opacity-5" style={{
         backgroundImage: "linear-gradient(hsl(var(--gold) / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--gold) / 0.3) 1px, transparent 1px)",
@@ -66,7 +66,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ delay: 0.6 }}
           className="mt-8 mb-6"
         >
-          <p className="text-muted-foreground text-lg mb-2">
+          <p className="text-muted-foreground text-base sm:text-lg mb-2">
             More than a dozen moved to Florida in recent years.
           </p>
           <p className="text-muted-foreground text-lg mb-2">
@@ -84,7 +84,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg"
+          className="text-muted-foreground max-w-2xl mx-auto mb-10 text-base sm:text-lg"
         >
           How could a tax on billionaires fund Florida's future?
         </motion.p>

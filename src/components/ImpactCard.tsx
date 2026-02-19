@@ -1,6 +1,6 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { motion } from "framer-motion";
-import { Download } from "lucide-react";
+import { Download, Share2, Twitter, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
 
@@ -29,6 +29,7 @@ const pluralize = (unit: string, qty: number): string => {
 
 export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [copied, setCopied] = useState(false);
 
   const handleDownload = useCallback(async () => {
     if (!cardRef.current) return;
@@ -45,6 +46,24 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
       console.error("Failed to generate image", err);
     }
   }, []);
+
+  const shareText = `I just allocated ${formatMoney(spent)} from a ${taxRate}% wealth tax on Florida's billionaires. See what you'd fund →`;
+  const shareUrl = "https://taxfloridabillionaires.com";
+
+  const handleShareTwitter = () => {
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // fallback
+    }
+  };
 
   const purchaseEntries = Object.entries(purchases).map(([id, qty]) => {
     const item = spendingItems.find(i => i.id === id)!;
@@ -69,14 +88,30 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
       animate={{ opacity: 1, y: 0 }}
       className="mt-16"
     >
-      {/* Download button */}
-      <div className="flex justify-end mb-3">
+      {/* Action buttons */}
+      <div className="flex items-center justify-end gap-2 mb-3 flex-wrap">
+        <button
+          onClick={handleShareTwitter}
+          className="flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
+          title="Share on X (Twitter)"
+        >
+          <Twitter className="w-4 h-4" />
+          <span className="hidden sm:inline">Share</span>
+        </button>
+        <button
+          onClick={handleCopyLink}
+          className="flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
+          title="Copy link"
+        >
+          {copied ? <Check className="w-4 h-4 text-emerald" /> : <Link className="w-4 h-4" />}
+          <span className="hidden sm:inline">{copied ? "Copied!" : "Copy"}</span>
+        </button>
         <button
           onClick={handleDownload}
-          className="flex items-center gap-2 px-4 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
+          className="flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
         >
           <Download className="w-4 h-4" />
-          Save as Image
+          <span className="hidden sm:inline">Save as Image</span>
         </button>
       </div>
 
