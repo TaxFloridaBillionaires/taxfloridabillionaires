@@ -9,8 +9,7 @@ interface HeroSectionProps {
 
 const SlotMachineWord = () => {
   const words = ["FLORIDA", "CALIFORNIA"];
-  // 60% Florida, 40% California timing
-  const durations = [3600, 2400]; // ms on each word
+  const durations = [3600, 2400];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -25,13 +24,25 @@ const SlotMachineWord = () => {
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
-          initial={{ y: "100%", opacity: 0.2 }}
+          initial={{ y: "-100%", opacity: 0.2 }}
           animate={{ y: "0%", opacity: 1 }}
-          exit={{ y: "-100%", opacity: 0.15 }}
+          exit={{ y: "100%", opacity: 0.15 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className={`block ${words[index] === "FLORIDA" ? "text-gold ticker-glow" : "text-muted-foreground/40"}`}
+          className="block"
+          style={
+            words[index] === "CALIFORNIA"
+              ? {
+                  background: "linear-gradient(180deg, hsl(var(--gold)) 0%, hsl(var(--gold) / 0.5) 40%, hsl(var(--gold) / 0.08) 80%, transparent 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }
+              : undefined
+          }
         >
-          {words[index]}
+          <span className={words[index] === "FLORIDA" ? "text-gold ticker-glow" : ""}>
+            {words[index]}
+          </span>
         </motion.span>
       </AnimatePresence>
     </span>
