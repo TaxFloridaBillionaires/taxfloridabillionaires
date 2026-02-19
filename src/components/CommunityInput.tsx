@@ -3,12 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X, Send, CheckCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
+const sanitizeError = (error: unknown): string => {
+  const msg = error instanceof Error ? error.message : String(error ?? "");
+  if (msg.includes("too long") || msg.includes("format") || msg.includes("empty")) {
+    return "Please check your input and try again.";
+  }
+  if (msg.includes("Too many") || msg.includes("rate")) {
+    return "Too many requests. Please wait a moment.";
+  }
+  return "Submission failed. Please try again later.";
+};
+
 export const CommunityInput = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [suggestion, setSuggestion] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +40,7 @@ export const CommunityInput = () => {
         setIsOpen(false);
       }, 2500);
     } catch (err) {
-      console.error("Failed to submit suggestion:", err);
+      setErrorMsg(sanitizeError(err));
     } finally {
       setSubmitting(false);
     }
@@ -58,7 +70,10 @@ export const CommunityInput = () => {
         setTimeout(() => { btn.textContent = "Keep in touch"; }, 2000);
       }
     } catch (err) {
-      console.error("Failed to save email:", err);
+      if (btn) {
+        btn.textContent = sanitizeError(err);
+        setTimeout(() => { btn.textContent = "Keep in touch"; }, 3000);
+      }
     }
   };
 
@@ -160,7 +175,7 @@ export const CommunityInput = () => {
                       </label>
                       <textarea
                         value={suggestion}
-                        onChange={(e) => setSuggestion(e.target.value)}
+                        onChange={(e) => { setSuggestion(e.target.value); setErrorMsg(""); }}
                         required
                         rows={3}
                         placeholder="e.g. Fund public transit expansion, create a statewide mental health hotline..."
@@ -183,6 +198,10 @@ export const CommunityInput = () => {
                         Get updates on the fight for billionaire accountability in FL.
                       </p>
                     </div>
+
+                    {errorMsg && (
+                      <p className="text-destructive text-sm">{errorMsg}</p>
+                    )}
 
                     <button
                       type="submit"
