@@ -16,7 +16,7 @@ const TickerBar = () => {
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.3 }}
-      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-8 max-w-full overflow-hidden"
+      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-3 sm:mb-8 max-w-full overflow-hidden"
     >
       <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase shrink-0">
         ⚡ Breaking
@@ -52,7 +52,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
         {/* Breaking news ticker */}
         <TickerBar />
 
-        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
+        <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
           TAX THE
           <br />
           <span className="text-gold ticker-glow">FLORIDA</span>
