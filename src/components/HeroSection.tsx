@@ -36,7 +36,7 @@ const TickerBar = () => {
 
 export const HeroSection = ({ onStart }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-start pt-8 sm:justify-center sm:pt-0 px-6 overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 opacity-5" style={{
         backgroundImage: "linear-gradient(hsl(var(--gold) / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--gold) / 0.3) 1px, transparent 1px)",
