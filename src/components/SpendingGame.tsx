@@ -101,7 +101,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
           const catInfo = categoryLabels[cat];
           return (
             <div key={cat} className="mb-10">
-              <h3 className="font-display text-3xl text-foreground mb-4 flex items-center gap-3">
+              <h3 className="font-display text-3xl md:text-4xl text-foreground mb-4 flex items-center gap-3">
                 <span className={`w-3 h-3 rounded-full bg-${catInfo.color}`} />
                 {catInfo.label}
               </h3>
@@ -115,19 +115,19 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                   const bigStep = item.costPerUnit < 0.1 ? 100 : item.costPerUnit < 1 ? 10 : 1;
 
                   return (
-                    <div key={item.id} className="bg-card border border-border rounded-sm p-4 hover:border-gold/30 transition-colors">
+                    <div key={item.id} className="bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/30 transition-colors">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-2xl">{item.emoji}</span>
-                            <h4 className="text-foreground font-semibold">{item.name}</h4>
+                            <span className="text-2xl md:text-3xl">{item.emoji}</span>
+                            <h4 className="text-foreground font-semibold md:text-lg">{item.name}</h4>
                           </div>
-                          <p className="text-muted-foreground text-xs mt-1">{item.description}</p>
-                          <p className="font-mono text-xs text-gold mt-1">
+                          <p className="text-muted-foreground text-xs md:text-sm mt-1">{item.description}</p>
+                          <p className="font-mono text-xs md:text-sm text-gold mt-1">
                             {formatMoney(item.costPerUnit)} per {item.unit}
                           </p>
                           {item.realWorldContext && (
-                            <p className="text-crimson text-xs mt-1 italic">📌 {item.realWorldContext}</p>
+                            <p className="text-crimson text-xs md:text-sm mt-1 italic">📌 {item.realWorldContext}</p>
                           )}
                         </div>
                       </div>
@@ -145,7 +145,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                               className="px-2 h-8 rounded-sm bg-muted text-foreground text-xs disabled:opacity-30 hover:bg-crimson/20 transition-colors"
                             >−{bigStep}</button>
                           )}
-                          <span className="font-mono text-foreground font-bold min-w-[60px] text-center">
+                          <span className="font-mono text-foreground font-bold min-w-[60px] text-center md:text-lg">
                             {qty.toLocaleString()}
                           </span>
                           {bigStep > 1 && (
@@ -162,7 +162,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                           >+</button>
                         </div>
                         {qty > 0 && (
-                          <span className="font-mono text-sm text-gold">{formatMoney(totalCost)}</span>
+                          <span className="font-mono text-sm md:text-base text-gold">{formatMoney(totalCost)}</span>
                         )}
                       </div>
                     </div>
