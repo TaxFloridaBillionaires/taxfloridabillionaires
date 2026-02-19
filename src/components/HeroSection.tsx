@@ -8,13 +8,14 @@ interface HeroSectionProps {
 }
 
 const SlotMachineWord = () => {
-  const words = ["FLORIDA", "CALIFORNIA"];
-  const durations = [3600, 2400];
+  const sequence = ["FLORIDA", "CALIFORNIA", "FLORIDA"];
+  const durations = [3600, 2400, Infinity]; // stop on last Florida
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (durations[index] === Infinity) return;
     const timeout = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % words.length);
+      setIndex((prev) => prev + 1);
     }, durations[index]);
     return () => clearTimeout(timeout);
   }, [index]);
@@ -23,23 +24,23 @@ const SlotMachineWord = () => {
     <span className="inline-block relative overflow-hidden h-[1.1em] align-bottom">
       <AnimatePresence mode="wait">
         <motion.span
-          key={words[index]}
+          key={index}
           initial={{ y: "-100%", opacity: 0.2 }}
           animate={{ y: "0%", opacity: 1 }}
           exit={{ y: "100%", opacity: 0.15 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className="block"
           style={{
-            background: words[index] === "FLORIDA"
+            background: sequence[index] === "FLORIDA"
               ? "linear-gradient(180deg, hsl(var(--gold)) 0%, hsl(var(--gold) / 0.5) 40%, hsl(var(--gold) / 0.08) 80%, transparent 100%)"
               : "linear-gradient(180deg, hsl(var(--foreground)) 0%, hsl(var(--foreground) / 0.4) 40%, hsl(var(--foreground) / 0.06) 80%, transparent 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-            fontSize: words[index] === "FLORIDA" ? "130%" : undefined,
+            fontSize: sequence[index] === "FLORIDA" ? "120%" : undefined,
           }}
         >
-          {words[index]}
+          {sequence[index]}
         </motion.span>
       </AnimatePresence>
     </span>
