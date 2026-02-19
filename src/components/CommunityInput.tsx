@@ -47,7 +47,7 @@ export const CommunityInput = () => {
         // duplicate email
         if (btn) {
           btn.textContent = "Already signed up! ✊";
-          setTimeout(() => { btn.textContent = "Count Me In"; }, 2000);
+          setTimeout(() => { btn.textContent = "Keep in touch"; }, 2000);
         }
         return;
       }
@@ -55,7 +55,7 @@ export const CommunityInput = () => {
       input.value = "";
       if (btn) {
         btn.textContent = "You're in! ✊";
-        setTimeout(() => { btn.textContent = "Count Me In"; }, 2000);
+        setTimeout(() => { btn.textContent = "Keep in touch"; }, 2000);
       }
     } catch (err) {
       console.error("Failed to save email:", err);
@@ -109,7 +109,7 @@ export const CommunityInput = () => {
               type="submit"
               className="px-4 h-10 rounded-sm gradient-gold text-background font-semibold text-sm hover:opacity-90 transition-opacity whitespace-nowrap"
             >
-              Count Me In
+              Keep in touch
             </button>
           </form>
         </div>
