@@ -38,12 +38,14 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border text-center">
         <p className="text-muted-foreground text-xs max-w-lg mx-auto">
-          <strong className="text-foreground">For educational purposes only.</strong> Data sourced from{" "}
+          <strong className="text-foreground">For entertainment and educational purposes only.</strong> Data sourced from{" "}
           <a href="https://billionairereporter.com/list-floridas-billionaires/" className="text-gold underline" target="_blank" rel="noopener">Billionaire Reporter</a>,{" "}
-          <a href="https://stacker.com/stories/florida/richest-billionaires-florida" className="text-gold underline" target="_blank" rel="noopener">Stacker/Forbes</a>, and{" "}
-          <a href="https://www.wusf.org/health-news-florida/2025-04-08/medicaid-cuts-could-put-3-billion-hole-florida-economy-study" className="text-gold underline" target="_blank" rel="noopener">WUSF/Commonwealth Fund</a>.
+          <a href="https://stacker.com/stories/florida/richest-billionaires-florida" className="text-gold underline" target="_blank" rel="noopener">Stacker/Forbes</a>,{" "}
+          <a href="https://www.wusf.org/health-news-florida/2025-04-08/medicaid-cuts-could-put-3-billion-hole-florida-economy-study" className="text-gold underline" target="_blank" rel="noopener">WUSF/Commonwealth Fund</a>, and{" "}
+          <a href="https://www.palmbeachpost.com/" className="text-gold underline" target="_blank" rel="noopener">Palm Beach Post</a>.
           Net worth figures from Forbes as of January 2026.
         </p>
+        <p className="text-muted-foreground/50 text-xs mt-3">Made with ❤️</p>
       </footer>
     </div>
   );
