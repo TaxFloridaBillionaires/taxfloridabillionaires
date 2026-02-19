@@ -29,20 +29,17 @@ const SlotMachineWord = () => {
           exit={{ y: "100%", opacity: 0.15 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className="block"
-          style={
-            words[index] === "FLORIDA"
-              ? {
-                  background: "linear-gradient(180deg, hsl(var(--gold)) 0%, hsl(var(--gold) / 0.5) 40%, hsl(var(--gold) / 0.08) 80%, transparent 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }
-              : undefined
-          }
+          style={{
+            background: words[index] === "FLORIDA"
+              ? "linear-gradient(180deg, hsl(var(--gold)) 0%, hsl(var(--gold) / 0.5) 40%, hsl(var(--gold) / 0.08) 80%, transparent 100%)"
+              : "linear-gradient(180deg, hsl(var(--foreground)) 0%, hsl(var(--foreground) / 0.4) 40%, hsl(var(--foreground) / 0.06) 80%, transparent 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            fontSize: words[index] === "FLORIDA" ? "130%" : undefined,
+          }}
         >
-          <span className={words[index] === "CALIFORNIA" ? "text-white" : ""}>
-            {words[index]}
-          </span>
+          {words[index]}
         </motion.span>
       </AnimatePresence>
     </span>
