@@ -35,7 +35,7 @@ export const billionaires: Billionaire[] = [
   { name: "Peter Thiel", netWorth: 25.0, source: "PayPal / Palantir / Founders Fund", industry: "Technology", city: "Miami Beach", movedFrom: "Los Angeles, CA", movedYear: "2020", whyMoved: "Bought Miami Beach home in 2020; moved Thiel Capital to Wynwood", emoji: "🏛️" },
 ];
 
-export const totalBillionaireWealth = billionaires.reduce((sum, b) => sum + b.netWorth, 0);
+export const totalBillionaireWealth = 716; // in billions, per cited source
 
 // Breaking news headlines
 export const breakingHeadlines = [
