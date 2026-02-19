@@ -1,6 +1,6 @@
 import { useRef, useCallback, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Share2, Twitter, Link, Check } from "lucide-react";
+import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
 
@@ -50,10 +50,6 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
   const shareText = `I just allocated ${formatMoney(spent)} from a ${taxRate}% wealth tax on Florida's billionaires. See what you'd fund →`;
   const shareUrl = "https://taxfloridabillionaires.com";
 
-  const handleShareTwitter = () => {
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
 
   const handleCopyLink = async () => {
     try {
@@ -91,27 +87,36 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
       {/* Action buttons */}
       <div className="flex items-center justify-end gap-2 mb-3 flex-wrap">
         <button
-          onClick={handleShareTwitter}
-          className="flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
-          title="Share on X (Twitter)"
-        >
-          <Twitter className="w-4 h-4" />
-          <span className="hidden sm:inline">Share</span>
-        </button>
-        <button
           onClick={handleCopyLink}
-          className="flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
-          title="Copy link"
+          className="relative flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors overflow-hidden"
+          title="Tell a friend"
         >
-          {copied ? <Check className="w-4 h-4 text-emerald" /> : <Link className="w-4 h-4" />}
-          <span className="hidden sm:inline">{copied ? "Copied!" : "Copy"}</span>
+          {copied ? (
+            <motion.span
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="flex items-center gap-2 text-emerald"
+            >
+              <Check className="w-4 h-4" />
+              Copied!
+            </motion.span>
+          ) : (
+            <motion.span
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="flex items-center gap-2"
+            >
+              <Share2 className="w-4 h-4" />
+              Tell a Friend
+            </motion.span>
+          )}
         </button>
         <button
           onClick={handleDownload}
           className="flex items-center gap-2 px-3 py-2 rounded-sm bg-muted text-foreground text-sm font-semibold hover:bg-muted/80 transition-colors"
         >
           <Download className="w-4 h-4" />
-          <span className="hidden sm:inline">Save as Image</span>
+          Save as Image
         </button>
       </div>
 
