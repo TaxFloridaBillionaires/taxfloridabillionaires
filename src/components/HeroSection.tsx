@@ -1,51 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { AnimatedCounter } from "./AnimatedCounter";
 import { totalBillionaireWealth, breakingHeadlines, billionaires } from "@/data/gameData";
 
 interface HeroSectionProps {
   onStart: () => void;
 }
-
-const SlotMachineWord = () => {
-  const sequence = ["FLORIDA", "CALIFORNIA", "FLORIDA"];
-  const durations = [3600, 2400, Infinity]; // stop on last Florida
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (durations[index] === Infinity) return;
-    const timeout = setTimeout(() => {
-      setIndex((prev) => prev + 1);
-    }, durations[index]);
-    return () => clearTimeout(timeout);
-  }, [index]);
-
-  return (
-    <span className="inline-block relative overflow-hidden h-[1.1em] align-bottom">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={index}
-          initial={{ y: "-100%", opacity: 0.2 }}
-          animate={{ y: "0%", opacity: 1 }}
-          exit={{ y: "100%", opacity: 0.15 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="block"
-          style={{
-            background: sequence[index] === "FLORIDA"
-              ? "linear-gradient(180deg, hsl(var(--gold)) 0%, hsl(var(--gold) / 0.5) 40%, hsl(var(--gold) / 0.08) 80%, transparent 100%)"
-              : "linear-gradient(180deg, hsl(var(--foreground)) 0%, hsl(var(--foreground) / 0.4) 40%, hsl(var(--foreground) / 0.06) 80%, transparent 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            fontSize: sequence[index] === "FLORIDA" ? "120%" : undefined,
-          }}
-        >
-          {sequence[index]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-};
 
 const TickerBar = () => {
   const combinedText = breakingHeadlines.join("   ●   ");
@@ -96,7 +55,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
         <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
           TAX THE
           <br />
-          <SlotMachineWord />
+          <span className="text-gold ticker-glow">FLORIDA</span>
           <br />
           BILLIONAIRES
         </h1>
