@@ -62,7 +62,7 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
 
         {/* Revenue */}
         <div className="bg-card border border-gold/30 rounded-sm p-8 mb-8">
-          <p className="text-muted-foreground text-sm uppercase tracking-widest mb-2">Annual Revenue Generated</p>
+          <p className="text-muted-foreground text-sm uppercase tracking-widest mb-2">Potential Annual Revenue Generated</p>
           <div className="font-mono text-5xl md:text-6xl text-gold font-bold">
             ${revenue.toFixed(1)}B
           </div>
