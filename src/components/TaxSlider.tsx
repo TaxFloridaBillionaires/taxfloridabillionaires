@@ -31,7 +31,7 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
           SET THE <span className="text-gold">TAX RATE</span>
         </h2>
         <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
-          If Florida imposed a modest annual wealth tax on its billionaires, how much revenue would it generate?
+          If Florida imposed a modest annual wealth tax on its billionaires, how much potential revenue would it generate?
         </p>
 
         {/* Slider */}
