@@ -122,15 +122,15 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-2xl md:text-3xl">{item.emoji}</span>
-                            <h4 className="text-foreground font-semibold md:text-lg">{item.name}</h4>
+                            <span className="text-3xl md:text-4xl">{item.emoji}</span>
+                            <h4 className="text-foreground font-semibold text-lg md:text-xl">{item.name}</h4>
                           </div>
-                          <p className="text-muted-foreground text-xs md:text-sm mt-1">{item.description}</p>
-                          <p className="font-mono text-xs md:text-sm text-gold mt-1">
+                          <p className="text-muted-foreground text-sm md:text-base mt-1">{item.description}</p>
+                          <p className="font-mono text-sm md:text-base text-gold mt-1">
                             {formatMoney(item.costPerUnit)} per {item.unit}
                           </p>
                           {item.realWorldContext && (
-                            <p className="text-crimson text-xs md:text-sm mt-1 italic">📌 {item.realWorldContext}</p>
+                            <p className="text-crimson text-sm md:text-base mt-1 italic">📌 {item.realWorldContext}</p>
                           )}
                         </div>
                       </div>
@@ -148,7 +148,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                               className="px-2 h-8 rounded-sm bg-muted text-foreground text-xs disabled:opacity-30 hover:bg-crimson/20 transition-colors"
                             >−{bigStep}</button>
                           )}
-                          <span className="font-mono text-foreground font-bold min-w-[60px] text-center md:text-lg">
+                          <span className="font-mono text-foreground font-bold min-w-[60px] text-center text-lg md:text-xl">
                             {qty.toLocaleString()}
                           </span>
                           {bigStep > 1 && (
@@ -165,7 +165,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                           >+</button>
                         </div>
                         {qty > 0 && (
-                          <span className="font-mono text-sm md:text-base text-gold">{formatMoney(totalCost)}</span>
+                          <span className="font-mono text-base md:text-lg text-gold">{formatMoney(totalCost)}</span>
                         )}
                       </div>
                     </div>
