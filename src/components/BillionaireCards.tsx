@@ -18,12 +18,12 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
       className="bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer"
     >
       <div className="flex items-start justify-between mb-2 md:mb-3">
-        <span className="text-3xl md:text-4xl">{b.emoji}</span>
-        <span className="font-mono text-gold text-xl md:text-xl font-bold">${b.netWorth}B</span>
+        <span className="text-4xl md:text-5xl">{b.emoji}</span>
+        <span className="font-mono text-gold text-2xl md:text-2xl font-bold">${b.netWorth}B</span>
       </div>
-      <h3 className="font-display text-2xl md:text-2xl text-foreground mb-1">{b.name}</h3>
-      <p className="text-muted-foreground text-sm md:text-sm mb-2 md:mb-3">{b.source} · {b.industry}</p>
-      <div className="text-sm md:text-sm space-y-1 md:space-y-1.5">
+      <h3 className="font-display text-3xl md:text-3xl text-foreground mb-1">{b.name}</h3>
+      <p className="text-muted-foreground text-base md:text-base mb-2 md:mb-3">{b.source} · {b.industry}</p>
+      <div className="text-base md:text-base space-y-1 md:space-y-1.5">
         <div className="flex items-center gap-1">
           <span className="text-muted-foreground">📍</span>
           <span className="text-foreground">{b.city}, FL</span>
@@ -40,7 +40,7 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
           </div>
         )}
       </div>
-      <p className="text-muted-foreground text-sm md:text-sm mt-2 md:mt-3 italic opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
+      <p className="text-muted-foreground text-base md:text-base mt-2 md:mt-3 italic opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
         "{b.whyMoved}"
       </p>
     </motion.div>
