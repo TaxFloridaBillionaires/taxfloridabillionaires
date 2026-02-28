@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ImpactCardProps {
   purchases: Record<string, number>;
@@ -33,6 +34,10 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
 
   const handleDownload = useCallback(async () => {
     if (!cardRef.current) return;
+    supabase.from("events").insert({
+      event_name: "save_image_clicked",
+      properties: { tax_rate: taxRate, spent },
+    }).then(() => {});
     try {
       const dataUrl = await toPng(cardRef.current, {
         pixelRatio: 2,
@@ -45,13 +50,17 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
     } catch (err) {
       console.error("Failed to generate image", err);
     }
-  }, []);
+  }, [taxRate, spent]);
 
   const shareText = `I just allocated ${formatMoney(spent)} from a ${taxRate}% wealth tax on Florida's billionaires. See what you'd fund →`;
   const shareUrl = "https://taxfloridabillionaires.com";
 
 
   const handleCopyLink = async () => {
+    supabase.from("events").insert({
+      event_name: "tell_a_friend_clicked",
+      properties: { tax_rate: taxRate, spent },
+    }).then(() => {});
     try {
       await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
       setCopied(true);
