@@ -1,14 +1,38 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { BillionaireCards } from "@/components/BillionaireCards";
 import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
+import { supabase } from "@/integrations/supabase/client";
+
+const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName: string) => {
+  const tracked = useRef(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !tracked.current) {
+          tracked.current = true;
+          supabase.from("events").insert({ event_name: eventName }).then(() => {});
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [ref, eventName]);
+};
 
 const Index = () => {
   const [taxRate, setTaxRate] = useState<number | null>(null);
   const billionaireRef = useRef<HTMLDivElement>(null);
   const taxRef = useRef<HTMLDivElement>(null);
   const spendRef = useRef<HTMLDivElement>(null);
+
+  useScrollTracker(billionaireRef, "scroll_billionaire_cards");
+  useScrollTracker(taxRef, "scroll_tax_slider");
+  useScrollTracker(spendRef, "scroll_spending_game");
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
