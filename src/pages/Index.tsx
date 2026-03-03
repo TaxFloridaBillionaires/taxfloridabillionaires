@@ -65,8 +65,9 @@ const Index = () => {
           <strong className="text-foreground">For entertainment and educational purposes only.</strong> Data sourced from{" "}
           <a href="https://billionairereporter.com/list-floridas-billionaires/" className="text-gold underline" target="_blank" rel="noopener">Billionaire Reporter</a>,{" "}
           <a href="https://stacker.com/stories/florida/richest-billionaires-florida" className="text-gold underline" target="_blank" rel="noopener">Stacker/Forbes</a>,{" "}
-          <a href="https://www.wusf.org/health-news-florida/2025-04-08/medicaid-cuts-could-put-3-billion-hole-florida-economy-study" className="text-gold underline" target="_blank" rel="noopener">WUSF/Commonwealth Fund</a>, and{" "}
-          <a href="https://www.palmbeachpost.com/" className="text-gold underline" target="_blank" rel="noopener">Palm Beach Post</a>.
+          <a href="https://www.wusf.org/health-news-florida/2025-04-08/medicaid-cuts-could-put-3-billion-hole-florida-economy-study" className="text-gold underline" target="_blank" rel="noopener">WUSF/Commonwealth Fund</a>,{" "}
+          <a href="https://www.palmbeachpost.com/" className="text-gold underline" target="_blank" rel="noopener">Palm Beach Post</a>, and{" "}
+          <a href="https://www.realtor.com/news/trends/larry-ellison-hawaii-manalapan-fl-estate-donald-trump/" className="text-gold underline" target="_blank" rel="noopener">Realtor.com</a>.
           Net worth figures from Forbes as of January 2026.
         </p>
         <p className="text-muted-foreground/50 text-xs mt-3">Made with ❤️</p>
