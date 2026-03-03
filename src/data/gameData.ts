@@ -12,8 +12,11 @@ export interface Billionaire {
 
 export const billionaires: Billionaire[] = [
   { name: "Jeff Bezos", netWorth: 246.7, source: "Amazon", industry: "Technology", city: "Miami", movedFrom: "Seattle, WA", movedYear: "2023", whyMoved: "Said he wanted to be closer to his parents", emoji: "📦" },
+  { name: "Mark Zuckerberg", netWorth: 221.8, source: "Meta / Facebook", industry: "Technology", city: "Indian Creek Island", movedFrom: "Palo Alto, CA", movedYear: "2025", whyMoved: "Relocated amid tax concerns; bought $100M+ estate", emoji: "👤" },
+  { name: "Larry Ellison", netWorth: 189.9, source: "Oracle", industry: "Technology", city: "Manalapan", movedFrom: "Lanai, HI", movedYear: "2025", whyMoved: "Made $173M Palm Beach estate near Mar-a-Lago his official residence", emoji: "🏝️" },
   { name: "Thomas Peterffy", netWorth: 89.1, source: "Interactive Brokers", industry: "Finance", city: "Palm Beach", movedFrom: "Greenwich, CT", movedYear: "2014", whyMoved: "Left after CT governor was re-elected — 'I was actually very mad'", emoji: "📈" },
   { name: "Ken Griffin", netWorth: 51.5, source: "Citadel", industry: "Finance", city: "Miami", movedFrom: "Chicago, IL", movedYear: "2022", whyMoved: "Cited 25 bullet holes in front of his Chicago building", emoji: "🏦" },
+  { name: "Peter Thiel", netWorth: 25.0, source: "PayPal / Palantir / Founders Fund", industry: "Technology", city: "Miami Beach", movedFrom: "Los Angeles, CA", movedYear: "2020", whyMoved: "Bought Miami Beach home in 2020; moved Thiel Capital to Wynwood", emoji: "🏛️" },
   { name: "David Tepper", netWorth: 23.7, source: "Appaloosa Management", industry: "Finance", city: "Palm Beach", movedFrom: "New Jersey", movedYear: "2015", whyMoved: "Could have owed $500M in NJ state taxes over 3 years", emoji: "💰" },
   { name: "Stephen Ross", netWorth: 17.0, source: "Related Ross", industry: "Real Estate", city: "West Palm Beach", movedFrom: "New York, NY", movedYear: "2021", whyMoved: "Tax-friendly environment and business opportunities", emoji: "🏗️" },
   { name: "Shahid Khan", netWorth: 15.0, source: "Flex-N-Gate / Jaguars", industry: "Auto/Sports", city: "Naples", movedFrom: "Urbana, IL", movedYear: "2014", whyMoved: "Never publicly explained the move", emoji: "🏈" },
@@ -31,14 +34,13 @@ export const billionaires: Billionaire[] = [
   { name: "Stephen Bisciotti", netWorth: 8.5, source: "Staffing / Ravens", industry: "Sports", city: "Hobe Sound", movedFrom: "Maryland", movedYear: "Unknown", whyMoved: "Established FL residence", emoji: "🏈" },
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
-  { name: "Mark Zuckerberg", netWorth: 221.8, source: "Meta / Facebook", industry: "Technology", city: "Indian Creek Island", movedFrom: "Palo Alto, CA", movedYear: "2025", whyMoved: "Relocated amid tax concerns; bought $100M+ estate", emoji: "👤" },
-  { name: "Peter Thiel", netWorth: 25.0, source: "PayPal / Palantir / Founders Fund", industry: "Technology", city: "Miami Beach", movedFrom: "Los Angeles, CA", movedYear: "2020", whyMoved: "Bought Miami Beach home in 2020; moved Thiel Capital to Wynwood", emoji: "🏛️" },
 ];
 
-export const totalBillionaireWealth = 716; // in billions, per cited source
+export const totalBillionaireWealth = 906; // in billions, per cited source
 
 // Breaking news headlines
 export const breakingHeadlines = [
+  "Larry Ellison Makes $173 Million Palm Beach Estate Near Trump's Mar-a-Lago His Official Residence",
   "Zuckerberg joins Florida billionaire exodus — buys $100M+ Indian Creek estate",
   "Peter Thiel moves Thiel Capital to Miami's Wynwood as Palantir HQ shifts to Aventura",
 ];

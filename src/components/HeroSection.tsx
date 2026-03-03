@@ -73,7 +73,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
             Their combined wealth:
           </p>
           <div className="font-mono text-5xl md:text-7xl text-gold font-bold ticker-glow">
-            <AnimatedCounter end={716} prefix="$" suffix="B" decimals={0} />
+            <AnimatedCounter end={906} prefix="$" suffix="B" decimals={0} />
           </div>
           <a href="https://archive.ph/vElAc" target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-muted-foreground hover:text-gold text-xs mt-2 transition-colors">
             🔗 <span className="underline">Source</span>
