@@ -70,8 +70,9 @@ const Index = () => {
           <a href="https://www.realtor.com/news/trends/larry-ellison-hawaii-manalapan-fl-estate-donald-trump/" className="text-gold underline" target="_blank" rel="noopener">Realtor.com</a>.
           Net worth figures from Forbes as of January 2026.
         </p>
-        <p className="text-muted-foreground/50 text-xs mt-3">
-          Made with ❤️ by a Floridian. <a href="mailto:info@taxfloridabillionaires.com" className="text-gold underline">Contact</a> for press inquiries, comments, or corrections.
+        <p className="text-muted-foreground/50 text-xs mt-3">Made with ❤️ by a Floridian.</p>
+        <p className="text-muted-foreground/50 text-xs mt-1">
+          <a href="mailto:info@taxfloridabillionaires.com" className="text-gold underline">Contact</a> for press inquiries, comments, or corrections.
         </p>
       </footer>
     </div>
