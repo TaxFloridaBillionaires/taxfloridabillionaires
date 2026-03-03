@@ -74,6 +74,14 @@ const Index = () => {
         <p className="text-muted-foreground/50 text-xs mt-1">
           <a href="mailto:info@taxfloridabillionaires.com" className="text-gold underline">Contact</a> for press inquiries, comments, or corrections.
         </p>
+        <a
+          href="https://instagram.com/taxfloridabillionaires"
+          target="_blank"
+          rel="noopener"
+          className="inline-block mt-3 px-4 py-1.5 bg-gold text-background text-xs font-bold rounded hover:opacity-90 transition-opacity"
+        >
+          @taxfloridabillionaires
+        </a>
       </footer>
     </div>
   );
