@@ -18,15 +18,7 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
       className="bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer"
     >
       <div className="flex items-start justify-between mb-2 md:mb-3">
-        {b.headshot ? (
-          <img
-            src={b.headshot}
-            alt={b.name}
-            className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover grayscale"
-          />
-        ) : (
-          <span className="text-4xl md:text-5xl">{b.emoji}</span>
-        )}
+        <span className="text-4xl md:text-5xl">{b.emoji}</span>
         <span className="font-mono text-gold text-2xl md:text-2xl font-bold">${b.netWorth}B</span>
       </div>
       <h3 className="font-display text-3xl md:text-3xl text-foreground mb-1">{b.name}</h3>
