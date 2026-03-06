@@ -83,6 +83,11 @@ const Index = () => {
         >
           @taxfloridabillionaires
         </a>
+        <div className="mt-6">
+          <a href="https://dreamdefenders.org/?utm_source=taxfloridabillionaires" target="_blank" rel="noopener">
+            <img src={dreamDefendersLogo} alt="Dream Defenders" className="h-12 mx-auto opacity-80 hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
       </footer>
     </div>
   );
