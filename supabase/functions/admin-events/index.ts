@@ -26,14 +26,19 @@ Deno.serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    const { data, error } = await supabase
-      .from("events")
-      .select("event_name, created_at, properties")
-      .order("created_at", { ascending: true });
+    const [eventsRes, emailsRes, suggestionsRes] = await Promise.all([
+      supabase.from("events").select("event_name, created_at, properties").order("created_at", { ascending: true }),
+      supabase.from("email_signups").select("email, created_at").order("created_at", { ascending: false }),
+      supabase.from("community_suggestions").select("suggestion, email, created_at").order("created_at", { ascending: false }),
+    ]);
 
-    if (error) throw error;
+    if (eventsRes.error) throw eventsRes.error;
 
-    return new Response(JSON.stringify({ events: data }), {
+    return new Response(JSON.stringify({
+      events: eventsRes.data,
+      emails: emailsRes.data || [],
+      suggestions: suggestionsRes.data || [],
+    }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
