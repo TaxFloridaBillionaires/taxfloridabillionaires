@@ -4,6 +4,7 @@ import { BillionaireCards } from "@/components/BillionaireCards";
 import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
 import { supabase } from "@/integrations/supabase/client";
+import dreamDefendersLogo from "@/assets/dream-defenders-logo.jpg";
 
 const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName: string) => {
   const tracked = useRef(false);
@@ -82,6 +83,11 @@ const Index = () => {
         >
           @taxfloridabillionaires
         </a>
+        <div className="mt-6">
+          <a href="https://dreamdefenders.org/?utm_source=taxfloridabillionaires" target="_blank" rel="noopener">
+            <img src={dreamDefendersLogo} alt="Dream Defenders" className="h-12 mx-auto opacity-80 hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
       </footer>
     </div>
   );
