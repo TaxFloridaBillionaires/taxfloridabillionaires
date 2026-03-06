@@ -186,6 +186,9 @@ const Admin = () => {
               className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-gold mb-4"
               autoFocus
             />
+            {authError && (
+              <p className="text-crimson text-sm mb-3">Incorrect password</p>
+            )}
             <button
               type="submit"
               className="w-full gradient-gold text-background font-bold py-3 rounded-sm hover:opacity-90 transition-opacity"
