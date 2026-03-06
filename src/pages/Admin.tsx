@@ -54,10 +54,11 @@ const Admin = () => {
     fetchData();
   }, [authed]);
 
-  const fetchData = async () => {
+  const fetchData = async (pw?: string) => {
+    const authPassword = pw || password;
     setLoading(true);
     const { data, error } = await supabase.functions.invoke("admin-events", {
-      body: { password: ADMIN_PASSWORD },
+      body: { password: authPassword },
     });
     if (!error && data) {
       setEvents(data.events || []);
