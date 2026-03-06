@@ -4,6 +4,7 @@ import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
 import { supabase } from "@/integrations/supabase/client";
+import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 
 interface ImpactCardProps {
   purchases: Record<string, number>;
@@ -213,6 +214,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
             <p className="text-muted-foreground/50 text-xs mt-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
               taxfloridabillionaires.com
             </p>
+            <img src={dreamDefendersLogo} alt="Dream Defenders" className="h-10 mx-auto mt-3 opacity-80" />
           </div>
         </div>
       </div>
