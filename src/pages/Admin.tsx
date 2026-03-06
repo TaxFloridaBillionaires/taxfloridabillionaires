@@ -50,10 +50,7 @@ const Admin = () => {
   const [rangeDays, setRangeDays] = useState(7);
   const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!authed) return;
-    fetchData();
-  }, [authed]);
+  // Don't auto-fetch; login handler calls fetchData directly
 
   const fetchData = async (pw?: string) => {
     const authPassword = pw || password;
