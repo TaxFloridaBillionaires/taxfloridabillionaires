@@ -4,7 +4,7 @@ import { BillionaireCards } from "@/components/BillionaireCards";
 import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
 import { supabase } from "@/integrations/supabase/client";
-import dreamDefendersLogo from "@/assets/dream-defenders-logo.jpg";
+import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 
 const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName: string) => {
   const tracked = useRef(false);
