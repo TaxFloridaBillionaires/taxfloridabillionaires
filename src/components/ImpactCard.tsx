@@ -4,6 +4,7 @@ import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
 import { supabase } from "@/integrations/supabase/client";
+import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 
 interface ImpactCardProps {
   purchases: Record<string, number>;
