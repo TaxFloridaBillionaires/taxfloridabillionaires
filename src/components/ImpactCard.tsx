@@ -184,12 +184,20 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
                 {items.map(({ item, qty }) => (
                   <div key={item.id} className="flex flex-col items-center text-center bg-muted rounded-sm px-3 py-3 gap-1">
                     <span className="text-2xl">{item.emoji}</span>
-                    <p className="text-gold text-lg font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                      {qty.toLocaleString()}
-                    </p>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      {pluralize(item.unit, qty)}
-                    </p>
+                    {(() => {
+                      const { multiplier, label } = parseUnit(item.unit);
+                      const total = qty * multiplier;
+                      return (
+                        <>
+                          <p className="text-gold text-lg font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                            {total.toLocaleString()}
+                          </p>
+                          <p className="text-muted-foreground text-sm leading-tight">
+                            {pluralize(label, total)}
+                          </p>
+                        </>
+                      );
+                    })()}
                   </div>
                 ))}
               </div>
