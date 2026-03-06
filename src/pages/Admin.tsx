@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 
-const ADMIN_PASSWORD = "dreamdefenders2026";
+// Password is stored server-side only as a Supabase secret
 
 interface EventRow {
   event_name: string;
