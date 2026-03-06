@@ -18,14 +18,22 @@ const formatMoney = (millions: number): string => {
   return `$${(millions * 1000).toFixed(0)}K`;
 };
 
-const pluralize = (unit: string, qty: number): string => {
-  if (qty === 1) return unit;
-  // Handle special cases
-  if (unit === "person") return "people";
-  if (unit === "facility") return "facilities";
-  if (unit === "full gap") return "full gaps";
-  if (unit.endsWith("s")) return unit;
-  return unit + "s";
+// Parse units like "100 families" → { multiplier: 100, label: "families" }
+// and "person" → { multiplier: 1, label: "person" }
+const parseUnit = (unit: string): { multiplier: number; label: string } => {
+  const match = unit.match(/^(\d+)\s+(.+)$/);
+  if (match) return { multiplier: parseInt(match[1], 10), label: match[2] };
+  return { multiplier: 1, label: unit };
+};
+
+const pluralize = (label: string, total: number): string => {
+  if (total === 1) return label;
+  if (label === "person") return "people";
+  if (label === "facility") return "facilities";
+  if (label === "full gap") return "full gaps";
+  if (label === "job saved") return "jobs saved";
+  if (label.endsWith("s") || label.endsWith("d")) return label;
+  return label + "s";
 };
 
 export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCardProps) => {
@@ -176,12 +184,20 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
                 {items.map(({ item, qty }) => (
                   <div key={item.id} className="flex flex-col items-center text-center bg-muted rounded-sm px-3 py-3 gap-1">
                     <span className="text-2xl">{item.emoji}</span>
-                    <p className="text-gold text-lg font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-                      {qty.toLocaleString()}
-                    </p>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      {pluralize(item.unit, qty)}
-                    </p>
+                    {(() => {
+                      const { multiplier, label } = parseUnit(item.unit);
+                      const total = qty * multiplier;
+                      return (
+                        <>
+                          <p className="text-gold text-lg font-bold" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                            {total.toLocaleString()}
+                          </p>
+                          <p className="text-muted-foreground text-sm leading-tight">
+                            {pluralize(label, total)}
+                          </p>
+                        </>
+                      );
+                    })()}
                   </div>
                 ))}
               </div>
