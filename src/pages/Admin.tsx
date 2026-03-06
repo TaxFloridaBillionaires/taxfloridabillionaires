@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 
-const ADMIN_PASSWORD = "dreamdefenders2026";
+// Password is stored server-side only as a Supabase secret
 
 interface EventRow {
   event_name: string;
@@ -42,6 +42,7 @@ const TIME_RANGES = [
 const Admin = () => {
   const [authed, setAuthed] = useState(false);
   const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState(false);
   const [events, setEvents] = useState<EventRow[]>([]);
   const [emails, setEmails] = useState<EmailRow[]>([]);
   const [suggestions, setSuggestions] = useState<SuggestionRow[]>([]);
@@ -49,15 +50,13 @@ const Admin = () => {
   const [rangeDays, setRangeDays] = useState(7);
   const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!authed) return;
-    fetchData();
-  }, [authed]);
+  // Don't auto-fetch; login handler calls fetchData directly
 
-  const fetchData = async () => {
+  const fetchData = async (pw?: string) => {
+    const authPassword = pw || password;
     setLoading(true);
     const { data, error } = await supabase.functions.invoke("admin-events", {
-      body: { password: ADMIN_PASSWORD },
+      body: { password: authPassword },
     });
     if (!error && data) {
       setEvents(data.events || []);
@@ -163,9 +162,20 @@ const Admin = () => {
         <div className="bg-card border border-border rounded-sm p-8 w-full max-w-sm">
           <h1 className="font-display text-3xl text-foreground mb-6 text-center">ADMIN</h1>
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              if (password === ADMIN_PASSWORD) setAuthed(true);
+              setAuthError(false);
+              const { data, error } = await supabase.functions.invoke("admin-events", {
+                body: { password },
+              });
+              if (error || !data?.events) {
+                setAuthError(true);
+                return;
+              }
+              setEvents(data.events || []);
+              setEmails(data.emails || []);
+              setSuggestions(data.suggestions || []);
+              setAuthed(true);
             }}
           >
             <input
@@ -176,6 +186,9 @@ const Admin = () => {
               className="w-full bg-muted border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-gold mb-4"
               autoFocus
             />
+            {authError && (
+              <p className="text-crimson text-sm mb-3">Incorrect password</p>
+            )}
             <button
               type="submit"
               className="w-full gradient-gold text-background font-bold py-3 rounded-sm hover:opacity-90 transition-opacity"
