@@ -162,9 +162,20 @@ const Admin = () => {
         <div className="bg-card border border-border rounded-sm p-8 w-full max-w-sm">
           <h1 className="font-display text-3xl text-foreground mb-6 text-center">ADMIN</h1>
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              if (password === ADMIN_PASSWORD) setAuthed(true);
+              setAuthError(false);
+              const { data, error } = await supabase.functions.invoke("admin-events", {
+                body: { password },
+              });
+              if (error || !data?.events) {
+                setAuthError(true);
+                return;
+              }
+              setEvents(data.events || []);
+              setEmails(data.emails || []);
+              setSuggestions(data.suggestions || []);
+              setAuthed(true);
             }}
           >
             <input
