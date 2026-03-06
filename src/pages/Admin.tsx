@@ -42,6 +42,7 @@ const TIME_RANGES = [
 const Admin = () => {
   const [authed, setAuthed] = useState(false);
   const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState(false);
   const [events, setEvents] = useState<EventRow[]>([]);
   const [emails, setEmails] = useState<EmailRow[]>([]);
   const [suggestions, setSuggestions] = useState<SuggestionRow[]>([]);
