@@ -11,7 +11,9 @@ export interface Billionaire {
 }
 
 export const billionaires: Billionaire[] = [
+  { name: "Larry Page", netWorth: 254.4, source: "Google / Alphabet", industry: "Technology", city: "Miami", movedFrom: "Palo Alto, CA", movedYear: "2026", whyMoved: "Spent $173.4M on two estates in Miami's Coconut Grove", emoji: "🔍" },
   { name: "Jeff Bezos", netWorth: 246.7, source: "Amazon", industry: "Technology", city: "Miami", movedFrom: "Seattle, WA", movedYear: "2023", whyMoved: "Said he wanted to be closer to his parents", emoji: "📦" },
+  { name: "Sergey Brin", netWorth: 235.0, source: "Google / Alphabet", industry: "Technology", city: "Miami", movedFrom: "Los Altos, CA", movedYear: "2026", whyMoved: "Purchased $51M mansion on Miami's Allison Island", emoji: "🔎" },
   { name: "Mark Zuckerberg", netWorth: 221.8, source: "Meta / Facebook", industry: "Technology", city: "Indian Creek Island", movedFrom: "Palo Alto, CA", movedYear: "2025", whyMoved: "Relocated amid tax concerns; bought $100M+ estate", emoji: "👤" },
   { name: "Larry Ellison", netWorth: 189.9, source: "Oracle", industry: "Technology", city: "Manalapan", movedFrom: "Lanai, HI", movedYear: "2025", whyMoved: "Made $173M Palm Beach estate near Mar-a-Lago his official residence", emoji: "🏝️" },
   { name: "Thomas Peterffy", netWorth: 89.1, source: "Interactive Brokers", industry: "Finance", city: "Palm Beach", movedFrom: "Greenwich, CT", movedYear: "2014", whyMoved: "Left after CT governor was re-elected — 'I was actually very mad'", emoji: "📈" },
@@ -34,9 +36,10 @@ export const billionaires: Billionaire[] = [
   { name: "Stephen Bisciotti", netWorth: 8.5, source: "Staffing / Ravens", industry: "Sports", city: "Hobe Sound", movedFrom: "Maryland", movedYear: "Unknown", whyMoved: "Established FL residence", emoji: "🏈" },
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
+  { name: "Howard Schultz", netWorth: 3.5, source: "Starbucks", industry: "Food & Beverage", city: "Surfside", movedFrom: "Seattle, WA", movedYear: "2026", whyMoved: "Bought $44M penthouse; said he's 'enjoying the sunshine of South Florida'", emoji: "☕" },
 ];
 
-export const totalBillionaireWealth = 906; // in billions, per cited source
+export const totalBillionaireWealth = 1399; // in billions, updated with Page, Brin, Schultz
 
 // Breaking news headlines
 export const breakingHeadlines = [
