@@ -46,6 +46,7 @@ export const breakingHeadlines = [
   "Larry Ellison Makes $173 Million Palm Beach Estate Near Trump's Mar-a-Lago His Official Residence",
   "Zuckerberg joins Florida billionaire exodus — buys $100M+ Indian Creek estate",
   "Peter Thiel moves Thiel Capital to Miami's Wynwood as Palantir HQ shifts to Aventura",
+  "Howard Schultz trades Seattle for Miami — buys $44M penthouse as Washington advances millionaire tax",
 ];
 
 // Mark Zuckerberg context
