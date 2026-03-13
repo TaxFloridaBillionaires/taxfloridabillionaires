@@ -11,7 +11,9 @@ export interface Billionaire {
 }
 
 export const billionaires: Billionaire[] = [
+  { name: "Larry Page", netWorth: 254.4, source: "Google / Alphabet", industry: "Technology", city: "Miami", movedFrom: "Palo Alto, CA", movedYear: "2026", whyMoved: "Spent $173.4M on two estates in Miami's Coconut Grove", emoji: "🔍" },
   { name: "Jeff Bezos", netWorth: 246.7, source: "Amazon", industry: "Technology", city: "Miami", movedFrom: "Seattle, WA", movedYear: "2023", whyMoved: "Said he wanted to be closer to his parents", emoji: "📦" },
+  { name: "Sergey Brin", netWorth: 235.0, source: "Google / Alphabet", industry: "Technology", city: "Miami", movedFrom: "Los Altos, CA", movedYear: "2026", whyMoved: "Purchased $51M mansion on Miami's Allison Island", emoji: "🔎" },
   { name: "Mark Zuckerberg", netWorth: 221.8, source: "Meta / Facebook", industry: "Technology", city: "Indian Creek Island", movedFrom: "Palo Alto, CA", movedYear: "2025", whyMoved: "Relocated amid tax concerns; bought $100M+ estate", emoji: "👤" },
   { name: "Larry Ellison", netWorth: 189.9, source: "Oracle", industry: "Technology", city: "Manalapan", movedFrom: "Lanai, HI", movedYear: "2025", whyMoved: "Made $173M Palm Beach estate near Mar-a-Lago his official residence", emoji: "🏝️" },
   { name: "Thomas Peterffy", netWorth: 89.1, source: "Interactive Brokers", industry: "Finance", city: "Palm Beach", movedFrom: "Greenwich, CT", movedYear: "2014", whyMoved: "Left after CT governor was re-elected — 'I was actually very mad'", emoji: "📈" },
