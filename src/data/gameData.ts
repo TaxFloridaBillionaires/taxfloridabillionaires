@@ -36,9 +36,10 @@ export const billionaires: Billionaire[] = [
   { name: "Stephen Bisciotti", netWorth: 8.5, source: "Staffing / Ravens", industry: "Sports", city: "Hobe Sound", movedFrom: "Maryland", movedYear: "Unknown", whyMoved: "Established FL residence", emoji: "🏈" },
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
+  { name: "Howard Schultz", netWorth: 3.5, source: "Starbucks", industry: "Food & Beverage", city: "Surfside", movedFrom: "Seattle, WA", movedYear: "2026", whyMoved: "Bought $44M penthouse; said he's 'enjoying the sunshine of South Florida'", emoji: "☕" },
 ];
 
-export const totalBillionaireWealth = 906; // in billions, per cited source
+export const totalBillionaireWealth = 1399; // in billions, updated with Page, Brin, Schultz
 
 // Breaking news headlines
 export const breakingHeadlines = [
