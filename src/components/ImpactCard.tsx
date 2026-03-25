@@ -31,6 +31,8 @@ const pluralize = (label: string, total: number): string => {
   if (total === 1) return label;
   if (label === "person") return "people";
   if (label === "facility") return "facilities";
+  if (label === "municipality") return "municipalities";
+  if (label === "county") return "counties";
   if (label === "full gap") return "full gaps";
   if (label === "job saved") return "jobs saved";
   if (label.endsWith("s") || label.endsWith("d")) return label;
