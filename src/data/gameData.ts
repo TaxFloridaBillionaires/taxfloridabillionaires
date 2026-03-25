@@ -82,7 +82,16 @@ export const spendingItems: SpendingItem[] = [
 
   // Federal cuts support
   { id: "save_healthcare_jobs", name: "Save Healthcare Jobs", description: "Prevent layoffs of healthcare workers (avg $55K salary)", costPerUnit: 0.055, unit: "job saved", category: "jobs", emoji: "👷", realWorldContext: "17,000 healthcare jobs and 16,000 other jobs at risk from Medicaid cuts" },
+  { id: "save_teacher_jobs", name: "Save Public School Teachers", description: "Fund a public school teacher position for one year (~$55K)", costPerUnit: 0.055, unit: "teacher", category: "jobs", emoji: "🧑‍🏫" },
+  { id: "first_responder_retention", name: "First Responder Retention", description: "Keep a firefighter or EMT from leaving due to low pay (~$60K/yr)", costPerUnit: 0.06, unit: "first responder", category: "jobs", emoji: "👮" },
+  { id: "park_rangers", name: "State Park Rangers", description: "Fund a state park ranger position for one year (~$45K)", costPerUnit: 0.045, unit: "ranger", category: "jobs", emoji: "🌴" },
   { id: "local_tax_gap", name: "Fill Local Tax Revenue Gap", description: "Replace the $177M in local tax revenue jeopardized by cuts", costPerUnit: 177, unit: "full gap", category: "infrastructure", emoji: "🏛️", realWorldContext: "$177M in FL local tax revenue at risk per Commonwealth Fund study" },
+  { id: "public_transit", name: "Public Transit Expansion", description: "Fund a new bus or rail route for a metro area", costPerUnit: 50, unit: "route", category: "infrastructure", emoji: "🚌" },
+  { id: "flood_resilience", name: "Flood & Hurricane Resilience", description: "Build seawalls, drainage, and storm hardening projects", costPerUnit: 25, unit: "project", category: "infrastructure", emoji: "🌊" },
+  { id: "rural_broadband", name: "Rural Broadband", description: "Bring high-speed internet to an underserved FL county", costPerUnit: 10, unit: "county", category: "infrastructure", emoji: "📶" },
+  { id: "school_repairs", name: "School Building Repairs", description: "Fix crumbling public school facilities", costPerUnit: 5, unit: "school", category: "infrastructure", emoji: "🏫" },
+  { id: "power_grid", name: "Power Grid Hardening", description: "Storm-proof electrical infrastructure for a region", costPerUnit: 100, unit: "region", category: "infrastructure", emoji: "⚡" },
+  { id: "clean_water", name: "Clean Water Infrastructure", description: "Upgrade aging water and sewer systems for a municipality", costPerUnit: 20, unit: "municipality", category: "infrastructure", emoji: "💧" },
 
   // Housing
   { id: "affordable_housing", name: "Affordable Housing Units", description: "Build 10 affordable housing units", costPerUnit: 2.5, unit: "10 units", category: "housing", emoji: "🏘️" },
