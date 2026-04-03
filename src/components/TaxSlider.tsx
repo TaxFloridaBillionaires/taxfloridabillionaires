@@ -35,6 +35,12 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
           If Florida imposed a modest annual wealth tax on its billionaires, how much potential revenue would it generate?
         </p>
 
+        {/* Rate display */}
+        <div className="font-mono text-6xl sm:text-8xl md:text-9xl text-gold font-bold ticker-glow mb-2">
+          {rate}%
+        </div>
+        <p className="text-muted-foreground text-lg mb-6">annual wealth tax</p>
+
         {/* Slider */}
         <div className="mb-8">
           <div className="flex justify-between text-muted-foreground text-sm mb-2">
@@ -54,12 +60,6 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
             }}
           />
         </div>
-
-        {/* Rate display */}
-        <div className="font-mono text-6xl sm:text-8xl md:text-9xl text-gold font-bold ticker-glow mb-2">
-          {rate}%
-        </div>
-        <p className="text-muted-foreground text-lg mb-6">annual wealth tax</p>
 
         {/* Revenue */}
         <div className="bg-card border border-gold/30 rounded-sm p-8 mb-8">
