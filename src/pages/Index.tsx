@@ -5,6 +5,7 @@ import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
 import { supabase } from "@/integrations/supabase/client";
 import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
+import ffaLogo from "@/assets/ffa-logo.svg";
 
 const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName: string) => {
   const tracked = useRef(false);
