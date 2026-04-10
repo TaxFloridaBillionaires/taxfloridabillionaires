@@ -122,15 +122,15 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-3xl md:text-4xl">{item.emoji}</span>
-                            <h4 className="text-foreground font-semibold text-lg md:text-xl">{item.name}</h4>
+                            <span className="text-4xl md:text-4xl">{item.emoji}</span>
+                            <h4 className="text-foreground font-semibold text-2xl md:text-xl">{item.name}</h4>
                           </div>
-                          <p className="text-muted-foreground text-sm md:text-base mt-1">{item.description}</p>
-                          <p className="font-mono text-sm md:text-base text-gold mt-1">
+                          <p className="text-muted-foreground text-lg md:text-base mt-1">{item.description}</p>
+                          <p className="font-mono text-lg md:text-base text-gold mt-1">
                             {formatMoney(item.costPerUnit)} per {item.unit}
                           </p>
                           {item.realWorldContext && (
-                            <p className="text-crimson text-sm md:text-base mt-1 italic">📌 {item.realWorldContext}</p>
+                            <p className="text-crimson text-lg md:text-base mt-1 italic">📌 {item.realWorldContext}</p>
                           )}
                         </div>
                       </div>
@@ -139,33 +139,33 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                           <button
                             onClick={() => removeItem(item, 1)}
                             disabled={qty === 0}
-                            className="w-8 h-8 rounded-sm bg-muted text-foreground font-bold disabled:opacity-30 hover:bg-crimson/20 transition-colors"
+                            className="w-10 h-10 md:w-8 md:h-8 rounded-sm bg-muted text-foreground font-bold text-lg md:text-base disabled:opacity-30 hover:bg-crimson/20 transition-colors"
                           >−</button>
                           {bigStep > 1 && (
                             <button
                               onClick={() => removeItem(item, bigStep)}
                               disabled={qty < bigStep}
-                              className="px-2 h-8 rounded-sm bg-muted text-foreground text-xs disabled:opacity-30 hover:bg-crimson/20 transition-colors"
+                              className="px-2 h-10 md:h-8 rounded-sm bg-muted text-foreground text-sm md:text-xs disabled:opacity-30 hover:bg-crimson/20 transition-colors"
                             >−{bigStep}</button>
                           )}
-                          <span className="font-mono text-foreground font-bold min-w-[60px] text-center text-lg md:text-xl">
+                          <span className="font-mono text-foreground font-bold min-w-[60px] text-center text-2xl md:text-xl">
                             {qty.toLocaleString()}
                           </span>
                           {bigStep > 1 && (
                             <button
                               onClick={() => addItem(item, bigStep)}
                               disabled={!canAfford}
-                              className="px-2 h-8 rounded-sm bg-muted text-foreground text-xs disabled:opacity-30 hover:bg-emerald/20 transition-colors"
+                              className="px-2 h-10 md:h-8 rounded-sm bg-muted text-foreground text-sm md:text-xs disabled:opacity-30 hover:bg-emerald/20 transition-colors"
                             >+{bigStep}</button>
                           )}
                           <button
                             onClick={() => addItem(item, 1)}
                             disabled={!canAfford}
-                            className="w-8 h-8 rounded-sm bg-muted text-foreground font-bold disabled:opacity-30 hover:bg-emerald/20 transition-colors"
+                            className="w-10 h-10 md:w-8 md:h-8 rounded-sm bg-muted text-foreground font-bold text-lg md:text-base disabled:opacity-30 hover:bg-emerald/20 transition-colors"
                           >+</button>
                         </div>
                         {qty > 0 && (
-                          <span className="font-mono text-base md:text-lg text-gold">{formatMoney(totalCost)}</span>
+                          <span className="font-mono text-xl md:text-lg text-gold">{formatMoney(totalCost)}</span>
                         )}
                       </div>
                     </div>
