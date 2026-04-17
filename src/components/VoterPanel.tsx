@@ -37,10 +37,25 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
     </button>
 
     <div className="text-4xl mb-3">🗳️</div>
-    <h2 className="font-display text-3xl sm:text-4xl text-background tracking-wider leading-none mb-2">
-      VOTER PANEL
-    </h2>
-    <p className="text-background/80 text-sm sm:text-base mb-6 max-w-xs">
+    <div className="mb-6 space-y-2">
+      <div>
+        <p className="text-background/70 text-[11px] uppercase tracking-widest font-bold">
+          Primary Election Day
+        </p>
+        <p className="font-display text-2xl sm:text-3xl text-background tracking-wide leading-none">
+          August 18, 2026
+        </p>
+      </div>
+      <div>
+        <p className="text-background/70 text-[11px] uppercase tracking-widest font-bold">
+          Election Day
+        </p>
+        <p className="font-display text-2xl sm:text-3xl text-background tracking-wide leading-none">
+          November 3, 2026
+        </p>
+      </div>
+    </div>
+    <p className="text-background/80 text-sm mb-6 max-w-xs">
       Florida candidates fighting for working-class people and taxing extreme wealth.
     </p>
 
