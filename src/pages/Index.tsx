@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import { HeroSection } from "@/components/HeroSection";
 import { BillionaireCards } from "@/components/BillionaireCards";
 import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
+import { VoterPanel, VoterTrigger } from "@/components/VoterPanel";
 import { supabase } from "@/integrations/supabase/client";
 import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 import ffaLogo from "@/assets/ffa-logo.svg";
@@ -28,6 +30,7 @@ const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName
 
 const Index = () => {
   const [taxRate, setTaxRate] = useState<number | null>(null);
+  const [voterOpen, setVoterOpen] = useState(false);
   const billionaireRef = useRef<HTMLDivElement>(null);
   const taxRef = useRef<HTMLDivElement>(null);
   const spendRef = useRef<HTMLDivElement>(null);
@@ -40,9 +43,17 @@ const Index = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Shift page left by 25% on desktop when panel is open; no shift on mobile (bottom sheet)
+  const isDesktop = typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches;
+
   return (
-    <div className="min-h-screen bg-background">
-      <HeroSection onStart={() => scrollTo(billionaireRef)} />
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <motion.div
+        animate={{ x: voterOpen && isDesktop ? "-25%" : "0%" }}
+        transition={{ type: "tween", duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        onClick={() => voterOpen && setVoterOpen(false)}
+      >
+        <HeroSection onStart={() => scrollTo(billionaireRef)} />
 
       <div ref={billionaireRef}>
         <BillionaireCards onContinue={() => scrollTo(taxRef)} />
@@ -90,6 +101,10 @@ const Index = () => {
           </a>
         </div>
       </footer>
+      </motion.div>
+
+      <VoterTrigger onOpen={() => setVoterOpen(true)} />
+      <VoterPanel isOpen={voterOpen} onClose={() => setVoterOpen(false)} />
     </div>
   );
 };
