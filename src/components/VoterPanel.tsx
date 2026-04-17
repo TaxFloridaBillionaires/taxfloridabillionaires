@@ -183,7 +183,7 @@ export const VoterTrigger = ({ onOpen }: VoterTriggerProps) => {
           transition={{ duration: 0.3 }}
           onClick={handleClick}
           aria-label="Open voter panel"
-          className="fixed right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 bg-gold text-background w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-2xl sm:text-3xl shadow-lg shadow-gold/30 hover:shadow-gold/50"
+          className="fixed right-3 sm:right-4 top-1/2 -translate-y-1/2 z-40 bg-gold text-background w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] rounded-full flex items-center justify-center text-3xl sm:text-4xl shadow-lg shadow-gold/30 hover:shadow-gold/50"
         >
           🗳️
         </motion.button>
