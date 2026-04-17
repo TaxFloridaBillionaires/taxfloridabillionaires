@@ -55,10 +55,6 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
         </p>
       </div>
     </div>
-    <p className="text-background/80 text-sm mb-6 max-w-xs">
-      Florida candidates fighting for working-class people and taxing extreme wealth.
-    </p>
-
     <a
       href="https://registertovoteflorida.gov/home"
       target="_blank"
@@ -66,10 +62,14 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
       onClick={() => {
         supabase.from("events").insert({ event_name: "voter_panel_register_click" }).then(() => {});
       }}
-      className="w-full max-w-xs border-2 border-background text-background font-display text-lg tracking-wider px-5 py-3 rounded-sm hover:bg-background hover:text-gold transition-colors mb-8"
+      className="w-full max-w-xs border-2 border-background text-background font-display text-lg tracking-wider px-5 py-3 rounded-sm hover:bg-background hover:text-gold transition-colors mb-6"
     >
       REGISTER / CHECK STATUS →
     </a>
+
+    <p className="text-background/80 text-sm mb-8 max-w-xs">
+      Florida candidates fighting for working-class people and taxing extreme wealth.
+    </p>
 
     <div className="w-full max-w-xs space-y-3">
       <p className="text-background/70 text-xs uppercase tracking-widest font-bold mb-2">
