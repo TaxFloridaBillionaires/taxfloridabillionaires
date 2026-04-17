@@ -101,6 +101,10 @@ const Index = () => {
           </a>
         </div>
       </footer>
+      </motion.div>
+
+      <VoterTrigger onOpen={() => setVoterOpen(true)} />
+      <VoterPanel isOpen={voterOpen} onClose={() => setVoterOpen(false)} />
     </div>
   );
 };
