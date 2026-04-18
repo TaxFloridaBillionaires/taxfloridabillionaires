@@ -150,7 +150,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
         {/* Header */}
         <div className="gradient-gold px-6 py-5 text-center">
           <h3
-            className="text-3xl sm:text-4xl tracking-wide text-background"
+            className="text-4xl sm:text-5xl tracking-wide text-background"
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             YOUR FUNDED FLORIDA VISION

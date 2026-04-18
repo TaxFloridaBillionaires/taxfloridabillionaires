@@ -95,7 +95,7 @@ export const CommunityInput = () => {
           <div className="relative z-10 w-14 h-14 rounded-full border-2 border-dashed border-muted-foreground/30 group-hover:border-[hsl(50,90%,60%)] flex items-center justify-center transition-colors duration-300">
             <Plus className="w-7 h-7 text-muted-foreground/50 group-hover:text-[hsl(50,90%,60%)] transition-colors duration-300" />
           </div>
-          <p className="relative z-10 text-muted-foreground group-hover:text-foreground font-semibold transition-colors duration-300">
+          <p className="relative z-10 text-muted-foreground group-hover:text-foreground font-semibold text-lg md:text-xl transition-colors duration-300">
             Suggest Something
           </p>
           <p className="relative z-10 text-muted-foreground/60 text-xs md:text-sm">
@@ -107,7 +107,7 @@ export const CommunityInput = () => {
         <div className="bg-card border border-border rounded-sm p-6 md:p-8 flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-2xl md:text-3xl">☀️</span>
-            <h4 className="text-foreground font-semibold md:text-lg">Join the Fight</h4>
+            <h4 className="text-foreground font-semibold text-lg md:text-xl">Join the Fight</h4>
           </div>
           <p className="text-muted-foreground text-xs md:text-sm mb-4">
             Want to keep pushing for billionaire accountability in the Sunshine State? Drop your email.
