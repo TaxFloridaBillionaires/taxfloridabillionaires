@@ -123,7 +123,7 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <span className="text-4xl md:text-4xl">{item.emoji}</span>
-                            <h4 className="text-foreground font-semibold text-2xl md:text-xl">{item.name}</h4>
+                            <h4 className="text-foreground font-semibold text-3xl md:text-2xl">{item.name}</h4>
                           </div>
                           <p className="text-muted-foreground text-lg md:text-base mt-1">{item.description}</p>
                           <p className="font-mono text-lg md:text-base text-gold mt-1">
