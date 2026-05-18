@@ -57,7 +57,7 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
         className="text-center mb-12"
       >
         <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
-          MEET THE <span className="text-gold">TAX REFUGEES</span>
+          MEET THE <span className="text-gold">TAX AVOIDERS</span>
         </h2>
       </motion.div>
 
