@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X, Send, CheckCircle } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { publicSubmit } from "@/lib/publicSubmit";
 
 const sanitizeError = (error: unknown): string => {
   const msg = error instanceof Error ? error.message : String(error ?? "");
