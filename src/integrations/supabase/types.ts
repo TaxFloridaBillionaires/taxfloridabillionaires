@@ -74,6 +74,27 @@ export type Database = {
         }
         Relationships: []
       }
+      rate_limit_hits: {
+        Row: {
+          action: string
+          created_at: string
+          id: string
+          ip: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          id?: string
+          ip: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          id?: string
+          ip?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
