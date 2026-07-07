@@ -55,16 +55,15 @@ export const CommunityInput = () => {
 
     const btn = e.currentTarget.querySelector("button") as HTMLButtonElement;
     try {
-      const { error } = await supabase.from("email_signups").insert({ email: formEmail });
-      if (error && error.code === "23505") {
-        // duplicate email
+      const result = await publicSubmit({ type: "email_signup", email: formEmail });
+      if (result.ok && result.duplicate) {
         if (btn) {
           btn.textContent = "Already signed up! ✊";
           setTimeout(() => { btn.textContent = "Keep in touch"; }, 2000);
         }
         return;
       }
-      if (error) throw error;
+      if (!result.ok) throw new Error(result.status === 429 ? "Too many requests" : result.error || "failed");
       input.value = "";
       if (btn) {
         btn.textContent = "You're in! ✊";
