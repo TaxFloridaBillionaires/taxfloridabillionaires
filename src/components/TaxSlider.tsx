@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { totalBillionaireWealth } from "@/data/gameData";
 import { AnimatedCounter } from "./AnimatedCounter";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 
 interface TaxSliderProps {
   onSetRate: (rate: number) => void;
@@ -90,10 +90,10 @@ export const TaxSlider = ({ onSetRate }: TaxSliderProps) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           onClick={async () => {
-            supabase.from("events").insert({
-              event_name: "spend_button_clicked",
-              properties: { tax_rate: rate, revenue_billions: parseFloat(revenue.toFixed(1)) },
-            }).then(() => {});
+            trackEvent("spend_button_clicked", {
+              tax_rate: rate,
+              revenue_billions: parseFloat(revenue.toFixed(1)),
+            });
             onSetRate(rate);
           }}
           className="gradient-gold text-primary-foreground font-display text-2xl px-10 py-4 rounded-sm tracking-wider hover:brightness-110 transition-all"

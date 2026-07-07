@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 import ffaLogo from "@/assets/ffa-logo.svg";
 
@@ -46,10 +46,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
 
   const handleDownload = useCallback(async () => {
     if (!cardRef.current) return;
-    supabase.from("events").insert({
-      event_name: "save_image_clicked",
-      properties: { tax_rate: taxRate, spent },
-    }).then(() => {});
+    trackEvent("save_image_clicked", { tax_rate: taxRate, spent });
     try {
       const dataUrl = await toPng(cardRef.current, {
         pixelRatio: 2,
@@ -69,10 +66,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
 
 
   const handleCopyLink = async () => {
-    supabase.from("events").insert({
-      event_name: "tell_a_friend_clicked",
-      properties: { tax_rate: taxRate, spent },
-    }).then(() => {});
+    trackEvent("tell_a_friend_clicked", { tax_rate: taxRate, spent });
     try {
       await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
       setCopied(true);

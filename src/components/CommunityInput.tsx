@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X, Send, CheckCircle } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { publicSubmit } from "@/lib/publicSubmit";
 
 const sanitizeError = (error: unknown): string => {
   const msg = error instanceof Error ? error.message : String(error ?? "");
@@ -27,11 +27,12 @@ export const CommunityInput = () => {
     if (!suggestion.trim() || submitting) return;
     setSubmitting(true);
     try {
-      const { error } = await supabase.from("community_suggestions").insert({
+      const result = await publicSubmit({
+        type: "suggestion",
         suggestion: suggestion.trim(),
         email: email.trim() || null,
       });
-      if (error) throw error;
+      if (!result.ok) throw new Error(result.status === 429 ? "Too many requests" : result.error || "failed");
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
@@ -54,16 +55,15 @@ export const CommunityInput = () => {
 
     const btn = e.currentTarget.querySelector("button") as HTMLButtonElement;
     try {
-      const { error } = await supabase.from("email_signups").insert({ email: formEmail });
-      if (error && error.code === "23505") {
-        // duplicate email
+      const result = await publicSubmit({ type: "email_signup", email: formEmail });
+      if (result.ok && result.duplicate) {
         if (btn) {
           btn.textContent = "Already signed up! ✊";
           setTimeout(() => { btn.textContent = "Keep in touch"; }, 2000);
         }
         return;
       }
-      if (error) throw error;
+      if (!result.ok) throw new Error(result.status === 429 ? "Too many requests" : result.error || "failed");
       input.value = "";
       if (btn) {
         btn.textContent = "You're in! ✊";

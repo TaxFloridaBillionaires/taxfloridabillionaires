@@ -5,7 +5,7 @@ import { BillionaireCards } from "@/components/BillionaireCards";
 import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
 import { VoterPanel, VoterTrigger } from "@/components/VoterPanel";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 import ffaLogo from "@/assets/ffa-logo.svg";
 
@@ -18,7 +18,7 @@ const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName
       ([entry]) => {
         if (entry.isIntersecting && !tracked.current) {
           tracked.current = true;
-          supabase.from("events").insert({ event_name: eventName }).then(() => {});
+          trackEvent(eventName);
         }
       },
       { threshold: 0.3 }

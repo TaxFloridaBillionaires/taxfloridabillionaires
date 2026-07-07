@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 
 interface Candidate {
   name: string;
@@ -60,7 +60,7 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
       target="_blank"
       rel="noopener"
       onClick={() => {
-        supabase.from("events").insert({ event_name: "voter_panel_register_click" }).then(() => {});
+        trackEvent("voter_panel_register_click");
       }}
       className="w-full max-w-xs border-2 border-background text-background font-display text-lg tracking-wider px-5 py-3 rounded-sm hover:bg-background hover:text-gold transition-colors mb-6"
     >
@@ -82,13 +82,7 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
           target="_blank"
           rel="noopener"
           onClick={() => {
-            supabase
-              .from("events")
-              .insert({
-                event_name: "voter_panel_candidate_click",
-                properties: { name: c.name },
-              })
-              .then(() => {});
+            trackEvent("voter_panel_candidate_click", { name: c.name });
           }}
           className="block border-2 border-background/80 hover:border-background hover:bg-background/10 transition-colors rounded-sm px-4 py-3 text-background"
         >
@@ -166,7 +160,7 @@ export const VoterTrigger = ({ onOpen }: VoterTriggerProps) => {
   const handleClick = () => {
     if (!tracked.current) {
       tracked.current = true;
-      supabase.from("events").insert({ event_name: "voter_panel_open" }).then(() => {});
+      trackEvent("voter_panel_open");
     }
     onOpen();
   };
