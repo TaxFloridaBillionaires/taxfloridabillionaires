@@ -18,7 +18,7 @@ const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName
       ([entry]) => {
         if (entry.isIntersecting && !tracked.current) {
           tracked.current = true;
-          supabase.from("events").insert({ event_name: eventName }).then(() => {});
+          trackEvent(eventName);
         }
       },
       { threshold: 0.3 }
