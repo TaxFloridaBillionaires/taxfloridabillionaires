@@ -66,10 +66,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
 
 
   const handleCopyLink = async () => {
-    supabase.from("events").insert({
-      event_name: "tell_a_friend_clicked",
-      properties: { tax_rate: taxRate, spent },
-    }).then(() => {});
+    trackEvent("tell_a_friend_clicked", { tax_rate: taxRate, spent });
     try {
       await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
       setCopied(true);
