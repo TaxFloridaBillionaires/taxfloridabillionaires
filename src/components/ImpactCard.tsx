@@ -46,10 +46,7 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
 
   const handleDownload = useCallback(async () => {
     if (!cardRef.current) return;
-    supabase.from("events").insert({
-      event_name: "save_image_clicked",
-      properties: { tax_rate: taxRate, spent },
-    }).then(() => {});
+    trackEvent("save_image_clicked", { tax_rate: taxRate, spent });
     try {
       const dataUrl = await toPng(cardRef.current, {
         pixelRatio: 2,
