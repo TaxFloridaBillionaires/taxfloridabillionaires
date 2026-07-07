@@ -160,7 +160,7 @@ export const VoterTrigger = ({ onOpen }: VoterTriggerProps) => {
   const handleClick = () => {
     if (!tracked.current) {
       tracked.current = true;
-      supabase.from("events").insert({ event_name: "voter_panel_open" }).then(() => {});
+      trackEvent("voter_panel_open");
     }
     onOpen();
   };
