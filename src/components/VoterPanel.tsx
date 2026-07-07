@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 
 interface Candidate {
   name: string;
