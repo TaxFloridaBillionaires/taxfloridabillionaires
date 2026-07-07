@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
 import ffaLogo from "@/assets/ffa-logo.svg";
 
