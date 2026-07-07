@@ -12,7 +12,7 @@ const candidates: Candidate[] = [
   {
     name: "Oliver Larkin",
     role: "U.S. Congress, FL",
-    url: "https://oliverforcongress.com",
+    url: "http://oliverforcongress.com",
   },
   {
     name: "Angie Nixon",
