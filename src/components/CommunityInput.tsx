@@ -27,11 +27,12 @@ export const CommunityInput = () => {
     if (!suggestion.trim() || submitting) return;
     setSubmitting(true);
     try {
-      const { error } = await supabase.from("community_suggestions").insert({
+      const result = await publicSubmit({
+        type: "suggestion",
         suggestion: suggestion.trim(),
         email: email.trim() || null,
       });
-      if (error) throw error;
+      if (!result.ok) throw new Error(result.status === 429 ? "Too many requests" : result.error || "failed");
       setSubmitted(true);
       setTimeout(() => {
         setSubmitted(false);
