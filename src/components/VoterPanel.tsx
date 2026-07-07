@@ -82,13 +82,7 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
           target="_blank"
           rel="noopener"
           onClick={() => {
-            supabase
-              .from("events")
-              .insert({
-                event_name: "voter_panel_candidate_click",
-                properties: { name: c.name },
-              })
-              .then(() => {});
+            trackEvent("voter_panel_candidate_click", { name: c.name });
           }}
           className="block border-2 border-background/80 hover:border-background hover:bg-background/10 transition-colors rounded-sm px-4 py-3 text-background"
         >
