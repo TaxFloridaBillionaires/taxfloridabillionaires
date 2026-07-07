@@ -60,7 +60,7 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
       target="_blank"
       rel="noopener"
       onClick={() => {
-        supabase.from("events").insert({ event_name: "voter_panel_register_click" }).then(() => {});
+        trackEvent("voter_panel_register_click");
       }}
       className="w-full max-w-xs border-2 border-background text-background font-display text-lg tracking-wider px-5 py-3 rounded-sm hover:bg-background hover:text-gold transition-colors mb-6"
     >
