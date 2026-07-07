@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { totalBillionaireWealth } from "@/data/gameData";
 import { AnimatedCounter } from "./AnimatedCounter";
-import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/publicSubmit";
 
 interface TaxSliderProps {
   onSetRate: (rate: number) => void;
