@@ -11,13 +11,18 @@ interface Candidate {
 const candidates: Candidate[] = [
   {
     name: "Oliver Larkin",
-    role: "U.S. Congress, FL",
+    role: "FL-25",
     url: "http://oliverforcongress.com",
   },
   {
     name: "Angie Nixon",
-    role: "FL State Representative, District 13",
+    role: "FL Senate",
     url: "https://angienixon.com",
+  },
+  {
+    name: "Elijah Manley",
+    role: "U.S. Congress, FL-20",
+    url: "https://www.elijahmanley.com",
   },
 ];
 
