@@ -51,7 +51,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
         className="text-center max-w-5xl relative z-10"
       >
         {/* Breaking news ticker */}
-        <TickerBar />
+        <TickerBar onClick={onOpenVoter} />
 
         <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
           TAX THE
