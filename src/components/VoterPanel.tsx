@@ -21,7 +21,7 @@ const candidates: Candidate[] = [
   },
   {
     name: "Elijah Manley",
-    role: "U.S. Congress, FL-20",
+    role: "FL-20",
     url: "https://www.elijahmanley.com",
   },
 ];
