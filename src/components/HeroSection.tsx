@@ -4,19 +4,20 @@ import { totalBillionaireWealth, breakingHeadlines, billionaires } from "@/data/
 
 interface HeroSectionProps {
   onStart: () => void;
+  onOpenVoter: () => void;
 }
 
-const TickerBar = () => {
+const TickerBar = ({ onClick }: { onClick: () => void }) => {
   const combinedText = breakingHeadlines.join("   ●   ");
   // Duplicate for seamless loop
   const tickerContent = `${combinedText}   ●   ${combinedText}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.3 }}
-      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-3 sm:mb-8 max-w-full overflow-hidden"
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-3 sm:mb-8 max-w-full overflow-hidden cursor-pointer hover:brightness-110 transition-all text-left"
+      aria-label="Open election endorsements panel"
     >
       <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase shrink-0">
         ⚡ Breaking
@@ -30,11 +31,11 @@ const TickerBar = () => {
           {tickerContent}
         </motion.span>
       </div>
-    </motion.div>
+    </button>
   );
 };
 
-export const HeroSection = ({ onStart }: HeroSectionProps) => {
+export const HeroSection = ({ onStart, onOpenVoter }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start pt-8 sm:justify-center sm:pt-0 px-6 overflow-hidden">
       {/* Background grid */}
@@ -50,7 +51,7 @@ export const HeroSection = ({ onStart }: HeroSectionProps) => {
         className="text-center max-w-5xl relative z-10"
       >
         {/* Breaking news ticker */}
-        <TickerBar />
+        <TickerBar onClick={onOpenVoter} />
 
         <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
           TAX THE
