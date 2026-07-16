@@ -53,7 +53,7 @@ const Index = () => {
         transition={{ type: "tween", duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         onClick={() => voterOpen && setVoterOpen(false)}
       >
-        <HeroSection onStart={() => scrollTo(billionaireRef)} />
+        <HeroSection onStart={() => scrollTo(billionaireRef)} onOpenVoter={() => setVoterOpen(true)} />
 
       <div ref={billionaireRef}>
         <BillionaireCards onContinue={() => scrollTo(taxRef)} />

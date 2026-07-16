@@ -13,11 +13,11 @@ const TickerBar = ({ onClick }: { onClick: () => void }) => {
   const tickerContent = `${combinedText}   ●   ${combinedText}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.3 }}
-      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-3 sm:mb-8 max-w-full overflow-hidden"
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-3 sm:mb-8 max-w-full overflow-hidden cursor-pointer hover:brightness-110 transition-all text-left"
+      aria-label="Open election endorsements panel"
     >
       <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase shrink-0">
         ⚡ Breaking
@@ -31,7 +31,7 @@ const TickerBar = ({ onClick }: { onClick: () => void }) => {
           {tickerContent}
         </motion.span>
       </div>
-    </motion.div>
+    </button>
   );
 };
 
