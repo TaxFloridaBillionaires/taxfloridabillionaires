@@ -4,9 +4,10 @@ import { totalBillionaireWealth, breakingHeadlines, billionaires } from "@/data/
 
 interface HeroSectionProps {
   onStart: () => void;
+  onOpenVoter: () => void;
 }
 
-const TickerBar = () => {
+const TickerBar = ({ onClick }: { onClick: () => void }) => {
   const combinedText = breakingHeadlines.join("   ●   ");
   // Duplicate for seamless loop
   const tickerContent = `${combinedText}   ●   ${combinedText}`;
