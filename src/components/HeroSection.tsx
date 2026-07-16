@@ -35,7 +35,7 @@ const TickerBar = ({ onClick }: { onClick: () => void }) => {
   );
 };
 
-export const HeroSection = ({ onStart }: HeroSectionProps) => {
+export const HeroSection = ({ onStart, onOpenVoter }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-start pt-8 sm:justify-center sm:pt-0 px-6 overflow-hidden">
       {/* Background grid */}
