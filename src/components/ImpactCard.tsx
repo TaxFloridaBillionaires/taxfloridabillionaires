@@ -4,8 +4,6 @@ import { Download, Share2, Link, Check } from "lucide-react";
 import { toPng } from "html-to-image";
 import { spendingItems, categoryLabels } from "@/data/gameData";
 import { trackEvent } from "@/lib/publicSubmit";
-import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
-import ffaLogo from "@/assets/ffa-logo.svg";
 
 interface ImpactCardProps {
   purchases: Record<string, number>;
