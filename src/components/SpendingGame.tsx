@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { spendingItems, categoryLabels, totalBillionaireWealth, type SpendingItem } from "@/data/gameData";
 import { ImpactCard } from "./ImpactCard";
