@@ -25,6 +25,25 @@ const formatMoney = (millions: number): string => {
 export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
   const totalBudgetMillions = (totalBillionaireWealth * taxRate / 100) * 1000;
   const [purchases, setPurchases] = useState<Record<string, number>>({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const [barVisible, setBarVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      // Show fixed bar while section top has scrolled past viewport top and bottom hasn't fully passed
+      setBarVisible(rect.top <= 0 && rect.bottom > 120);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   const spent = useMemo(() => {
     return Object.entries(purchases).reduce((sum, [id, qty]) => {
