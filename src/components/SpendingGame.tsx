@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { spendingItems, categoryLabels, totalBillionaireWealth, type SpendingItem } from "@/data/gameData";
 import { ImpactCard } from "./ImpactCard";
@@ -24,6 +25,25 @@ const formatMoney = (millions: number): string => {
 export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
   const totalBudgetMillions = (totalBillionaireWealth * taxRate / 100) * 1000;
   const [purchases, setPurchases] = useState<Record<string, number>>({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const [barVisible, setBarVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      // Show fixed bar while section top has scrolled past viewport top and bottom hasn't fully passed
+      setBarVisible(rect.top <= 0 && rect.bottom > 120);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   const spent = useMemo(() => {
     return Object.entries(purchases).reduce((sum, [id, qty]) => {
@@ -59,8 +79,39 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
 
   const categories = ["education", "healthcare", "jobs", "infrastructure", "housing"] as const;
 
+  const budgetBar = (
+    <div className="bg-background/95 backdrop-blur border-b border-border py-3 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex justify-between items-center mb-2">
+          <span className="font-mono text-base text-muted-foreground">
+            SPENT: <span className="text-crimson font-bold">{formatMoney(spent)}</span>
+          </span>
+          <span className="font-mono text-base text-muted-foreground">
+            REMAINING: <span className="text-emerald font-bold">{formatMoney(remaining)}</span>
+          </span>
+        </div>
+        <div className="h-4 bg-muted rounded-sm overflow-hidden">
+          <motion.div
+            className="h-full gradient-gold rounded-sm"
+            animate={{ width: `${Math.min(percentSpent, 100)}%` }}
+            transition={{ type: "spring", stiffness: 100 }}
+          />
+        </div>
+        <div className="text-center mt-1">
+          <span className="font-mono text-sm text-muted-foreground">
+            {percentSpent.toFixed(1)}% allocated
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
-    <section className="py-20 px-4 max-w-6xl mx-auto">
+    <section ref={sectionRef} className="py-20 px-4 max-w-6xl mx-auto">
+      {barVisible && typeof document !== "undefined" && createPortal(
+        <div className="fixed top-0 left-0 right-0 z-50 shadow-lg">{budgetBar}</div>,
+        document.body
+      )}
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
         <div className="text-center mb-8">
           <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
@@ -72,31 +123,9 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
           </p>
         </div>
 
-        {/* Budget bar - sticky */}
-        <div className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border py-4 mb-8 -mx-4 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex justify-between items-center mb-2">
-              <span className="font-mono text-base text-muted-foreground">
-                SPENT: <span className="text-crimson font-bold">{formatMoney(spent)}</span>
-              </span>
-              <span className="font-mono text-base text-muted-foreground">
-                REMAINING: <span className="text-emerald font-bold">{formatMoney(remaining)}</span>
-              </span>
-            </div>
-            <div className="h-4 bg-muted rounded-sm overflow-hidden">
-              <motion.div
-                className="h-full gradient-gold rounded-sm"
-                animate={{ width: `${Math.min(percentSpent, 100)}%` }}
-                transition={{ type: "spring", stiffness: 100 }}
-              />
-            </div>
-            <div className="text-center mt-1">
-              <span className="font-mono text-sm text-muted-foreground">
-                {percentSpent.toFixed(1)}% allocated
-              </span>
-            </div>
-          </div>
-        </div>
+        {/* Inline budget bar (in-flow copy) */}
+        <div className="mb-8 -mx-4">{budgetBar}</div>
+
 
         {/* Shopping items by category */}
         {categories.map(cat => {

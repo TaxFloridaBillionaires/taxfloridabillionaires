@@ -6,8 +6,6 @@ import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
 import { VoterPanel, VoterTrigger } from "@/components/VoterPanel";
 import { trackEvent } from "@/lib/publicSubmit";
-import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
-import ffaLogo from "@/assets/ffa-logo.svg";
 
 const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName: string) => {
   const tracked = useRef(false);
@@ -92,14 +90,6 @@ const Index = () => {
         >
           @taxfloridabillionaires
         </a>
-        <div className="mt-6 flex items-center justify-center gap-6">
-          <a href="https://dreamdefenders.org/?utm_source=taxfloridabillionaires" target="_blank" rel="noopener">
-            <img src={dreamDefendersLogo} alt="Dream Defenders" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
-          </a>
-          <a href="https://floridaforall.vote/?utm_source=taxfloridabillionaires" target="_blank" rel="noopener">
-            <img src={ffaLogo} alt="Florida For All" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
-          </a>
-        </div>
       </footer>
       </motion.div>
 
