@@ -6,8 +6,6 @@ import { TaxSlider } from "@/components/TaxSlider";
 import { SpendingGame } from "@/components/SpendingGame";
 import { VoterPanel, VoterTrigger } from "@/components/VoterPanel";
 import { trackEvent } from "@/lib/publicSubmit";
-import dreamDefendersLogo from "@/assets/dream-defenders-logo.png";
-import ffaLogo from "@/assets/ffa-logo.svg";
 
 const useScrollTracker = (ref: React.RefObject<HTMLDivElement | null>, eventName: string) => {
   const tracked = useRef(false);
