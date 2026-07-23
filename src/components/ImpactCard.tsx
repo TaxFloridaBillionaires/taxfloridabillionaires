@@ -211,10 +211,6 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
             <p className="text-muted-foreground/50 text-xs mt-2" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
               taxfloridabillionaires.com
             </p>
-            <div className="flex items-center justify-center gap-6 mt-3">
-              <img src={dreamDefendersLogo} alt="Dream Defenders" className="h-10 opacity-80" />
-              <img src={ffaLogo} alt="Florida For All" className="h-10 opacity-80" />
-            </div>
           </div>
         </div>
       </div>
