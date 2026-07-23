@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Helmet } from "react-helmet-async";
+import { Head } from "@/components/Head";
 import { supabase } from "@/integrations/supabase/client";
 import { XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts";
 
@@ -204,12 +204,12 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground p-3 sm:p-4 md:p-8">
-      <Helmet>
-        <title>Admin Dashboard — Tax Florida Billionaires</title>
-        <meta name="description" content="Private analytics dashboard for the Tax Florida Billionaires project. Authorized access only." />
-        <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://taxfloridabillionaires.com/admin" />
-      </Helmet>
+      <Head
+        title="Admin Dashboard — Tax Florida Billionaires"
+        description="Private analytics dashboard for the Tax Florida Billionaires project. Authorized access only."
+        robots="noindex, nofollow"
+        canonical="https://taxfloridabillionaires.com/admin"
+      />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3">

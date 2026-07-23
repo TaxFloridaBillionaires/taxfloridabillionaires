@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Helmet } from "react-helmet-async";
+import { Head } from "@/components/Head";
 import { motion } from "framer-motion";
 import { HeroSection } from "@/components/HeroSection";
 import { BillionaireCards } from "@/components/BillionaireCards";
@@ -47,11 +47,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Helmet>
-        <title>Tax Florida Billionaires — Interactive Wealth Tax Simulator</title>
-        <meta name="description" content="Discover how taxing Florida's billionaires could fund schools, healthcare, and housing. Try our interactive tax simulator and spending game." />
-        <link rel="canonical" href="https://taxfloridabillionaires.com/" />
-      </Helmet>
+      <Head
+        title="Tax Florida Billionaires — Interactive Wealth Tax Simulator"
+        description="Discover how taxing Florida's billionaires could fund schools, healthcare, and housing. Try our interactive tax simulator and spending game."
+        canonical="https://taxfloridabillionaires.com/"
+      />
       <motion.div
         animate={{ x: voterOpen && isDesktop ? "-25%" : "0%" }}
         transition={{ type: "tween", duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
