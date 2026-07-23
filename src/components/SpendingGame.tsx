@@ -79,8 +79,39 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
 
   const categories = ["education", "healthcare", "jobs", "infrastructure", "housing"] as const;
 
+  const budgetBar = (
+    <div className="bg-background/95 backdrop-blur border-b border-border py-3 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex justify-between items-center mb-2">
+          <span className="font-mono text-base text-muted-foreground">
+            SPENT: <span className="text-crimson font-bold">{formatMoney(spent)}</span>
+          </span>
+          <span className="font-mono text-base text-muted-foreground">
+            REMAINING: <span className="text-emerald font-bold">{formatMoney(remaining)}</span>
+          </span>
+        </div>
+        <div className="h-4 bg-muted rounded-sm overflow-hidden">
+          <motion.div
+            className="h-full gradient-gold rounded-sm"
+            animate={{ width: `${Math.min(percentSpent, 100)}%` }}
+            transition={{ type: "spring", stiffness: 100 }}
+          />
+        </div>
+        <div className="text-center mt-1">
+          <span className="font-mono text-sm text-muted-foreground">
+            {percentSpent.toFixed(1)}% allocated
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
-    <section className="py-20 px-4 max-w-6xl mx-auto">
+    <section ref={sectionRef} className="py-20 px-4 max-w-6xl mx-auto">
+      {barVisible && typeof document !== "undefined" && createPortal(
+        <div className="fixed top-0 left-0 right-0 z-50 shadow-lg">{budgetBar}</div>,
+        document.body
+      )}
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
         <div className="text-center mb-8">
           <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
@@ -92,31 +123,9 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
           </p>
         </div>
 
-        {/* Budget bar - sticky */}
-        <div className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border py-4 mb-8 -mx-4 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex justify-between items-center mb-2">
-              <span className="font-mono text-base text-muted-foreground">
-                SPENT: <span className="text-crimson font-bold">{formatMoney(spent)}</span>
-              </span>
-              <span className="font-mono text-base text-muted-foreground">
-                REMAINING: <span className="text-emerald font-bold">{formatMoney(remaining)}</span>
-              </span>
-            </div>
-            <div className="h-4 bg-muted rounded-sm overflow-hidden">
-              <motion.div
-                className="h-full gradient-gold rounded-sm"
-                animate={{ width: `${Math.min(percentSpent, 100)}%` }}
-                transition={{ type: "spring", stiffness: 100 }}
-              />
-            </div>
-            <div className="text-center mt-1">
-              <span className="font-mono text-sm text-muted-foreground">
-                {percentSpent.toFixed(1)}% allocated
-              </span>
-            </div>
-          </div>
-        </div>
+        {/* Inline budget bar (in-flow copy) */}
+        <div className="mb-8 -mx-4">{budgetBar}</div>
+
 
         {/* Shopping items by category */}
         {categories.map(cat => {
