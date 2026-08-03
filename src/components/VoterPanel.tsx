@@ -1,40 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackEvent } from "@/lib/publicSubmit";
-
-interface Candidate {
-  name: string;
-  role: string;
-  url: string;
-}
-
-const candidates: Candidate[] = [
-  {
-    name: "Oliver Larkin",
-    role: "FL-25",
-    url: "http://oliverforcongress.com",
-  },
-  {
-    name: "Angie Nixon",
-    role: "FL Senate",
-    url: "https://angienixon.com",
-  },
-  {
-    name: "Elijah Manley",
-    role: "FL-20",
-    url: "https://www.elijahmanley.com",
-  },
-  {
-    name: "Ben Braver",
-    role: "FL House District 65",
-    url: "https://benbraver.com",
-  },
-  {
-    name: "Britt Robinson",
-    role: "FL-04",
-    url: "https://www.brit4congress.com",
-  },
-];
+import { candidates } from "@/data/candidates";
 
 interface VoterPanelProps {
   isOpen: boolean;
