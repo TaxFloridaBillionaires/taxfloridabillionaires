@@ -210,13 +210,13 @@ export const FloridaMap = ({ active, candidates = [], onSelect }: Props) => {
           rotateX: tilt,
           rotateZ: spin,
           scale: reduce ? 1 : 0.98,
-          x: reduce ? 0 : (160 - mx) * 0.2,
-          y: reduce ? 0 : (250 - my) * 0.2,
+          x: reduce ? 0 : (200 - mx) * 0.2,
+          y: reduce ? 0 : (200 - my) * 0.2,
         }}
         transition={{ type: "spring", stiffness: 60, damping: 18, mass: 0.9 }}
       >
         <svg
-          viewBox="0 0 320 470"
+          viewBox="0 0 400 400"
           className="w-full h-full drop-shadow-[0_25px_45px_hsl(var(--gold)/0.15)]"
           role="group"
           aria-label="Map of Florida — select a region to jump to a candidate"
