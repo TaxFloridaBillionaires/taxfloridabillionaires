@@ -43,6 +43,7 @@ Map: each new candidate gets a region and approximate center so the Florida map 
 - `src/components/FloridaMap.tsx`: unchanged. With multiple candidates per region, region click targets currently pick the first candidate in that region — that behavior stays.
 - No new dependencies.
 
-## Question
+## Readability check
 
-Include Tier 3 (Sordo, Harris) as well, or keep it to the six strongest?
+After the build, verify cards at mobile and desktop widths in the browser: headings, blurbs and the button/social row wrap cleanly with no overflow, and the sticky map does not cover card content on small screens.
+
