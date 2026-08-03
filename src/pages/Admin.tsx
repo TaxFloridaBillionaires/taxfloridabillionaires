@@ -31,7 +31,29 @@ const EVENT_LABELS: Record<string, { label: string; color: string }> = {
   tell_a_friend_clicked: { label: "Told a Friend", color: "hsl(0, 72%, 51%)" },
   email_signup: { label: "Email Signups", color: "hsl(200, 80%, 55%)" },
   community_suggestion: { label: "Suggestions", color: "hsl(280, 60%, 55%)" },
+  voter_panel_open: { label: "Voter Panel Views", color: "hsl(190, 70%, 50%)" },
+  voter_panel_candidate_click: { label: "Panel Candidate Clicks", color: "hsl(45, 100%, 51%)" },
+  voter_panel_register_click: { label: "Register to Vote", color: "hsl(160, 60%, 45%)" },
+  voter_panel_see_all_endorsements: { label: "See All Endorsements", color: "hsl(280, 60%, 55%)" },
+  endorsements_page_view: { label: "Endorsements Views", color: "hsl(190, 70%, 50%)" },
+  endorsements_map_select: { label: "Map Selections", color: "hsl(220, 10%, 55%)" },
+  endorsements_candidate_click: { label: "Candidate Clicks", color: "hsl(45, 100%, 51%)" },
+  endorsements_donate_click: { label: "Donate Clicks", color: "hsl(0, 72%, 51%)" },
+  endorsements_social_click: { label: "Social Clicks", color: "hsl(200, 80%, 55%)" },
 };
+
+const CANDIDATE_EVENTS = [
+  "voter_panel_open",
+  "voter_panel_candidate_click",
+  "voter_panel_register_click",
+  "voter_panel_see_all_endorsements",
+  "endorsements_page_view",
+  "endorsements_map_select",
+  "endorsements_candidate_click",
+  "endorsements_donate_click",
+  "endorsements_social_click",
+];
+
 
 const TIME_RANGES = [
   { label: "24h", days: 1 },
