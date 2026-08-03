@@ -47,8 +47,9 @@ export const FloridaMap = ({ active }: Props) => {
           rotateX: tilt,
           rotateZ: spin,
           scale,
-          x: reduce ? 0 : (155 - marker.x) * 0.45,
-          y: reduce ? 0 : (250 - marker.y) * 0.45,
+          x: reduce ? 0 : (160 - marker.x) * 0.22,
+          y: reduce ? 0 : (250 - marker.y) * 0.22,
+
         }}
         transition={{ type: "spring", stiffness: 60, damping: 18, mass: 0.9 }}
       >
