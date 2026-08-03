@@ -106,12 +106,26 @@ const Endorsements = () => {
                 <div className="text-gold text-sm mt-2 font-mono uppercase tracking-widest">
                   {c.role}
                 </div>
-                <div className="text-muted-foreground text-xs mt-1">{regionLabels[c.region]}</div>
+                <div className="text-muted-foreground text-xs mt-1">
+                  {c.area ? `${c.area} — ` : ""}
+                  {regionLabels[c.region]}
+                </div>
                 {c.blurb && (
                   <p className="text-muted-foreground text-sm mt-4 leading-relaxed">{c.blurb}</p>
                 )}
 
                 <div className="mt-5 flex flex-wrap items-center gap-3">
+                  {c.donateUrl && (
+                    <a
+                      href={c.donateUrl}
+                      target="_blank"
+                      rel="noopener"
+                      onClick={() => trackEvent("endorsements_donate_click", { name: c.name })}
+                      className="inline-flex items-center gap-2 bg-crimson text-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
+                    >
+                      <HeartHandshake className="w-3.5 h-3.5" /> Donate
+                    </a>
+                  )}
                   <a
                     href={c.url}
                     target="_blank"
@@ -121,6 +135,8 @@ const Endorsements = () => {
                   >
                     Website <ExternalLink className="w-3 h-3" />
                   </a>
+
+
 
                   {c.socials?.map((s) => {
                     const Icon = SOCIAL_ICONS[s.platform];
