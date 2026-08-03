@@ -111,28 +111,6 @@ export const candidates: Candidate[] = [
       "Platform reads like a worker's checklist: tax the rich, raise wages, end price gouging on rent, groceries and prescriptions, and pilot a universal basic income.",
   },
   {
-    name: "Britt Robinson",
-    role: "FL-04",
-    url: "https://www.brit4congress.com",
-    donateUrl: "https://secure.actblue.com/donate/letsflipfl",
-    region: "northeast",
-    center: [-81.7, 30.28],
-    area: "Jacksonville / Clay & Nassau",
-    level: "federal",
-    blurb: "Running in Florida's 4th congressional district on healthcare and economic fairness.",
-  },
-  {
-    name: "Todd Schaefer",
-    role: "FL-04 · No Party Affiliation",
-    url: "https://toddforfl4.com",
-    region: "northeast",
-    center: [-81.46, 30.67],
-    area: "Nassau & Duval / Fernandina Beach",
-    level: "federal",
-    blurb:
-      "Independent candidate whose labor platform backs collective bargaining outright, citing UAW, Starbucks and Amazon organizing wins as proof unions level the field.",
-  },
-  {
     name: "Jon Harris",
     role: "FL-16",
     url: "https://jonharrisforcongress.com",
