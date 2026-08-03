@@ -37,6 +37,45 @@ const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
   threads: AtSign,
 };
 
+const UTM = {
+  utm_source: "taxfloridabillionaires",
+  utm_medium: "referral",
+  utm_campaign: "endorsements",
+};
+
+/** Appends campaign tags at click time so the visible href stays clean. */
+const withUtm = (raw: string) => {
+  try {
+    const u = new URL(raw);
+    Object.entries(UTM).forEach(([k, v]) => {
+      if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+    });
+    return u.toString();
+  } catch {
+    return raw;
+  }
+};
+
+const hostLabel = (raw: string) => {
+  try {
+    return new URL(raw).hostname.replace(/^www\./, "");
+  } catch {
+    return raw;
+  }
+};
+
+/** Tracks the outbound click, then opens the tagged URL in a new tab. */
+const openOutbound = (
+  raw: string,
+  event: string,
+  payload: Record<string, unknown>
+) => {
+  trackEvent(event, { ...payload, destination: hostLabel(raw), ...UTM });
+  window.open(withUtm(raw), "_blank", "noopener,noreferrer");
+};
+
+
+
 const Endorsements = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
