@@ -24,6 +24,16 @@ const candidates: Candidate[] = [
     role: "FL-20",
     url: "https://www.elijahmanley.com",
   },
+  {
+    name: "Ben Braver",
+    role: "FL House District 65",
+    url: "https://benbraver.com",
+  },
+  {
+    name: "Britt Robinson",
+    role: "FL-04",
+    url: "https://www.brit4congress.com",
+  },
 ];
 
 interface VoterPanelProps {
