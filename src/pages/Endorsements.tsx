@@ -275,7 +275,7 @@ const Endorsements = () => {
                         })}
                       </div>
 
-                      </div>
+
                     </motion.article>
                   );
                 })}
