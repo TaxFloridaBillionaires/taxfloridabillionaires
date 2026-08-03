@@ -16,7 +16,13 @@ import {
 } from "lucide-react";
 import { Head } from "@/components/Head";
 import { FloridaMap } from "@/components/FloridaMap";
-import { candidates, regionLabels, type SocialPlatform } from "@/data/candidates";
+import {
+  candidates,
+  levelLabels,
+  levelOrder,
+  regionLabels,
+  type SocialPlatform,
+} from "@/data/candidates";
 import { trackEvent } from "@/lib/publicSubmit";
 
 const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
