@@ -129,12 +129,26 @@ const Endorsements = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.3 }}
                       transition={{ duration: 0.4 }}
-                      className={`rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 ${
+                      onClick={(e) => {
+                        if ((e.target as HTMLElement).closest("a,button")) return;
+                        trackEvent("endorsements_candidate_click", { name: c.name });
+                        window.open(c.url, "_blank", "noopener");
+                      }}
+                      role="link"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          window.open(c.url, "_blank", "noopener");
+                        }
+                      }}
+                      className={`rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
                         isActive
                           ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]"
                           : "border-border"
                       }`}
                     >
+
                       <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words">
                         {c.name}
                       </h3>
