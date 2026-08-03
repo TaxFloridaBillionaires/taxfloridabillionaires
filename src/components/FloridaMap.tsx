@@ -31,7 +31,7 @@ export const FloridaMap = ({ active }: Props) => {
 
   const tilt = reduce ? 0 : 16 - idx * 4;
   const spin = reduce ? 0 : (idx - 2) * 7;
-  const scale = reduce ? 1 : 1.18;
+  const scale = reduce ? 1 : 0.98;
 
   return (
     <div
@@ -76,7 +76,7 @@ export const FloridaMap = ({ active }: Props) => {
                 initial={false}
                 animate={{
                   fill: isActive ? "hsl(var(--gold))" : "hsl(var(--muted))",
-                  opacity: isActive ? 1 : 0.45,
+                  opacity: isActive ? 1 : 0.6,
                 }}
                 transition={{ duration: 0.5 }}
                 stroke="hsl(var(--background))"
