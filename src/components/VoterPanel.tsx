@@ -77,9 +77,13 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => (
       ))}
     </div>
 
-    <p className="text-background/60 text-[11px] mt-8 max-w-xs">
-      More candidates coming soon.
-    </p>
+    <Link
+      to="/endorsements"
+      onClick={() => trackEvent("voter_panel_see_all_endorsements")}
+      className="w-full max-w-xs mt-8 border-2 border-background bg-background text-gold font-display text-lg tracking-wider px-5 py-3 rounded-sm hover:bg-transparent hover:text-background transition-colors"
+    >
+      SEE ALL ENDORSEMENTS →
+    </Link>
   </div>
 );
 
