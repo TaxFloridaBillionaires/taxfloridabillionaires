@@ -91,12 +91,12 @@ export const FloridaMap = ({ active }: Props) => {
             transition={{ type: "spring", stiffness: 70, damping: 16 }}
           >
             <motion.circle
-              r={16}
               fill="hsl(var(--crimson))"
-              opacity={0.35}
-              animate={reduce ? {} : { r: [12, 24, 12], opacity: [0.4, 0, 0.4] }}
+              initial={{ r: 12, opacity: 0.4 }}
+              animate={reduce ? { r: 12, opacity: 0.4 } : { r: [12, 24, 12], opacity: [0.4, 0, 0.4] }}
               transition={{ duration: 2.2, repeat: Infinity }}
             />
+
             <circle r={6} fill="hsl(var(--crimson))" stroke="hsl(var(--foreground))" strokeWidth={2} />
           </motion.g>
         </svg>
