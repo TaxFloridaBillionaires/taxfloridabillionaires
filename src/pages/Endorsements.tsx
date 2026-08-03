@@ -81,8 +81,8 @@ const Endorsements = () => {
         <Link to="/" className="text-muted-foreground hover:text-gold text-xs uppercase tracking-widest">
           ← Back to the game
         </Link>
-        <h1 className="font-display text-6xl md:text-8xl text-foreground leading-none mt-4">
-          ENDORSE<span className="text-gold">MENTS</span>
+        <h1 className="font-display text-6xl md:text-8xl text-gold leading-none mt-4">
+          ENDORSEMENTS
         </h1>
         <p className="text-muted-foreground max-w-xl mt-4">
           Florida candidates fighting for working-class people and taxing extreme wealth. Scroll —
