@@ -3,11 +3,18 @@ import type { Candidate } from "@/data/candidates";
 
 type Region = Candidate["region"];
 
-/** Rough lng/lat → SVG projection (viewBox 0 0 320 470). */
+/**
+ * Equirectangular projection with a cos(lat) correction so the state keeps its
+ * true proportions (viewBox 0 0 400 400) instead of being stretched vertically.
+ */
+const K = 55; // px per degree of latitude
+const COS_LAT = Math.cos((27.8 * Math.PI) / 180);
+
 export const project = ([lng, lat]: [number, number]): [number, number] => [
-  ((lng + 87.7) / 7.7) * 300 + 10,
-  ((31.1 - lat) / 6.1) * 400 + 35,
+  (lng + 87.75) * COS_LAT * K + 12,
+  (31.15 - lat) * K + 14,
 ];
+
 
 /**
  * Higher-resolution Florida coastline, clockwise from the NW corner
@@ -101,18 +108,18 @@ const OUTLINE: [number, number][] = [
   [-82.5, 27.45],
   [-82.57, 27.56],
   [-82.63, 27.67],
-  // Tampa Bay mouth → Pinellas peninsula
-  [-82.7, 27.74],
-  [-82.6, 27.8],
-  [-82.6, 27.9],
-  [-82.72, 27.94],
-  [-82.75, 28.05],
-  [-82.7, 28.15],
-  [-82.68, 28.3],
-  [-82.66, 28.5],
-  [-82.68, 28.72],
-  [-82.72, 28.87],
-  [-82.79, 29.0],
+  // Tampa Bay mouth → Pinellas peninsula → Nature Coast
+  [-82.69, 27.72],
+  [-82.72, 27.79],
+  [-82.75, 27.88],
+  [-82.79, 27.98],
+  [-82.83, 28.09],
+  [-82.8, 28.2],
+  [-82.76, 28.34],
+  [-82.7, 28.5],
+  [-82.67, 28.66],
+  [-82.68, 28.8],
+  [-82.75, 28.95],
   // Big Bend / Nature Coast
   [-82.94, 29.08],
   [-83.07, 29.18],
@@ -164,11 +171,11 @@ const [X84] = project([-84.0, 30]);
 const [X81_2] = project([-81.2, 27]);
 
 const REGION_RECTS: Record<Region, { x: number; y: number; w: number; h: number }> = {
-  north: { x: 0, y: 0, w: X84, h: 470 },
-  northeast: { x: X84, y: 0, w: 320 - X84, h: Y29_2 },
-  central: { x: X84, y: Y29_2, w: 320 - X84, h: Y27_2 - Y29_2 },
-  southwest: { x: X84, y: Y27_2, w: X81_2 - X84, h: 470 - Y27_2 },
-  southeast: { x: X81_2, y: Y27_2, w: 320 - X81_2, h: 470 - Y27_2 },
+  north: { x: 0, y: 0, w: X84, h: 400 },
+  northeast: { x: X84, y: 0, w: 400 - X84, h: Y29_2 },
+  central: { x: X84, y: Y29_2, w: 400 - X84, h: Y27_2 - Y29_2 },
+  southwest: { x: X84, y: Y27_2, w: X81_2 - X84, h: 400 - Y27_2 },
+  southeast: { x: X81_2, y: Y27_2, w: 400 - X81_2, h: 400 - Y27_2 },
 };
 
 const ORDER: Region[] = ["north", "northeast", "central", "southwest", "southeast"];
@@ -203,13 +210,13 @@ export const FloridaMap = ({ active, candidates = [], onSelect }: Props) => {
           rotateX: tilt,
           rotateZ: spin,
           scale: reduce ? 1 : 0.98,
-          x: reduce ? 0 : (160 - mx) * 0.2,
-          y: reduce ? 0 : (250 - my) * 0.2,
+          x: reduce ? 0 : (200 - mx) * 0.2,
+          y: reduce ? 0 : (200 - my) * 0.2,
         }}
         transition={{ type: "spring", stiffness: 60, damping: 18, mass: 0.9 }}
       >
         <svg
-          viewBox="0 0 320 470"
+          viewBox="0 0 400 400"
           className="w-full h-full drop-shadow-[0_25px_45px_hsl(var(--gold)/0.15)]"
           role="group"
           aria-label="Map of Florida — select a region to jump to a candidate"
