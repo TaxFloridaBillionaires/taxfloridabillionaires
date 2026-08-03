@@ -179,6 +179,60 @@ const Admin = () => {
       .map(([rate, count]) => ({ rate: `${rate}%`, count }));
   }, [filteredEvents]);
 
+  // Candidate panel + endorsements page metrics
+  const candidateMetrics = useMemo(
+    () =>
+      CANDIDATE_EVENTS.map((name) => ({
+        name,
+        label: EVENT_LABELS[name]?.label || name,
+        count: totals[name] || 0,
+        color: EVENT_LABELS[name]?.color || "hsl(220, 10%, 55%)",
+      })),
+    [totals]
+  );
+
+  // Per-candidate engagement (clicks, donates, socials, map selects)
+  const candidateBreakdown = useMemo(() => {
+    const rows: Record<
+      string,
+      { name: string; clicks: number; donates: number; socials: number; selects: number }
+    > = {};
+    const bump = (raw: unknown, key: "clicks" | "donates" | "socials" | "selects") => {
+      const name = typeof raw === "string" && raw ? raw : null;
+      if (!name) return;
+      rows[name] = rows[name] || { name, clicks: 0, donates: 0, socials: 0, selects: 0 };
+      rows[name][key] += 1;
+    };
+    for (const e of filteredEvents) {
+      const p = (e.properties || {}) as Record<string, unknown>;
+      if (e.event_name === "endorsements_candidate_click" || e.event_name === "voter_panel_candidate_click")
+        bump(p.name, "clicks");
+      else if (e.event_name === "endorsements_donate_click") bump(p.name, "donates");
+      else if (e.event_name === "endorsements_social_click") bump(p.name, "socials");
+      else if (e.event_name === "endorsements_map_select") bump(p.name, "selects");
+    }
+    return Object.values(rows).sort(
+      (a, b) =>
+        b.clicks + b.donates + b.socials + b.selects - (a.clicks + a.donates + a.socials + a.selects)
+    );
+  }, [filteredEvents]);
+
+  // Outbound destinations
+  const destinationBreakdown = useMemo(() => {
+    const dest: Record<string, number> = {};
+    for (const e of filteredEvents) {
+      if (!e.event_name.startsWith("endorsements_")) continue;
+      const d = (e.properties as Record<string, unknown> | null)?.destination;
+      if (typeof d === "string" && d) dest[d] = (dest[d] || 0) + 1;
+    }
+    return Object.entries(dest)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 12)
+      .map(([destination, count]) => ({ destination, count }));
+  }, [filteredEvents]);
+
+
+
   if (!authed) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
