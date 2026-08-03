@@ -3,11 +3,18 @@ import type { Candidate } from "@/data/candidates";
 
 type Region = Candidate["region"];
 
-/** Rough lng/lat → SVG projection (viewBox 0 0 320 470). */
+/**
+ * Equirectangular projection with a cos(lat) correction so the state keeps its
+ * true proportions (viewBox 0 0 400 400) instead of being stretched vertically.
+ */
+const K = 55; // px per degree of latitude
+const COS_LAT = Math.cos((27.8 * Math.PI) / 180);
+
 export const project = ([lng, lat]: [number, number]): [number, number] => [
-  ((lng + 87.7) / 7.7) * 300 + 10,
-  ((31.1 - lat) / 6.1) * 400 + 35,
+  (lng + 87.75) * COS_LAT * K + 12,
+  (31.15 - lat) * K + 14,
 ];
+
 
 /**
  * Higher-resolution Florida coastline, clockwise from the NW corner
