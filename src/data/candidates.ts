@@ -33,7 +33,7 @@ export interface Candidate {
 export const regionLabels: Record<Candidate["region"], string> = {
   north: "North Florida / Panhandle",
   northeast: "Northeast Florida",
-  central: "Central Florida / Tampa Bay",
+  central: "Central Florida",
   southwest: "Southwest Florida",
   southeast: "Southeast Florida",
 };
