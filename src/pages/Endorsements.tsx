@@ -16,7 +16,13 @@ import {
 } from "lucide-react";
 import { Head } from "@/components/Head";
 import { FloridaMap } from "@/components/FloridaMap";
-import { candidates, regionLabels, type SocialPlatform } from "@/data/candidates";
+import {
+  candidates,
+  levelLabels,
+  levelOrder,
+  regionLabels,
+  type SocialPlatform,
+} from "@/data/candidates";
 import { trackEvent } from "@/lib/publicSubmit";
 
 const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
@@ -98,84 +104,105 @@ const Endorsements = () => {
           </div>
         </div>
 
-        {/* Candidate list */}
-        <div className="lg:w-1/2 pt-10 lg:pt-0 space-y-10">
-          {candidates.map((c, i) => {
-            const isActive = i === activeIndex;
+        {/* Candidate list, grouped by office level */}
+        <div className="lg:w-1/2 pt-10 lg:pt-0 space-y-12">
+          {levelOrder.map((level) => {
+            const group = candidates
+              .map((c, i) => ({ c, i }))
+              .filter(({ c }) => c.level === level);
+            if (group.length === 0) return null;
+
             return (
-              <motion.article
-                key={c.name}
-                data-index={i}
-                ref={(el) => (cardRefs.current[i] = el)}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4 }}
-                className={`rounded-sm border p-6 bg-card transition-colors duration-300 ${
-                  isActive ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]" : "border-border"
-                }`}
-              >
-                <h2 className="font-display text-4xl text-foreground leading-none tracking-wide">
-                  {c.name}
+              <section key={level} className="space-y-6">
+                <h2 className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold border-b border-border pb-2">
+                  {levelLabels[level]}
                 </h2>
-                <div className="text-gold text-sm mt-2 font-mono uppercase tracking-widest">
-                  {c.role}
-                </div>
-                <div className="text-muted-foreground text-xs mt-1">
-                  {c.area ? `${c.area} — ` : ""}
-                  {regionLabels[c.region]}
-                </div>
-                {c.blurb && (
-                  <p className="text-muted-foreground text-sm mt-4 leading-relaxed">{c.blurb}</p>
-                )}
 
-                <div className="mt-5 flex flex-wrap items-center gap-3">
-                  {c.donateUrl && (
-                    <a
-                      href={c.donateUrl}
-                      target="_blank"
-                      rel="noopener"
-                      onClick={() => trackEvent("endorsements_donate_click", { name: c.name })}
-                      className="inline-flex items-center gap-2 bg-crimson text-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
+                {group.map(({ c, i }) => {
+                  const isActive = i === activeIndex;
+                  return (
+                    <motion.article
+                      key={c.name}
+                      data-index={i}
+                      ref={(el) => (cardRefs.current[i] = el)}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.4 }}
+                      className={`rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 ${
+                        isActive
+                          ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]"
+                          : "border-border"
+                      }`}
                     >
-                      <HeartHandshake className="w-3.5 h-3.5" /> Donate
-                    </a>
-                  )}
-                  <a
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener"
-                    onClick={() => trackEvent("endorsements_candidate_click", { name: c.name })}
-                    className="inline-flex items-center gap-2 bg-gold text-primary-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
-                  >
-                    Website <ExternalLink className="w-3 h-3" />
-                  </a>
+                      <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words">
+                        {c.name}
+                      </h3>
+                      <div className="text-gold text-xs sm:text-sm mt-2 font-mono uppercase tracking-widest break-words">
+                        {c.role}
+                      </div>
+                      <div className="text-muted-foreground text-xs mt-1 break-words">
+                        {c.area ? `${c.area} — ` : ""}
+                        {regionLabels[c.region]}
+                      </div>
+                      {c.blurb && (
+                        <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
+                          {c.blurb}
+                        </p>
+                      )}
 
+                      <div className="mt-5 flex flex-wrap items-center gap-3">
+                        {c.donateUrl && (
+                          <a
+                            href={c.donateUrl}
+                            target="_blank"
+                            rel="noopener"
+                            onClick={() =>
+                              trackEvent("endorsements_donate_click", { name: c.name })
+                            }
+                            className="inline-flex items-center gap-2 bg-crimson text-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
+                          >
+                            <HeartHandshake className="w-3.5 h-3.5" /> Donate
+                          </a>
+                        )}
+                        <a
+                          href={c.url}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() =>
+                            trackEvent("endorsements_candidate_click", { name: c.name })
+                          }
+                          className="inline-flex items-center gap-2 bg-gold text-primary-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
+                        >
+                          Website <ExternalLink className="w-3 h-3" />
+                        </a>
 
-
-                  {c.socials?.map((s) => {
-                    const Icon = SOCIAL_ICONS[s.platform];
-                    return (
-                      <a
-                        key={s.platform}
-                        href={s.url}
-                        target="_blank"
-                        rel="noopener"
-                        aria-label={`${c.name} on ${s.platform}`}
-                        onClick={() =>
-                          trackEvent("endorsements_social_click", {
-                            name: c.name,
-                            platform: s.platform,
-                          })
-                        }
-                        className="w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
-                      >
-                        <Icon className="w-4 h-4" />
-                      </a>
-                    );
-                  })}
-                </div>
-              </motion.article>
+                        {c.socials?.map((s) => {
+                          const Icon = SOCIAL_ICONS[s.platform];
+                          return (
+                            <a
+                              key={s.platform}
+                              href={s.url}
+                              target="_blank"
+                              rel="noopener"
+                              aria-label={`${c.name} on ${s.platform}`}
+                              onClick={() =>
+                                trackEvent("endorsements_social_click", {
+                                  name: c.name,
+                                  platform: s.platform,
+                                })
+                              }
+                              className="w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
+                            >
+                              <Icon className="w-4 h-4" />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </motion.article>
+                  );
+                })}
+              </section>
             );
           })}
         </div>
