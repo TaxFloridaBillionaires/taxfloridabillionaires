@@ -220,10 +220,14 @@ const Endorsements = () => {
                           <a
                             href={c.donateUrl}
                             target="_blank"
-                            rel="noopener"
-                            onClick={() =>
-                              trackEvent("endorsements_donate_click", { name: c.name })
-                            }
+                            rel="noopener noreferrer"
+                            title={`Donate to ${c.name} — ${hostLabel(c.donateUrl)}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              openOutbound(c.donateUrl!, "endorsements_donate_click", {
+                                name: c.name,
+                              });
+                            }}
                             className="inline-flex items-center gap-2 bg-crimson text-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
                           >
                             <HeartHandshake className="w-3.5 h-3.5" /> Donate
@@ -232,10 +236,15 @@ const Endorsements = () => {
                         <a
                           href={c.url}
                           target="_blank"
-                          rel="noopener"
-                          onClick={() =>
-                            trackEvent("endorsements_candidate_click", { name: c.name })
-                          }
+                          rel="noopener noreferrer"
+                          title={`Open ${hostLabel(c.url)}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            openOutbound(c.url, "endorsements_candidate_click", {
+                              name: c.name,
+                              source: "website_button",
+                            });
+                          }}
                           className="inline-flex items-center gap-2 bg-gold text-primary-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
                         >
                           Website <ExternalLink className="w-3 h-3" />
@@ -248,20 +257,24 @@ const Endorsements = () => {
                               key={s.platform}
                               href={s.url}
                               target="_blank"
-                              rel="noopener"
+                              rel="noopener noreferrer"
                               aria-label={`${c.name} on ${s.platform}`}
-                              onClick={() =>
-                                trackEvent("endorsements_social_click", {
+                              title={`${c.name} on ${s.platform} — ${hostLabel(s.url)}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                openOutbound(s.url, "endorsements_social_click", {
                                   name: c.name,
                                   platform: s.platform,
-                                })
-                              }
+                                });
+                              }}
                               className="w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
                             >
                               <Icon className="w-4 h-4" />
                             </a>
                           );
                         })}
+                      </div>
+
                       </div>
                     </motion.article>
                   );
