@@ -54,6 +54,15 @@ const Endorsements = () => {
 
   const active = candidates[activeIndex] ?? candidates[0];
 
+  const selectCandidate = (name: string) => {
+    const i = candidates.findIndex((c) => c.name === name);
+    if (i < 0) return;
+    setActiveIndex(i);
+    trackEvent("endorsements_map_select", { name });
+    cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+
   return (
     <div className="min-h-screen bg-background">
       <Head
