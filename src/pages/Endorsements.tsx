@@ -170,23 +170,34 @@ const Endorsements = () => {
                       transition={{ duration: 0.4 }}
                       onClick={(e) => {
                         if ((e.target as HTMLElement).closest("a,button")) return;
-                        trackEvent("endorsements_candidate_click", { name: c.name });
-                        window.open(c.url, "_blank", "noopener");
+                        openOutbound(c.url, "endorsements_candidate_click", {
+                          name: c.name,
+                          source: "card",
+                        });
                       }}
                       role="link"
                       tabIndex={0}
+                      title={`Visit ${c.name} — ${hostLabel(c.url)}`}
+                      aria-label={`Visit ${c.name}'s campaign site at ${hostLabel(c.url)}`}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
-                          window.open(c.url, "_blank", "noopener");
+                          openOutbound(c.url, "endorsements_candidate_click", {
+                            name: c.name,
+                            source: "card_keyboard",
+                          });
                         }
                       }}
-                      className={`rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
+                      className={`group relative rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
                         isActive
                           ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]"
                           : "border-border"
                       }`}
                     >
+                      <span className="pointer-events-none absolute top-3 right-3 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
+                        {hostLabel(c.url)} <ExternalLink className="w-3 h-3" />
+                      </span>
+
 
                       <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words">
                         {c.name}
