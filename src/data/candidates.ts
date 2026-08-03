@@ -100,15 +100,15 @@ export const candidates: Candidate[] = [
     ],
   },
   {
-    name: "Mike Sell",
+    name: "Britt Robinson",
     role: "FL-04",
-    url: "https://mikesell.org",
+    url: "https://www.brit4congress.com",
     region: "northeast",
     center: [-81.6, 30.36],
     area: "Jacksonville / Duval",
     level: "federal",
     blurb:
-      "Platform reads like a worker's checklist: tax the rich, raise wages, end price gouging on rent, groceries and prescriptions, and pilot a universal basic income.",
+      "Jacksonville-area challenger running on affordability for working families — livable wages, healthcare access and an economy that stops rewarding only the wealthiest.",
   },
   {
     name: "Jon Harris",
