@@ -37,6 +37,45 @@ const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
   threads: AtSign,
 };
 
+const UTM = {
+  utm_source: "taxfloridabillionaires",
+  utm_medium: "referral",
+  utm_campaign: "endorsements",
+};
+
+/** Appends campaign tags at click time so the visible href stays clean. */
+const withUtm = (raw: string) => {
+  try {
+    const u = new URL(raw);
+    Object.entries(UTM).forEach(([k, v]) => {
+      if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+    });
+    return u.toString();
+  } catch {
+    return raw;
+  }
+};
+
+const hostLabel = (raw: string) => {
+  try {
+    return new URL(raw).hostname.replace(/^www\./, "");
+  } catch {
+    return raw;
+  }
+};
+
+/** Tracks the outbound click, then opens the tagged URL in a new tab. */
+const openOutbound = (
+  raw: string,
+  event: string,
+  payload: Record<string, unknown>
+) => {
+  trackEvent(event, { ...payload, destination: hostLabel(raw), ...UTM });
+  window.open(withUtm(raw), "_blank", "noopener,noreferrer");
+};
+
+
+
 const Endorsements = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
@@ -131,23 +170,34 @@ const Endorsements = () => {
                       transition={{ duration: 0.4 }}
                       onClick={(e) => {
                         if ((e.target as HTMLElement).closest("a,button")) return;
-                        trackEvent("endorsements_candidate_click", { name: c.name });
-                        window.open(c.url, "_blank", "noopener");
+                        openOutbound(c.url, "endorsements_candidate_click", {
+                          name: c.name,
+                          source: "card",
+                        });
                       }}
                       role="link"
                       tabIndex={0}
+                      title={`Visit ${c.name} — ${hostLabel(c.url)}`}
+                      aria-label={`Visit ${c.name}'s campaign site at ${hostLabel(c.url)}`}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
-                          window.open(c.url, "_blank", "noopener");
+                          openOutbound(c.url, "endorsements_candidate_click", {
+                            name: c.name,
+                            source: "card_keyboard",
+                          });
                         }
                       }}
-                      className={`rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
+                      className={`group relative rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
                         isActive
                           ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]"
                           : "border-border"
                       }`}
                     >
+                      <span className="pointer-events-none absolute top-3 right-3 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
+                        {hostLabel(c.url)} <ExternalLink className="w-3 h-3" />
+                      </span>
+
 
                       <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words">
                         {c.name}
@@ -170,10 +220,14 @@ const Endorsements = () => {
                           <a
                             href={c.donateUrl}
                             target="_blank"
-                            rel="noopener"
-                            onClick={() =>
-                              trackEvent("endorsements_donate_click", { name: c.name })
-                            }
+                            rel="noopener noreferrer"
+                            title={`Donate to ${c.name} — ${hostLabel(c.donateUrl)}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              openOutbound(c.donateUrl!, "endorsements_donate_click", {
+                                name: c.name,
+                              });
+                            }}
                             className="inline-flex items-center gap-2 bg-crimson text-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
                           >
                             <HeartHandshake className="w-3.5 h-3.5" /> Donate
@@ -182,10 +236,15 @@ const Endorsements = () => {
                         <a
                           href={c.url}
                           target="_blank"
-                          rel="noopener"
-                          onClick={() =>
-                            trackEvent("endorsements_candidate_click", { name: c.name })
-                          }
+                          rel="noopener noreferrer"
+                          title={`Open ${hostLabel(c.url)}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            openOutbound(c.url, "endorsements_candidate_click", {
+                              name: c.name,
+                              source: "website_button",
+                            });
+                          }}
                           className="inline-flex items-center gap-2 bg-gold text-primary-foreground font-mono text-xs uppercase tracking-widest px-4 py-2 rounded-sm hover:opacity-90 transition-opacity"
                         >
                           Website <ExternalLink className="w-3 h-3" />
@@ -198,14 +257,16 @@ const Endorsements = () => {
                               key={s.platform}
                               href={s.url}
                               target="_blank"
-                              rel="noopener"
+                              rel="noopener noreferrer"
                               aria-label={`${c.name} on ${s.platform}`}
-                              onClick={() =>
-                                trackEvent("endorsements_social_click", {
+                              title={`${c.name} on ${s.platform} — ${hostLabel(s.url)}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                openOutbound(s.url, "endorsements_social_click", {
                                   name: c.name,
                                   platform: s.platform,
-                                })
-                              }
+                                });
+                              }}
                               className="w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
                             >
                               <Icon className="w-4 h-4" />
@@ -213,6 +274,8 @@ const Endorsements = () => {
                           );
                         })}
                       </div>
+
+
                     </motion.article>
                   );
                 })}
