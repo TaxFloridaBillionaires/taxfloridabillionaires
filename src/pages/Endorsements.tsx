@@ -87,7 +87,12 @@ const Endorsements = () => {
       <main className="max-w-6xl mx-auto px-6 pb-32 lg:flex lg:gap-12 lg:items-start">
         {/* Map: sticky top on mobile, sticky left on desktop */}
         <div className="sticky top-0 z-20 -mx-6 px-6 h-[42vh] lg:h-[80vh] lg:top-16 lg:mx-0 lg:px-0 lg:w-1/2 bg-background/90 backdrop-blur-sm lg:bg-transparent lg:backdrop-blur-none border-b border-border lg:border-0">
-          <FloridaMap active={active} />
+          <FloridaMap
+            active={active}
+            candidates={candidates}
+            onSelect={(c) => selectCandidate(c.name)}
+          />
+
           <div className="absolute bottom-2 left-6 lg:left-0 font-mono text-[10px] uppercase tracking-widest text-gold">
             {regionLabels[active.region]}
           </div>
