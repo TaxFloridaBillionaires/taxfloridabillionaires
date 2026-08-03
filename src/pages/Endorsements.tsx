@@ -81,6 +81,11 @@ const Endorsements = () => {
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
+    trackEvent("endorsements_page_view");
+  }, []);
+
+  useEffect(() => {
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries

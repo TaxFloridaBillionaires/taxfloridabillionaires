@@ -31,7 +31,29 @@ const EVENT_LABELS: Record<string, { label: string; color: string }> = {
   tell_a_friend_clicked: { label: "Told a Friend", color: "hsl(0, 72%, 51%)" },
   email_signup: { label: "Email Signups", color: "hsl(200, 80%, 55%)" },
   community_suggestion: { label: "Suggestions", color: "hsl(280, 60%, 55%)" },
+  voter_panel_open: { label: "Voter Panel Views", color: "hsl(190, 70%, 50%)" },
+  voter_panel_candidate_click: { label: "Panel Candidate Clicks", color: "hsl(45, 100%, 51%)" },
+  voter_panel_register_click: { label: "Register to Vote", color: "hsl(160, 60%, 45%)" },
+  voter_panel_see_all_endorsements: { label: "See All Endorsements", color: "hsl(280, 60%, 55%)" },
+  endorsements_page_view: { label: "Endorsements Views", color: "hsl(190, 70%, 50%)" },
+  endorsements_map_select: { label: "Map Selections", color: "hsl(220, 10%, 55%)" },
+  endorsements_candidate_click: { label: "Candidate Clicks", color: "hsl(45, 100%, 51%)" },
+  endorsements_donate_click: { label: "Donate Clicks", color: "hsl(0, 72%, 51%)" },
+  endorsements_social_click: { label: "Social Clicks", color: "hsl(200, 80%, 55%)" },
 };
+
+const CANDIDATE_EVENTS = [
+  "voter_panel_open",
+  "voter_panel_candidate_click",
+  "voter_panel_register_click",
+  "voter_panel_see_all_endorsements",
+  "endorsements_page_view",
+  "endorsements_map_select",
+  "endorsements_candidate_click",
+  "endorsements_donate_click",
+  "endorsements_social_click",
+];
+
 
 const TIME_RANGES = [
   { label: "24h", days: 1 },
@@ -156,6 +178,60 @@ const Admin = () => {
       .sort(([, a], [, b]) => b - a)
       .map(([rate, count]) => ({ rate: `${rate}%`, count }));
   }, [filteredEvents]);
+
+  // Candidate panel + endorsements page metrics
+  const candidateMetrics = useMemo(
+    () =>
+      CANDIDATE_EVENTS.map((name) => ({
+        name,
+        label: EVENT_LABELS[name]?.label || name,
+        count: totals[name] || 0,
+        color: EVENT_LABELS[name]?.color || "hsl(220, 10%, 55%)",
+      })),
+    [totals]
+  );
+
+  // Per-candidate engagement (clicks, donates, socials, map selects)
+  const candidateBreakdown = useMemo(() => {
+    const rows: Record<
+      string,
+      { name: string; clicks: number; donates: number; socials: number; selects: number }
+    > = {};
+    const bump = (raw: unknown, key: "clicks" | "donates" | "socials" | "selects") => {
+      const name = typeof raw === "string" && raw ? raw : null;
+      if (!name) return;
+      rows[name] = rows[name] || { name, clicks: 0, donates: 0, socials: 0, selects: 0 };
+      rows[name][key] += 1;
+    };
+    for (const e of filteredEvents) {
+      const p = (e.properties || {}) as Record<string, unknown>;
+      if (e.event_name === "endorsements_candidate_click" || e.event_name === "voter_panel_candidate_click")
+        bump(p.name, "clicks");
+      else if (e.event_name === "endorsements_donate_click") bump(p.name, "donates");
+      else if (e.event_name === "endorsements_social_click") bump(p.name, "socials");
+      else if (e.event_name === "endorsements_map_select") bump(p.name, "selects");
+    }
+    return Object.values(rows).sort(
+      (a, b) =>
+        b.clicks + b.donates + b.socials + b.selects - (a.clicks + a.donates + a.socials + a.selects)
+    );
+  }, [filteredEvents]);
+
+  // Outbound destinations
+  const destinationBreakdown = useMemo(() => {
+    const dest: Record<string, number> = {};
+    for (const e of filteredEvents) {
+      if (!e.event_name.startsWith("endorsements_")) continue;
+      const d = (e.properties as Record<string, unknown> | null)?.destination;
+      if (typeof d === "string" && d) dest[d] = (dest[d] || 0) + 1;
+    }
+    return Object.entries(dest)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 12)
+      .map(([destination, count]) => ({ destination, count }));
+  }, [filteredEvents]);
+
+
 
   if (!authed) {
     return (
@@ -418,6 +494,95 @@ const Admin = () => {
                 )}
               </div>
             </div>
+
+            {/* Candidates & endorsements */}
+            <div className="mt-8">
+              <h2 className="font-display text-2xl sm:text-3xl mb-4">
+                CANDIDATES <span className="text-gold">&amp; ENDORSEMENTS</span>
+              </h2>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 mb-6">
+                {candidateMetrics.map((m) => (
+                  <button
+                    key={m.name}
+                    onClick={() => setSelectedMetric(selectedMetric === m.name ? null : m.name)}
+                    className={`bg-card border rounded-sm p-3 text-left transition-colors ${
+                      selectedMetric === m.name
+                        ? "border-gold"
+                        : "border-border hover:border-muted-foreground/30"
+                    }`}
+                  >
+                    <p className="text-muted-foreground text-[10px] sm:text-xs uppercase tracking-wider mb-1 leading-tight">
+                      {m.label}
+                    </p>
+                    <p
+                      className="text-xl sm:text-2xl font-bold font-mono"
+                      style={{ color: m.color }}
+                    >
+                      {m.count}
+                    </p>
+                  </button>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                {/* Per-candidate engagement */}
+                <div className="bg-card border border-border rounded-sm p-3 sm:p-4 md:p-6">
+                  <h3 className="text-muted-foreground text-xs uppercase tracking-wider mb-4 font-semibold">
+                    Engagement by Candidate
+                  </h3>
+                  {candidateBreakdown.length > 0 ? (
+                    <div className="overflow-x-auto max-h-72 overflow-y-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="text-muted-foreground text-[10px] uppercase tracking-wider">
+                            <th className="text-left font-medium pb-2">Candidate</th>
+                            <th className="text-right font-medium pb-2">Clicks</th>
+                            <th className="text-right font-medium pb-2">Donate</th>
+                            <th className="text-right font-medium pb-2">Social</th>
+                            <th className="text-right font-medium pb-2">Map</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {candidateBreakdown.map((r) => (
+                            <tr key={r.name} className="border-t border-border">
+                              <td className="py-1.5 pr-2 text-foreground">{r.name}</td>
+                              <td className="py-1.5 text-right font-mono text-gold">{r.clicks}</td>
+                              <td className="py-1.5 text-right font-mono text-crimson">{r.donates}</td>
+                              <td className="py-1.5 text-right font-mono text-muted-foreground">{r.socials}</td>
+                              <td className="py-1.5 text-right font-mono text-muted-foreground">{r.selects}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <p className="text-muted-foreground text-sm">No candidate engagement yet</p>
+                  )}
+                </div>
+
+                {/* Outbound destinations */}
+                <div className="bg-card border border-border rounded-sm p-3 sm:p-4 md:p-6">
+                  <h3 className="text-muted-foreground text-xs uppercase tracking-wider mb-4 font-semibold">
+                    Top Outbound Destinations
+                  </h3>
+                  {destinationBreakdown.length > 0 ? (
+                    <div className="space-y-2 max-h-72 overflow-y-auto">
+                      {destinationBreakdown.map(({ destination, count }) => (
+                        <div key={destination} className="flex justify-between items-center gap-2">
+                          <span className="text-foreground text-sm truncate">{destination}</span>
+                          <span className="font-mono text-gold text-sm shrink-0">{count}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-muted-foreground text-sm">No outbound clicks yet</p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+
 
             {/* Total events */}
             <p className="text-muted-foreground text-xs text-center mt-6">
