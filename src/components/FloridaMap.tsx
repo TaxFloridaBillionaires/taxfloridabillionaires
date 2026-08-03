@@ -171,11 +171,11 @@ const [X84] = project([-84.0, 30]);
 const [X81_2] = project([-81.2, 27]);
 
 const REGION_RECTS: Record<Region, { x: number; y: number; w: number; h: number }> = {
-  north: { x: 0, y: 0, w: X84, h: 470 },
-  northeast: { x: X84, y: 0, w: 320 - X84, h: Y29_2 },
-  central: { x: X84, y: Y29_2, w: 320 - X84, h: Y27_2 - Y29_2 },
-  southwest: { x: X84, y: Y27_2, w: X81_2 - X84, h: 470 - Y27_2 },
-  southeast: { x: X81_2, y: Y27_2, w: 320 - X81_2, h: 470 - Y27_2 },
+  north: { x: 0, y: 0, w: X84, h: 400 },
+  northeast: { x: X84, y: 0, w: 400 - X84, h: Y29_2 },
+  central: { x: X84, y: Y29_2, w: 400 - X84, h: Y27_2 - Y29_2 },
+  southwest: { x: X84, y: Y27_2, w: X81_2 - X84, h: 400 - Y27_2 },
+  southeast: { x: X81_2, y: Y27_2, w: 400 - X81_2, h: 400 - Y27_2 },
 };
 
 const ORDER: Region[] = ["north", "northeast", "central", "southwest", "southeast"];
