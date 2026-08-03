@@ -24,9 +24,9 @@ Research found 9 additional Florida candidates (federal, state legislative, loca
 
 ## What I'd build
 
-Add Tiers 1 and 2 (six candidates: Locklin, Brandt Robinson, Sell, Eskamani, D'Onofrio, Fields) to the endorsements page in the same format as the existing five: name, office, area, region, blurb, website button, Donate button, social icons. Tier 3 held back unless you want breadth over message fit.
+Add all nine candidates (all three tiers) to the endorsements page in the same format as the existing five: name, office, area, region, blurb, website button, Donate button, social icons.
 
-Grouping: the page currently lists candidates in one flat scroll. With 11 candidates I'd add section headings — **Federal**, **State Legislature**, **Local** — so the list stays readable, with the map behavior unchanged.
+Grouping: the page currently lists candidates in one flat scroll. With 14 candidates I'll add section headings — **Federal**, **State Legislature**, **Local** — so the list stays readable, with the map behavior unchanged.
 
 Map: each new candidate gets a region and approximate center so the Florida map highlights correctly (Miami-Dade → southeast, Pinellas/Tampa → central, Jacksonville → northeast, Orlando → central, Broward → southeast, Alachua/Marion → central/north).
 
@@ -43,6 +43,7 @@ Map: each new candidate gets a region and approximate center so the Florida map 
 - `src/components/FloridaMap.tsx`: unchanged. With multiple candidates per region, region click targets currently pick the first candidate in that region — that behavior stays.
 - No new dependencies.
 
-## Question
+## Readability check
 
-Include Tier 3 (Sordo, Harris) as well, or keep it to the six strongest?
+After the build, verify cards at mobile and desktop widths in the browser: headings, blurbs and the button/social row wrap cleanly with no overflow, and the sticky map does not cover card content on small screens.
+
