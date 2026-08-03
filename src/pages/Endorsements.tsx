@@ -85,22 +85,49 @@ const Endorsements = () => {
   }, []);
 
   useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const els = cardRefs.current.filter(Boolean) as HTMLElement[];
+      if (!els.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) {
-          const i = Number((visible.target as HTMLElement).dataset.index);
-          if (!Number.isNaN(i)) setActiveIndex(i);
+      // At the very bottom of the page the last card can never reach the
+      // viewport centre — force it active.
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        const last = els[els.length - 1];
+        const i = Number(last.dataset.index);
+        if (!Number.isNaN(i)) setActiveIndex(i);
+        return;
+      }
+
+      const center = window.innerHeight / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const dist = Math.abs(r.top + r.height / 2 - center);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = Number(el.dataset.index);
         }
-      },
-      { rootMargin: "-35% 0px -35% 0px", threshold: [0.1, 0.5, 0.9] }
-    );
-    cardRefs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
+      });
+      if (!Number.isNaN(best)) setActiveIndex(best);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
 
   const active = candidates[activeIndex] ?? candidates[0];
 
