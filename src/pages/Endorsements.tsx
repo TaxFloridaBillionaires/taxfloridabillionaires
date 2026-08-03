@@ -7,6 +7,7 @@ import {
   ExternalLink,
   Facebook,
   Globe,
+  HeartHandshake,
   Instagram,
   Linkedin,
   Music2,
