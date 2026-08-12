@@ -276,4 +276,21 @@ export const candidates: Candidate[] = [
       { platform: "youtube", url: "https://www.youtube.com/channel/UCb_5-G7XakYb36Eu1Eu06eg" },
     ],
   },
+  {
+    name: "Adam Roberti",
+    role: "Hollywood City Commission, District 5",
+    url: "https://www.adamforhollywood.com",
+    donateUrl: "https://secure.anedot.com/adam-roberti/donate",
+    region: "southeast",
+    center: [-80.15, 26.01],
+    area: "Broward / Hollywood",
+    level: "local",
+    blurb:
+      "Grew up in District 5 and runs on cost of living, flood-ready neighborhoods, safer streets and youth programs — a City Hall that answers to residents.",
+    socials: [
+      { platform: "instagram", url: "https://instagram.com/adamforhollywood" },
+      { platform: "facebook", url: "https://facebook.com/adamforhollywood" },
+    ],
+  },
 ];
+
