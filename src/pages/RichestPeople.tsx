@@ -176,6 +176,12 @@ const RichestPeople = () => {
             Beach once the tax bill came due.
           </p>
           <p>
+            The result is a state that courts billionaires while its public schools rank near the
+            bottom nationally in teacher pay — 47th out of 50 — and districts continue to close
+            schools and cut classroom funding. A small annual levy on the wealth listed here could
+            help reverse that underinvestment.
+          </p>
+          <p>
             Meanwhile, proposed Medicaid cuts would open a roughly $3 billion hole in Florida's
             economy, putting an estimated 33,000 jobs and $177 million in local tax revenue at risk.
             A modest annual levy on the ${(totalBillionaireWealth / 1000).toFixed(2)} trillion listed
