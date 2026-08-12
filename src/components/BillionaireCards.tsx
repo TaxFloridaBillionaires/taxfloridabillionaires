@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import { billionaires, type Billionaire } from "@/data/gameData";
 
 interface BillionaireCardsProps {
@@ -59,7 +61,14 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
         <h2 className="font-display text-5xl md:text-7xl text-foreground mb-4">
           MEET THE <span className="text-gold">TAX AVOIDERS</span>
         </h2>
+        <Link
+          to="/richest-person-in-florida"
+          className="text-gold underline underline-offset-4 text-lg"
+        >
+          See the full ranking of the richest people in Florida →
+        </Link>
       </motion.div>
+
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
         {billionaires.map((b, i) => (
