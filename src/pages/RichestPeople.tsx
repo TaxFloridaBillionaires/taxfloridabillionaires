@@ -181,12 +181,6 @@ const RichestPeople = () => {
             schools and cut classroom funding. A small annual levy on the wealth listed here could
             help reverse that underinvestment.
           </p>
-          <p>
-            Meanwhile, proposed Medicaid cuts would open a roughly $3 billion hole in Florida's
-            economy, putting an estimated 33,000 jobs and $177 million in local tax revenue at risk.
-            A modest annual levy on the ${(totalBillionaireWealth / 1000).toFixed(2)} trillion listed
-            here would cover that gap many times over.
-          </p>
         </div>
         <Link
           to="/"
