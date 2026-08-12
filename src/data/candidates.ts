@@ -146,6 +146,49 @@ export const candidates: Candidate[] = [
     blurb: "South Florida candidate campaigning against corporate power and for working families.",
   },
   {
+    name: "Amanda Marie Green",
+    role: "FL-02",
+    url: "https://www.amgforcongress.com",
+    region: "north",
+    center: [-84.28, 30.44],
+    area: "Tallahassee / North Florida",
+    level: "federal",
+    blurb:
+      'Endorsed by the Florida AFL-CIO through the Northwest Florida Federation of Labor, and blunt about the stakes: making the economy work for everyday folks, "not billionaires."',
+    socials: [{ platform: "instagram", url: "https://www.instagram.com/amgforcongress" }],
+  },
+  {
+    name: "Brice Barnes",
+    role: "FL-02",
+    url: "https://bricebarnes.com",
+    region: "north",
+    center: [-84.28, 30.44],
+    area: "Tallahassee / North Florida",
+    level: "federal",
+    blurb:
+      'Backed by union leaders and longtime organizers across North Florida, running on the plain fact that "life simply isn\'t working for people in North Florida."',
+    socials: [
+      { platform: "facebook", url: "https://www.facebook.com/brice.barnes.12" },
+      { platform: "instagram", url: "https://www.instagram.com/bricebarnes" },
+    ],
+  },
+  {
+    name: "Gay Valimont",
+    role: "FL-01",
+    url: "https://www.gayforcongress.com",
+    donateUrl: "https://secure.actblue.com/donate/s-gayvalimont",
+    region: "north",
+    center: [-87.22, 30.44],
+    area: "Escambia & Santa Rosa / Pensacola",
+    level: "federal",
+    blurb:
+      "Runs on household affordability in the most expensive insurance market in the country — property and health coverage costs, care access, and a full-service VA hospital for Northwest Florida.",
+    socials: [
+      { platform: "facebook", url: "https://www.facebook.com/gayvalimont" },
+      { platform: "instagram", url: "https://www.instagram.com/gayvalimontfl" },
+    ],
+  },
+  {
     name: "Jayden D'Onofrio",
     role: "FL House District 102",
     url: "https://jaydenforflorida.com",
