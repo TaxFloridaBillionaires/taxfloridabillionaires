@@ -152,8 +152,10 @@ const RichestPeople = ({ variant = "richest", showReasons = true }: RichestPeopl
                 </div>
                 <div className="font-mono text-gold text-lg whitespace-nowrap">${b.netWorth}B</div>
               </div>
-              <p className="text-sm text-muted-foreground italic mt-2">{b.whyMoved}</p>
-              <dl className="mt-3 grid grid-cols-[auto,1fr] gap-x-3 gap-y-1 text-sm">
+              {showReasons && (
+                <p className="text-sm text-muted-foreground italic mt-2">{b.whyMoved}</p>
+              )}
+              <dl className={`grid grid-cols-[auto,1fr] gap-x-3 gap-y-1 text-sm ${showReasons ? "mt-3" : "mt-2"}`}>
                 <dt className="text-muted-foreground">Source</dt>
                 <dd className="break-words">{b.source}</dd>
                 <dt className="text-muted-foreground">City</dt>
