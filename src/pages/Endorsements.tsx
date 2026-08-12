@@ -159,6 +159,10 @@ const Endorsements = () => {
           Florida candidates fighting for working-class people and taxing extreme wealth. Scroll —
           the map follows the fight.
         </p>
+        <p className="text-muted-foreground/70 max-w-xl mt-3 text-xs uppercase tracking-wider">
+          Paid for by Tax Florida Billionaires, not authorized by any candidate or candidate's
+          committee.
+        </p>
       </header>
 
       <main className="max-w-6xl mx-auto px-6 pb-32 lg:flex lg:gap-12 lg:items-start">
