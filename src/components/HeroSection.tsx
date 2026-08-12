@@ -25,8 +25,9 @@ const TickerBar = ({ onClick }: { onClick: () => void }) => {
       <div className="overflow-hidden whitespace-nowrap">
         <motion.span
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 30, ease: "linear", repeat: Infinity }}
-          className="inline-block text-foreground text-xs sm:text-sm font-medium"
+          transition={{ duration: 38, ease: "linear", repeat: Infinity }}
+          className="inline-block text-foreground text-sm sm:text-base font-medium"
+
         >
           {tickerContent}
         </motion.span>
