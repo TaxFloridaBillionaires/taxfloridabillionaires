@@ -119,8 +119,45 @@ const RichestPeople = () => {
           FLORIDA BILLIONAIRES LIST, RANKED BY NET WORTH
         </h2>
 
-        <div className="overflow-x-auto border border-border rounded-sm">
+        {/* Mobile: stacked cards */}
+        <ol className="md:hidden space-y-3">
+          {ranked.map((b, i) => (
+            <li key={b.name} className="border border-border rounded-sm p-4 bg-card/40">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="font-mono text-xs text-muted-foreground">#{i + 1}</div>
+                  <div className="font-semibold break-words">
+                    <span className="mr-2" aria-hidden="true">{b.emoji}</span>
+                    {b.name}
+                  </div>
+                </div>
+                <div className="font-mono text-gold text-lg whitespace-nowrap">${b.netWorth}B</div>
+              </div>
+              <p className="text-sm text-muted-foreground italic mt-2">{b.whyMoved}</p>
+              <dl className="mt-3 grid grid-cols-[auto,1fr] gap-x-3 gap-y-1 text-sm">
+                <dt className="text-muted-foreground">Source</dt>
+                <dd className="break-words">{b.source}</dd>
+                <dt className="text-muted-foreground">City</dt>
+                <dd>{b.city}</dd>
+                <dt className="text-muted-foreground">Moved from</dt>
+                <dd>
+                  {b.movedFrom === "Born in FL (rare!)" ? (
+                    <span className="text-emerald">Born in Florida</span>
+                  ) : (
+                    <span className="text-crimson">
+                      {b.movedFrom}
+                      {b.movedYear !== "Unknown" && b.movedYear !== "N/A" ? ` (${b.movedYear})` : ""}
+                    </span>
+                  )}
+                </dd>
+              </dl>
+            </li>
+          ))}
+        </ol>
+
+        <div className="hidden md:block overflow-x-auto border border-border rounded-sm">
           <table className="w-full text-left min-w-[720px]">
+
             <caption className="sr-only">
               Florida billionaires ranked by net worth, with source of wealth, city and where they
               moved from.
