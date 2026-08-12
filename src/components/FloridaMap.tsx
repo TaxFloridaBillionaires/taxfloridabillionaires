@@ -202,7 +202,7 @@ export const FloridaMap = ({ active, candidates = [], onSelect }: Props) => {
       className="relative w-full h-full flex items-center justify-center overflow-hidden"
       style={{ perspective: 1100 }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,hsl(var(--gold)/0.12),transparent_65%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,hsl(var(--gold)/0.09),transparent_65%)] pointer-events-none" />
       <motion.div
         className="w-full h-full"
         style={{ transformStyle: "preserve-3d" }}
@@ -217,7 +217,7 @@ export const FloridaMap = ({ active, candidates = [], onSelect }: Props) => {
       >
         <svg
           viewBox="0 0 400 400"
-          className="w-full h-full drop-shadow-[0_25px_45px_hsl(var(--gold)/0.15)]"
+          className="w-full h-full drop-shadow-[0_25px_45px_hsl(var(--gold)/0.11)]"
           role="group"
           aria-label="Map of Florida — select a region to jump to a candidate"
         >
