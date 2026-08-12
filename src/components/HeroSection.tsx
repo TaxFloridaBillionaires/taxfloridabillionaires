@@ -98,7 +98,7 @@ export const HeroSection = ({ onStart, onOpenVoter }: HeroSectionProps) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           onClick={onStart}
-          className="gradient-gold text-primary-foreground font-display text-3xl px-12 py-5 rounded-sm tracking-wider hover:brightness-110 transition-all shadow-lg shadow-gold/20"
+          className="gradient-gold text-primary-foreground font-display text-2xl sm:text-3xl px-8 sm:px-12 py-4 sm:py-5 rounded-sm tracking-wider hover:brightness-110 transition-all shadow-lg shadow-gold/20"
         >
           LEARN MORE →
         </motion.button>
