@@ -8,6 +8,7 @@ import { NavPanel, NavTrigger } from "@/components/NavPanel";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Endorsements from "./pages/Endorsements";
+import Press from "./pages/Press";
 import RichestPeople from "./pages/RichestPeople";
 import NotFound from "./pages/NotFound";
 
