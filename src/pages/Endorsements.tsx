@@ -146,6 +146,9 @@ const Endorsements = () => {
         title="Endorsements — Tax Florida Billionaires"
         description="Florida candidates fighting for working-class people and taxing extreme wealth. Scroll the state and meet every endorsement."
         canonical="https://taxfloridabillionaires.com/endorsements"
+        ogTitle="Endorsements — Florida Candidates Who Back Taxing Extreme Wealth"
+        ogDescription="Meet every endorsed Florida candidate fighting for workers and a billionaire wealth tax, mapped across the state with websites, platforms and donation links."
+        ogType="article"
       />
 
       <header className="px-6 pt-10 pb-6 max-w-6xl mx-auto">

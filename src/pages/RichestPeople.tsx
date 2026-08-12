@@ -71,6 +71,9 @@ const RichestPeople = () => {
         title="Richest People in Florida (2026): Billionaires List & Net Worth"
         description="See the richest person in Florida and the full list of Florida billionaires ranked by net worth — plus where each one moved from and the taxes they left behind."
         canonical={CANONICAL}
+        ogTitle="Richest People in Florida (2026): Billionaires List & Net Worth"
+        ogDescription="The full ranking of Florida billionaires by net worth in 2026 — who is the richest person in Florida, how they made their money, and which high-tax states they moved from."
+        ogType="article"
       />
 
       <section className="max-w-5xl mx-auto px-4 pt-16 pb-10">
