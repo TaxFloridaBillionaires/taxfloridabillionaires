@@ -24,7 +24,7 @@ A single combined slate announcement in standard endorsement/press-release form,
 
 Structure:
 - FOR IMMEDIATE RELEASE + date, contact line placeholder
-- Headline: Tax Florida Billionaires Endorses 13-Candidate 2026 Slate
+- Headline: Tax Florida Billionaires Endorses 17-Candidate 2026 Slate
 - Dateline and lede: the endorsement, the number, the through-line ($1.4T in Florida billionaire wealth in a state ranked 47th in teacher pay)
 - Supporting paragraph on the wealth-migration trend and what a modest levy would fund
 - Quote block attributed to Tax Florida Billionaires (placeholder spokesperson name for you to fill)
@@ -35,7 +35,8 @@ Structure:
 
 ## Technical notes
 
-- `src/data/candidates.ts`: one new entry; no schema change needed (`north` region already exists in the union type).
+- `src/data/candidates.ts`: five new entries; no schema change needed (`north` region already exists in the union type).
+- `src/components/FloridaMap.tsx`: verify the `north` region path highlights and is clickable now that it has candidates — no structural change expected.
 - Press release generated with the `docx` library via a throwaway script, written to `/mnt/documents/tax-florida-billionaires-endorsement-release.docx`, then rendered to images and visually checked page by page before delivery.
 - Any name, phone or email the release needs from you is left as a clearly bracketed placeholder rather than invented.
 - No press-release page is added to the site (document only, per your choice).
