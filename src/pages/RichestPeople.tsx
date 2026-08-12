@@ -101,18 +101,18 @@ const RichestPeople = ({ variant = "richest", showReasons = true }: RichestPeopl
             Home
           </Link>
           <span className="mx-2">/</span>
-          <span>Richest people in Florida</span>
+          <span>{isTop26 ? "Top 26 wealthiest people in Florida" : "Richest people in Florida"}</span>
         </nav>
 
         <h1 className="font-display text-5xl md:text-7xl text-gold mb-4">
-          THE RICHEST PEOPLE IN FLORIDA
+          {h1Text}
         </h1>
         <p className="text-lg text-muted-foreground max-w-3xl">
           Florida's {ranked.length} wealthiest residents control roughly{" "}
           <strong className="text-foreground">
             ${(totalBillionaireWealth / 1000).toFixed(2)} trillion
           </strong>{" "}
-          in net worth. The richest person in Florida is{" "}
+          in net worth. The {isTop26 ? "wealthiest" : "richest"} person in Florida is{" "}
           <strong className="text-foreground">{ranked[0].name}</strong> (~$
           {ranked[0].netWorth}B). {transplants} of these {ranked.length} billionaires moved here
           from another state — Florida charges no income tax, no estate tax and no inheritance tax.
