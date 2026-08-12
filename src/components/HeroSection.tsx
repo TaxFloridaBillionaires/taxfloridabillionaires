@@ -49,7 +49,7 @@ export const HeroSection = ({ onStart, onOpenVoter }: HeroSectionProps) => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center max-w-5xl relative z-10"
+        className="text-center w-full max-w-5xl relative z-10"
       >
         {/* Breaking news ticker */}
         <TickerBar onClick={onOpenVoter} />
