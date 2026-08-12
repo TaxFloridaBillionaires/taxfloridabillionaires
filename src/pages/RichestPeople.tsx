@@ -3,58 +3,77 @@ import { Link } from "react-router-dom";
 import { Head } from "@/components/Head";
 import { billionaires, totalBillionaireWealth } from "@/data/gameData";
 
-const CANONICAL = "https://taxfloridabillionaires.com/richest-person-in-florida";
+interface RichestPeopleProps {
+  variant?: "richest" | "top26";
+  showReasons?: boolean;
+}
 
 const ranked = [...billionaires].sort((a, b) => b.netWorth - a.netWorth);
 const transplants = ranked.filter((b) => b.movedFrom !== "Born in FL (rare!)").length;
 
-const FAQ = [
-  {
-    q: "Who is the richest person in Florida?",
-    a: `${ranked[0].name} is the richest person in Florida, worth roughly $${ranked[0].netWorth} billion from ${ranked[0].source}. ${ranked[0].name} moved to ${ranked[0].city} from ${ranked[0].movedFrom} in ${ranked[0].movedYear}.`,
-  },
-  {
-    q: "How many billionaires live in Florida?",
-    a: `Florida is home to more than 100 billionaires. The ${ranked.length} wealthiest tracked here hold about $${(totalBillionaireWealth / 1000).toFixed(2)} trillion in combined net worth.`,
-  },
-  {
-    q: "Why do so many billionaires move to Florida?",
-    a: "Florida has no state income tax, no estate tax and no inheritance tax. Of the wealthiest residents tracked here, only one actually built their fortune in the state — the rest relocated from higher-tax states.",
-  },
-  {
-    q: "Where do Florida's billionaires live?",
-    a: "Most cluster in Miami, Miami Beach, Palm Beach and the barrier islands such as Indian Creek and Bal Harbour.",
-  },
-];
+const RichestPeople = ({ variant = "richest", showReasons = true }: RichestPeopleProps) => {
+  const isTop26 = variant === "top26";
+  const canonical = isTop26
+    ? "https://taxfloridabillionaires.com/billionaires-list"
+    : "https://taxfloridabillionaires.com/richest-person-in-florida";
+  const pageTitle = isTop26
+    ? "Top 26 Wealthiest People in Florida (2026): Billionaires List"
+    : "Richest People in Florida (2026): Billionaires List & Net Worth";
+  const pageDescription = isTop26
+    ? "See the top 26 wealthiest people in Florida ranked by net worth — Florida billionaires, their sources of wealth, and where they live."
+    : "See the richest person in Florida and the full list of Florida billionaires ranked by net worth — plus where each one moved from and the taxes they left behind.";
+  const ogTitle = pageTitle;
+  const ogDescription = pageDescription;
+  const h1Text = isTop26 ? "THE TOP 26 WEALTHIEST PEOPLE IN FLORIDA" : "THE RICHEST PEOPLE IN FLORIDA";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
+  const FAQ = [
     {
-      "@type": "ItemList",
-      name: "Richest People in Florida",
-      description: "Ranking of Florida's wealthiest billionaires by net worth, including where each one moved from.",
-      itemListOrder: "https://schema.org/ItemListOrderDescending",
-      numberOfItems: ranked.length,
-      itemListElement: ranked.map((b, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        name: b.name,
-        description: `${b.source} · $${b.netWorth}B · ${b.city}, FL`,
-      })),
+      q: isTop26 ? "Who is the wealthiest person in Florida?" : "Who is the richest person in Florida?",
+      a: `${ranked[0].name} is the ${isTop26 ? "wealthiest" : "richest"} person in Florida, worth roughly $${ranked[0].netWorth} billion from ${ranked[0].source}. ${ranked[0].name} moved to ${ranked[0].city} from ${ranked[0].movedFrom} in ${ranked[0].movedYear}.`,
     },
     {
-      "@type": "FAQPage",
-      mainEntity: FAQ.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
+      q: "How many billionaires live in Florida?",
+      a: `Florida is home to more than 100 billionaires. The ${ranked.length} wealthiest tracked here hold about $${(totalBillionaireWealth / 1000).toFixed(2)} trillion in combined net worth.`,
     },
-  ],
-};
+    {
+      q: "Why do so many billionaires move to Florida?",
+      a: "Florida has no state income tax, no estate tax and no inheritance tax. Of the wealthiest residents tracked here, only one actually built their fortune in the state — the rest relocated from higher-tax states.",
+    },
+    {
+      q: "Where do Florida's billionaires live?",
+      a: "Most cluster in Miami, Miami Beach, Palm Beach and the barrier islands such as Indian Creek and Bal Harbour.",
+    },
+  ];
 
-const RichestPeople = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemList",
+        name: isTop26 ? "Top 26 Wealthiest People in Florida" : "Richest People in Florida",
+        description: isTop26
+          ? "Ranking of Florida's top 26 wealthiest billionaires by net worth."
+          : "Ranking of Florida's wealthiest billionaires by net worth, including where each one moved from.",
+        itemListOrder: "https://schema.org/ItemListOrderDescending",
+        numberOfItems: ranked.length,
+        itemListElement: ranked.map((b, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: b.name,
+          description: `${b.source} · $${b.netWorth}B · ${b.city}, FL`,
+        })),
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: FAQ.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      },
+    ],
+  };
+
   useEffect(() => {
     const el = document.createElement("script");
     el.type = "application/ld+json";
@@ -63,16 +82,16 @@ const RichestPeople = () => {
     return () => {
       el.remove();
     };
-  }, []);
+  }, [isTop26]);
 
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Head
-        title="Richest People in Florida (2026): Billionaires List & Net Worth"
-        description="See the richest person in Florida and the full list of Florida billionaires ranked by net worth — plus where each one moved from and the taxes they left behind."
-        canonical={CANONICAL}
-        ogTitle="Richest People in Florida (2026): Billionaires List & Net Worth"
-        ogDescription="The full ranking of Florida billionaires by net worth in 2026 — who is the richest person in Florida, how they made their money, and which high-tax states they moved from."
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonical}
+        ogTitle={ogTitle}
+        ogDescription={ogDescription}
         ogType="article"
       />
 
