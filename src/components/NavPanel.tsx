@@ -8,7 +8,6 @@ const navItems = [
   { title: "Home", url: "/", exact: true },
   { title: "Endorsements", url: "/endorsements" },
   { title: "Richest People in Florida", url: "/richest-person-in-florida" },
-  { title: "Billionaires List", url: "/billionaires-list" },
 ];
 
 interface NavPanelProps {
