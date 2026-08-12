@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import { billionaires, type Billionaire } from "@/data/gameData";
 
 interface BillionaireCardsProps {
