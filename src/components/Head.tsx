@@ -5,7 +5,11 @@ interface HeadProps {
   description?: string;
   canonical?: string;
   robots?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
 }
+
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
