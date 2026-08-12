@@ -141,7 +141,7 @@ export const NavTrigger = ({ onOpen }: NavTriggerProps) => {
       type="button"
       onClick={handleClick}
       aria-label="Open navigation menu"
-      className="fixed top-4 right-4 sm:left-4 sm:right-auto z-40 bg-gold text-background w-12 h-12 rounded-sm flex items-center justify-center shadow-lg shadow-gold/20 hover:brightness-110 transition-all"
+      className="fixed bottom-4 right-4 sm:bottom-auto sm:top-4 sm:left-4 sm:right-auto z-40 bg-gold text-background w-12 h-12 rounded-sm flex items-center justify-center shadow-lg shadow-gold/20 hover:brightness-110 transition-all"
     >
       <Menu className="w-6 h-6" />
     </button>
