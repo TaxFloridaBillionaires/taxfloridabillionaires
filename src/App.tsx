@@ -34,6 +34,7 @@ const App = () => {
           <NavTrigger onOpen={() => setNavOpen(true)} />
           <NavPanel isOpen={navOpen} onClose={() => setNavOpen(false)} />
 
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/endorsements" element={<Endorsements />} />
