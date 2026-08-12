@@ -236,6 +236,29 @@ export const candidates: Candidate[] = [
       "A service worker running on wage transparency, incentives for workforce housing and renter protections against abusive fees.",
   },
   {
+    name: "Johnny Austin Thompson",
+    role: "FL House District 2",
+    url: "https://standwithjohnny.com",
+    donateUrl: "https://secure.actblue.com/donate/standwithjohnny",
+    region: "north",
+    center: [-87.22, 30.44],
+    area: "Escambia / Pensacola",
+    level: "state",
+    blurb:
+      'Pensacola campaign built on quality healthcare, good jobs and a clean Gulf Coast — "a representative working for all of us, not just the well-connected."',
+  },
+  {
+    name: "Jasmine Brown",
+    role: "Mayor of Pensacola",
+    url: "https://www.jasminebrownformayor.com",
+    region: "north",
+    center: [-87.22, 30.42],
+    area: "Escambia / Pensacola",
+    level: "local",
+    blurb:
+      'A community organizer running on "Pensacola for the people, not the developers" — working people are squeezed every month while landlords and developers get richer off the city\'s resources.',
+  },
+  {
     name: "Anna V. Eskamani",
     role: "Mayor of Orlando",
     url: "https://annaforflorida.com",
