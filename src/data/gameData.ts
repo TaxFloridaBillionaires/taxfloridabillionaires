@@ -43,7 +43,11 @@ export const totalBillionaireWealth = 1399; // in billions, updated with Page, B
 
 // Breaking news headlines
 export const breakingHeadlines = [
-  "Tax Florida Billionaires endorses Angie Nixon for Senate, Oliver Larkin for FL-25 and Elijah Manley for FL-20.",
+  "Tax Florida Billionaires endorses a statewide slate of pro-worker candidates for 2026.",
+  "Federal: Angie Nixon for U.S. Senate, Nicole Locklin (FL-26), Brandt Robinson (FL-13), Britt Robinson (FL-04), Jon Harris (FL-16), Elijah Manley (FL-20), Oliver Larkin (FL-25).",
+  "State Legislature: Jayden D'Onofrio (HD-102), Antione Fields (HD-21), Ben Braver (HD-65), Rey Sordo (HD-119).",
+  "Local: Anna V. Eskamani for Mayor of Orlando.",
+  "See every endorsement and donation link at taxfloridabillionaires.com/endorsements.",
 ];
 
 // Mark Zuckerberg context
