@@ -233,18 +233,18 @@ const Endorsements = () => {
                           : "border-border"
                       }`}
                     >
-                      <span className="pointer-events-none absolute top-3 right-3 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
-                        {hostLabel(c.url)} <ExternalLink className="w-3 h-3" />
+                      <span className="pointer-events-none absolute top-3 right-3 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity max-w-[150px] truncate">
+                        {hostLabel(c.url)} <ExternalLink className="w-3 h-3 shrink-0" />
                       </span>
 
 
-                      <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words">
+                      <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words pr-36 sm:pr-40">
                         {c.name}
                       </h3>
-                      <div className="text-gold text-xs sm:text-sm mt-2 font-mono uppercase tracking-widest break-words">
+                      <div className="text-gold text-xs sm:text-sm mt-2 font-mono uppercase tracking-widest break-words pr-36 sm:pr-40">
                         {c.role}
                       </div>
-                      <div className="text-muted-foreground text-xs mt-1 break-words">
+                      <div className="text-muted-foreground text-xs mt-1 break-words pr-36 sm:pr-40">
                         {c.area ? `${c.area} — ` : ""}
                         {regionLabels[c.region]}
                       </div>
