@@ -8,6 +8,7 @@ import { NavPanel, NavTrigger } from "@/components/NavPanel";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Endorsements from "./pages/Endorsements";
+import Press from "./pages/Press";
 import RichestPeople from "./pages/RichestPeople";
 import NotFound from "./pages/NotFound";
 
@@ -38,6 +39,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/endorsements" element={<Endorsements />} />
+            <Route path="/press" element={<Press />} />
             <Route path="/richest-person-in-florida" element={<RichestPeople />} />
             <Route path="/billionaires-list" element={<RichestPeople variant="top26" showReasons={false} />} />
             <Route path="/admin" element={<Admin />} />
