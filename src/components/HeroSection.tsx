@@ -55,7 +55,7 @@ export const HeroSection = ({ onStart, onOpenVoter }: HeroSectionProps) => {
         <TickerBar onClick={onOpenVoter} />
 
         <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mb-4 text-foreground">
-          TAX THE
+          TAX
           <br />
           <span className="text-gold ticker-glow">FLORIDA</span>
           <br />
