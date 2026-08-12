@@ -200,7 +200,9 @@ const RichestPeople = ({ variant = "richest", showReasons = true }: RichestPeopl
                   <td className="p-3">
                     <span className="mr-2" aria-hidden="true">{b.emoji}</span>
                     <span className="font-semibold">{b.name}</span>
-                    <div className="text-sm text-muted-foreground italic">{b.whyMoved}</div>
+                    {showReasons && (
+                      <div className="text-sm text-muted-foreground italic">{b.whyMoved}</div>
+                    )}
                   </td>
                   <td className="p-3 font-mono text-gold whitespace-nowrap">${b.netWorth}B</td>
                   <td className="p-3 text-sm">{b.source}</td>
