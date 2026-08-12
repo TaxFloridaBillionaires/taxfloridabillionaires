@@ -51,6 +51,8 @@ const Index = () => {
         title="Tax Florida Billionaires — Interactive Wealth Tax Simulator"
         description="Discover how taxing Florida's billionaires could fund schools, healthcare, and housing. Try our interactive tax simulator and spending game."
         canonical="https://taxfloridabillionaires.com/"
+        ogTitle="Tax Florida Billionaires — Interactive Wealth Tax Simulator"
+        ogDescription="Set a wealth tax rate on Florida's billionaires, see exactly how much revenue it raises, then spend it on early childhood education, healthcare, housing and hurricane resilience."
       />
       <motion.div
         animate={{ x: voterOpen && isDesktop ? "-25%" : "0%" }}

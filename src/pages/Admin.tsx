@@ -285,6 +285,8 @@ const Admin = () => {
         description="Private analytics dashboard for the Tax Florida Billionaires project. Authorized access only."
         robots="noindex, nofollow"
         canonical="https://taxfloridabillionaires.com/admin"
+        ogTitle="Admin Analytics — Tax Florida Billionaires"
+        ogDescription="Private analytics dashboard tracking simulator usage, spending choices, endorsement engagement and outbound candidate clicks. Authorized access only."
       />
       <div className="max-w-6xl mx-auto">
         {/* Header */}
