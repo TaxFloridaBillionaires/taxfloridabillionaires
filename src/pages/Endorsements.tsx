@@ -349,7 +349,7 @@ const Endorsements = () => {
                         </p>
                       )}
 
-                      <div className="mt-auto pt-5 flex flex-wrap items-center gap-3">
+                      <div className="mt-auto pt-5 pr-12 flex flex-wrap items-center gap-3">
 
                         {c.donateUrl && (
                           <a
