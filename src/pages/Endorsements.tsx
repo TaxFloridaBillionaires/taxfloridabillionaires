@@ -98,13 +98,22 @@ const Endorsements = () => {
     lastHashRef.current = hash;
     // Pause the scroll spy while the smooth scroll settles so it doesn't override the active card.
     suppressScrollSpy.current = true;
-    // Wait a tick for layout, then scroll the card into the center of view.
+    // Wait for layout/images, then scroll the card into the center of view.
     const t = setTimeout(() => {
-      cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 50);
+      cardRefs.current[i]?.scrollIntoView({ behavior: "auto", block: "center" });
+    }, 120);
+    const t2 = setTimeout(() => {
+      cardRefs.current[i]?.scrollIntoView({ behavior: "auto", block: "center" });
+    }, 600);
     const clear = setTimeout(() => {
       suppressScrollSpy.current = false;
-    }, 550);
+    }, 900);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(t2);
+      clearTimeout(clear);
+    };
+  }, []);
     return () => {
       clearTimeout(t);
       clearTimeout(clear);
