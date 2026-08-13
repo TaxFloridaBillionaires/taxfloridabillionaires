@@ -307,7 +307,7 @@ const Endorsements = () => {
                           });
                         }
                       }}
-                      className={`group relative rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
+                      className={`group relative flex h-full w-full min-h-[336px] flex-col rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
                         isActive
                           ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]"
                           : "border-border"
