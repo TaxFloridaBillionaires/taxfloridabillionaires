@@ -46,6 +46,11 @@ const slate: { group: string; items: { name: string; office: string; note: strin
         note: "Organizer and educator running to restore the American Dream for working families.",
       },
       {
+        name: "Bernard Taylor",
+        office: "U.S. House, FL-21 — Palm Beach & Treasure Coast",
+        note: "A fourth-generation Floridian EMT/paramedic running on affordable healthcare and housing, and taking no corporate, lobbyist or Super PAC money.",
+      },
+      {
         name: "Oliver Larkin",
         office: "U.S. House, FL-25 — Broward / Palm Beach",
         note: "Campaigning for working families and for an economy that puts community interests ahead of corporate profits.",
