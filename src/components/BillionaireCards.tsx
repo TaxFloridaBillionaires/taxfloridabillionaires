@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { billionaires, type Billionaire } from "@/data/gameData";
@@ -5,6 +6,21 @@ import { billionaires, type Billionaire } from "@/data/gameData";
 interface BillionaireCardsProps {
   onContinue: () => void;
 }
+
+const useColumns = () => {
+  const [cols, setCols] = useState(1);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setCols(w >= 1024 ? 4 : w >= 768 ? 3 : w >= 640 ? 2 : 1);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return cols;
+};
+
 
 const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
   const isLocalBorn = b.movedFrom === "Born in FL (rare!)";
