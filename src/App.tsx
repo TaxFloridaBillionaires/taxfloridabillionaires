@@ -13,10 +13,11 @@ import RichestPeople from "./pages/RichestPeople";
 import NotFound from "./pages/NotFound";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) return; // let deep links (#candidate-slug) control scroll position
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 };
 
