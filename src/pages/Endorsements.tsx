@@ -82,7 +82,7 @@ const Endorsements = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const lastHashRef = useRef<string>("");
-  const skipHashSync = useRef<number>(0);
+  const suppressScrollSpy = useRef(false);
 
   useEffect(() => {
     trackEvent("endorsements_page_view");
