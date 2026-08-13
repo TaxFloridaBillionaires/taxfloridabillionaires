@@ -17,6 +17,8 @@ export interface CandidateSocial {
 export type CandidateLevel = "federal" | "state" | "local";
 
 export interface Candidate {
+  /** URL-safe anchor slug derived from the candidate name. */
+  slug: string;
   name: string;
   role: string;
   url: string;
@@ -32,6 +34,14 @@ export interface Candidate {
   level: CandidateLevel;
   blurb?: string;
   socials?: CandidateSocial[];
+}
+
+/** Convert a candidate name into a URL-safe slug. */
+export function slugify(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 export const regionLabels: Record<Candidate["region"], string> = {
