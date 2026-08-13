@@ -184,9 +184,12 @@ const Endorsements = () => {
       "",
       `${window.location.pathname}#${candidates[i].slug}`
     );
-    skipHashSync.current = 12;
+    suppressScrollSpy.current = true;
     trackEvent("endorsements_map_select", { name });
     cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => {
+      suppressScrollSpy.current = false;
+    }, 500);
   };
 
   const copyLink = (slug: string) => {
