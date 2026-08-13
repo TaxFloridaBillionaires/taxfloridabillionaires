@@ -233,7 +233,7 @@ const Endorsements = () => {
                           : "border-border"
                       }`}
                     >
-                      <span className="pointer-events-none absolute top-3 right-3 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity max-w-[150px] truncate">
+                      <span className="pointer-events-none absolute top-3 right-3 flex items-center gap-1 font-mono text-[9px] uppercase tracking-widest text-gold opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity max-w-[240px] truncate">
                         {hostLabel(c.url)} <ExternalLink className="w-3 h-3 shrink-0" />
                       </span>
 
