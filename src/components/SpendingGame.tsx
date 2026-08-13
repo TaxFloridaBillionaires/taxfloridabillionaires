@@ -168,12 +168,14 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                           <button
                             onClick={() => removeItem(item, 1)}
                             disabled={qty === 0}
+                            aria-label={`Decrease ${item.name} quantity by 1`}
                             className="w-10 h-10 md:w-8 md:h-8 rounded-sm bg-muted text-foreground font-bold text-lg md:text-base disabled:opacity-30 hover:bg-crimson/20 transition-colors"
                           >−</button>
                           {bigStep > 1 && (
                             <button
                               onClick={() => removeItem(item, bigStep)}
                               disabled={qty < bigStep}
+                              aria-label={`Decrease ${item.name} quantity by ${bigStep}`}
                               className="px-2 h-10 md:h-8 rounded-sm bg-muted text-foreground text-sm md:text-xs disabled:opacity-30 hover:bg-crimson/20 transition-colors"
                             >−{bigStep}</button>
                           )}
@@ -184,12 +186,14 @@ export const SpendingGame = ({ taxRate }: SpendingGameProps) => {
                             <button
                               onClick={() => addItem(item, bigStep)}
                               disabled={!canAfford}
+                              aria-label={`Increase ${item.name} quantity by ${bigStep}`}
                               className="px-2 h-10 md:h-8 rounded-sm bg-muted text-foreground text-sm md:text-xs disabled:opacity-30 hover:bg-emerald/20 transition-colors"
                             >+{bigStep}</button>
                           )}
                           <button
                             onClick={() => addItem(item, 1)}
                             disabled={!canAfford}
+                            aria-label={`Increase ${item.name} quantity by 1`}
                             className="w-10 h-10 md:w-8 md:h-8 rounded-sm bg-muted text-foreground font-bold text-lg md:text-base disabled:opacity-30 hover:bg-emerald/20 transition-colors"
                           >+</button>
                         </div>
