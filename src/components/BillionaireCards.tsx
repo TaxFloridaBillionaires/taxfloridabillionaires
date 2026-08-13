@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { billionaires, type Billionaire } from "@/data/gameData";
@@ -6,7 +7,15 @@ interface BillionaireCardsProps {
   onContinue: () => void;
 }
 
-const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
+const BillionaireCard = ({
+  b,
+  index,
+  dimmed,
+}: {
+  b: Billionaire;
+  index: number;
+  dimmed?: boolean;
+}) => {
   const isLocalBorn = b.movedFrom === "Born in FL (rare!)";
 
   return (
@@ -16,7 +25,9 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
       tabIndex={0}
-      className="bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer"
+      className={`bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer ${
+        dimmed ? "opacity-35" : "opacity-100"
+      }`}
     >
       <div className="flex items-start justify-between mb-2 md:mb-3">
         <span className="text-4xl md:text-5xl">{b.emoji}</span>
@@ -49,6 +60,10 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
 };
 
 export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
+  const [visibleCount, setVisibleCount] = useState(12);
+  const hasMore = visibleCount < billionaires.length;
+  const nextBatch = Math.min(visibleCount + 8, billionaires.length);
+
   return (
     <section className="py-20 px-4 max-w-7xl mx-auto">
       <motion.div
@@ -62,14 +77,32 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
         </h2>
       </motion.div>
 
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {billionaires.map((b, i) => (
-          <BillionaireCard key={b.name} b={b} index={i} />
+          <BillionaireCard
+            key={b.name}
+            b={b}
+            index={i}
+            dimmed={i >= visibleCount}
+          />
         ))}
       </div>
 
-      <div className="text-center">
+      <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        {hasMore && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => setVisibleCount(nextBatch)}
+            className="inline-flex items-center gap-2 border border-gold text-gold font-display text-xl px-8 py-3 rounded-sm tracking-wider hover:bg-gold hover:text-primary-foreground transition-all"
+          >
+            Show more rows
+            <span className="font-mono text-sm">
+              ({billionaires.length - visibleCount} left)
+            </span>
+          </motion.button>
+        )}
+
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
