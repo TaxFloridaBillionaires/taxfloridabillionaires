@@ -307,7 +307,7 @@ const Endorsements = () => {
                           });
                         }
                       }}
-                      className={`group relative rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
+                      className={`group relative flex h-full w-full min-h-[336px] flex-col rounded-sm border p-5 sm:p-6 bg-card transition-colors duration-300 cursor-pointer hover:border-gold ${
                         isActive
                           ? "border-gold shadow-[0_0_40px_hsl(var(--gold)/0.12)]"
                           : "border-border"
@@ -344,12 +344,13 @@ const Endorsements = () => {
                         {regionLabels[c.region]}
                       </div>
                       {c.blurb && (
-                        <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
+                        <p className="text-muted-foreground text-sm mt-4 leading-relaxed line-clamp-4">
                           {c.blurb}
                         </p>
                       )}
 
-                      <div className="mt-5 flex flex-wrap items-center gap-3">
+                      <div className="mt-auto pt-5 pr-12 flex flex-wrap items-center gap-3">
+
                         {c.donateUrl && (
                           <a
                             href={c.donateUrl}
