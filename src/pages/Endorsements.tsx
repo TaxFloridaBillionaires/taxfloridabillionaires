@@ -40,7 +40,7 @@ const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
 };
 
 const UTM = {
-  utm_source: "taxfloridabillionaires",
+  utm_source: "taxfloridabillionaries",
   utm_medium: "referral",
   utm_campaign: "endorsements",
 };
@@ -198,14 +198,17 @@ const Endorsements = () => {
   };
 
   const copyLink = (slug: string) => {
-    const url = `${BASE_URL}/endorsements#${slug}`;
+    const url = new URL(`${BASE_URL}/endorsements`);
+    url.hash = `#${slug}`;
+    Object.entries(UTM).forEach(([k, v]) => url.searchParams.set(k, v));
+    const urlString = url.toString();
     navigator.clipboard
-      .writeText(url)
+      .writeText(urlString)
       .then(() => {
         toast.success("Link copied", {
           description: `Share ${candidates.find((c) => c.slug === slug)?.name}'s endorsement.`,
         });
-        trackEvent("endorsements_share_link", { slug, url });
+        trackEvent("endorsements_share_link", { slug, url: urlString });
       })
       .catch(() => {
         toast.error("Could not copy link");
