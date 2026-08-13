@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { billionaires, type Billionaire } from "@/data/gameData";
@@ -5,6 +6,21 @@ import { billionaires, type Billionaire } from "@/data/gameData";
 interface BillionaireCardsProps {
   onContinue: () => void;
 }
+
+const useColumns = () => {
+  const [cols, setCols] = useState(1);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setCols(w >= 1024 ? 4 : w >= 768 ? 3 : w >= 640 ? 2 : 1);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return cols;
+};
+
 
 const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
   const isLocalBorn = b.movedFrom === "Born in FL (rare!)";
@@ -49,6 +65,15 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
 };
 
 export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
+  const cols = useColumns();
+  const [rows, setRows] = useState(2);
+
+  const capacity = cols * rows;
+  const hasMore = billionaires.length > capacity;
+  // Reserve the last cell for the "see more" tile when there are more to show
+  const shown = hasMore ? billionaires.slice(0, capacity - 1) : billionaires;
+  const hiddenCount = billionaires.length - shown.length;
+
   return (
     <section className="py-20 px-4 max-w-7xl mx-auto">
       <motion.div
@@ -63,10 +88,30 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
       </motion.div>
 
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-        {billionaires.map((b, i) => (
-          <BillionaireCard key={b.name} b={b} index={i} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+        {shown.map((b, i) => (
+          <div
+            key={b.name}
+            className={i >= cols * 2 ? "opacity-60 hover:opacity-100 focus-within:opacity-100 transition-opacity" : ""}
+          >
+            <BillionaireCard b={b} index={i % cols} />
+          </div>
         ))}
+
+        {hasMore && (
+          <motion.button
+            type="button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => setRows(r => r + 2)}
+            aria-label={`Show ${Math.min(hiddenCount, cols * 2)} more billionaires`}
+            className="min-h-[160px] rounded-sm border border-gold/60 bg-gold/5 text-gold hover:bg-gold hover:text-primary-foreground transition-colors flex flex-col items-center justify-center gap-2 p-4"
+          >
+            <span className="font-mono text-4xl leading-none">＋</span>
+            <span className="font-display text-2xl tracking-wider">SEE MORE</span>
+            <span className="text-sm opacity-80">{hiddenCount} more</span>
+          </motion.button>
+        )}
       </div>
 
       <div className="text-center">
@@ -74,11 +119,12 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
           onClick={onContinue}
-          className="gradient-gold text-primary-foreground font-display text-2xl px-10 py-4 rounded-sm tracking-wider hover:brightness-110 transition-all"
+          className="gradient-gold text-primary-foreground font-display text-xl sm:text-2xl px-8 sm:px-10 py-4 rounded-sm tracking-wider hover:brightness-110 transition-all"
         >
           NOW LET'S TAX THEM →
         </motion.button>
       </div>
+
     </section>
   );
 };
