@@ -62,6 +62,7 @@ export const levelOrder: CandidateLevel[] = ["federal", "state", "local"];
 
 export const candidates: Candidate[] = [
   {
+    slug: "angie-nixon",
     name: "Angie Nixon",
     role: "U.S. Senate",
     url: "https://angienixon.com",
@@ -75,6 +76,7 @@ export const candidates: Candidate[] = [
     socials: [{ platform: "threads", url: "https://www.threads.com/@theangienixon" }],
   },
   {
+    slug: "nicole-locklin",
     name: "Nicole Locklin",
     role: "FL-26",
     url: "https://locklinforcongress.com",
@@ -91,6 +93,7 @@ export const candidates: Candidate[] = [
     ],
   },
   {
+    slug: "brandt-robinson",
     name: "Brandt Robinson",
     role: "FL-13",
     url: "https://brandtforcongress.com",
@@ -110,6 +113,7 @@ export const candidates: Candidate[] = [
     ],
   },
   {
+    slug: "britt-robinson",
     name: "Britt Robinson",
     role: "FL-04",
     url: "https://www.brit4congress.com",
@@ -121,6 +125,7 @@ export const candidates: Candidate[] = [
       "Jacksonville-area challenger running on affordability for working families — livable wages, healthcare access and an economy that stops rewarding only the wealthiest.",
   },
   {
+    slug: "jon-harris",
     name: "Jon Harris",
     role: "FL-16",
     url: "https://jonharrisforcongress.com",
@@ -133,6 +138,7 @@ export const candidates: Candidate[] = [
     socials: [{ platform: "threads", url: "https://www.threads.com/@jonharrisforcongress" }],
   },
   {
+    slug: "elijah-manley",
     name: "Elijah Manley",
     role: "FL-20",
     url: "https://www.elijahmanley.com",
@@ -145,6 +151,7 @@ export const candidates: Candidate[] = [
     socials: [{ platform: "bluesky", url: "https://bsky.app/profile/elijahmanley.bsky.social" }],
   },
   {
+    slug: "oliver-larkin",
     name: "Oliver Larkin",
     role: "FL-25",
     url: "https://www.oliverforcongress.com",
@@ -156,6 +163,7 @@ export const candidates: Candidate[] = [
     blurb: "South Florida candidate campaigning against corporate power and for working families.",
   },
   {
+    slug: "amanda-marie-green",
     name: "Amanda Marie Green",
     role: "FL-02",
     url: "https://www.amgforcongress.com",
@@ -168,6 +176,7 @@ export const candidates: Candidate[] = [
     socials: [{ platform: "instagram", url: "https://www.instagram.com/amgforcongress" }],
   },
   {
+    slug: "brice-barnes",
     name: "Brice Barnes",
     role: "FL-02",
     url: "https://bricebarnes.com",
@@ -183,6 +192,7 @@ export const candidates: Candidate[] = [
     ],
   },
   {
+    slug: "gay-valimont",
     name: "Gay Valimont",
     role: "FL-01",
     url: "https://www.gayforcongress.com",
@@ -199,6 +209,7 @@ export const candidates: Candidate[] = [
     ],
   },
   {
+    slug: "jayden-donofrio",
     name: "Jayden D'Onofrio",
     role: "FL House District 102",
     url: "https://jaydenforflorida.com",
@@ -210,6 +221,7 @@ export const candidates: Candidate[] = [
       "The sharpest union platform in this field: repeal Florida's anti-union laws, defend the voter-approved $15 minimum wage, win paid family and medical leave, expand Medicaid.",
   },
   {
+    slug: "antione-fields",
     name: "Antione Fields",
     role: "FL House District 21",
     url: "https://fieldsforflorida.com",
@@ -223,6 +235,7 @@ export const candidates: Candidate[] = [
     socials: [{ platform: "linkedin", url: "https://www.linkedin.com/in/antione-fields" }],
   },
   {
+    slug: "ben-braver",
     name: "Ben Braver",
     role: "FL House District 65",
     url: "https://benbraver.com",
@@ -234,6 +247,7 @@ export const candidates: Candidate[] = [
     blurb: "Tampa Bay candidate focused on housing costs, public schools and utility bills.",
   },
   {
+    slug: "rey-sordo",
     name: "Rey Sordo",
     role: "FL House District 119",
     url: "https://rey4florida.org",
@@ -246,6 +260,7 @@ export const candidates: Candidate[] = [
       "A service worker running on wage transparency, incentives for workforce housing and renter protections against abusive fees.",
   },
   {
+    slug: "johnny-austin-thompson",
     name: "Johnny Austin Thompson",
     role: "FL House District 2",
     url: "https://standwithjohnny.com",
@@ -258,6 +273,7 @@ export const candidates: Candidate[] = [
       'Pensacola campaign built on quality healthcare, good jobs and a clean Gulf Coast — "a representative working for all of us, not just the well-connected."',
   },
   {
+    slug: "jasmine-brown",
     name: "Jasmine Brown",
     role: "Mayor of Pensacola",
     url: "https://www.jasminebrownformayor.com",
@@ -269,6 +285,7 @@ export const candidates: Candidate[] = [
       'A community organizer running on "Pensacola for the people, not the developers" — working people are squeezed every month while landlords and developers get richer off the city\'s resources.',
   },
   {
+    slug: "anna-v-eskamani",
     name: "Anna V. Eskamani",
     role: "Mayor of Orlando",
     url: "https://annaforflorida.com",
@@ -287,6 +304,7 @@ export const candidates: Candidate[] = [
     ],
   },
   {
+    slug: "adam-roberti",
     name: "Adam Roberti",
     role: "Hollywood City Commission, District 5",
     url: "https://www.adamforhollywood.com",
@@ -303,4 +321,3 @@ export const candidates: Candidate[] = [
     ],
   },
 ];
-
