@@ -115,6 +115,7 @@ const Endorsements = () => {
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (suppressScrollSpy.current) return;
       const els = cardRefs.current.filter(Boolean) as HTMLElement[];
       if (!els.length) return;
 
