@@ -7,7 +7,15 @@ interface BillionaireCardsProps {
   onContinue: () => void;
 }
 
-const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
+const BillionaireCard = ({
+  b,
+  index,
+  dimmed,
+}: {
+  b: Billionaire;
+  index: number;
+  dimmed?: boolean;
+}) => {
   const isLocalBorn = b.movedFrom === "Born in FL (rare!)";
 
   return (
@@ -17,7 +25,9 @@ const BillionaireCard = ({ b, index }: { b: Billionaire; index: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
       tabIndex={0}
-      className="bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer"
+      className={`bg-card border border-border rounded-sm p-4 md:p-5 hover:border-gold/50 focus:border-gold/50 transition-colors group cursor-pointer ${
+        dimmed ? "opacity-35" : "opacity-100"
+      }`}
     >
       <div className="flex items-start justify-between mb-2 md:mb-3">
         <span className="text-4xl md:text-5xl">{b.emoji}</span>
