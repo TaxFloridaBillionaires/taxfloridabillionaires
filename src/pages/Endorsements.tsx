@@ -40,7 +40,7 @@ const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
 };
 
 const UTM = {
-  utm_source: "taxfloridabillionaires",
+  utm_source: "taxfloridabillionaries",
   utm_medium: "referral",
   utm_campaign: "endorsements",
 };
