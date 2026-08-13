@@ -10,6 +10,7 @@ import {
   HeartHandshake,
   Instagram,
   Linkedin,
+  Link2,
   Music2,
   Twitter,
   Youtube,
@@ -24,6 +25,7 @@ import {
   type SocialPlatform,
 } from "@/data/candidates";
 import { trackEvent } from "@/lib/publicSubmit";
+import { toast } from "sonner";
 
 const SOCIAL_ICONS: Record<SocialPlatform, typeof Globe> = {
   website: Globe,
@@ -42,6 +44,8 @@ const UTM = {
   utm_medium: "referral",
   utm_campaign: "endorsements",
 };
+
+const BASE_URL = "https://taxfloridabillionaires.com";
 
 /** Appends campaign tags at click time so the visible href stays clean. */
 const withUtm = (raw: string) => {
@@ -74,20 +78,44 @@ const openOutbound = (
   window.open(withUtm(raw), "_blank", "noopener,noreferrer");
 };
 
-
-
 const Endorsements = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const lastHashRef = useRef<string>("");
+  const suppressScrollSpy = useRef(false);
 
   useEffect(() => {
     trackEvent("endorsements_page_view");
+  }, []);
+
+  // Handle initial URL hash: jump to the candidate and make them active.
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+    const i = candidates.findIndex((c) => c.slug === hash);
+    if (i < 0) return;
+    setActiveIndex(i);
+    lastHashRef.current = hash;
+    // Pause the scroll spy while the smooth scroll settles so it doesn't override the active card.
+    suppressScrollSpy.current = true;
+    // Wait a tick for layout, then scroll the card into the center of view.
+    const t = setTimeout(() => {
+      cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+    const clear = setTimeout(() => {
+      suppressScrollSpy.current = false;
+    }, 550);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(clear);
+    };
   }, []);
 
   useEffect(() => {
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (suppressScrollSpy.current) return;
       const els = cardRefs.current.filter(Boolean) as HTMLElement[];
       if (!els.length) return;
 
@@ -98,7 +126,10 @@ const Endorsements = () => {
       if (atBottom) {
         const last = els[els.length - 1];
         const i = Number(last.dataset.index);
-        if (!Number.isNaN(i)) setActiveIndex(i);
+        if (!Number.isNaN(i)) {
+          setActiveIndex(i);
+          syncHash(candidates[i]?.slug);
+        }
         return;
       }
 
@@ -113,8 +144,22 @@ const Endorsements = () => {
           best = Number(el.dataset.index);
         }
       });
-      if (!Number.isNaN(best)) setActiveIndex(best);
+      if (!Number.isNaN(best)) {
+        setActiveIndex(best);
+        syncHash(candidates[best]?.slug);
+      }
     };
+
+    const syncHash = (slug?: string) => {
+      if (!slug) return;
+      if (suppressScrollSpy.current) return;
+      const next = `#${slug}`;
+      if (lastHashRef.current !== slug && window.location.hash !== next) {
+        lastHashRef.current = slug;
+        window.history.replaceState(null, "", `${window.location.pathname}${next}`);
+      }
+    };
+
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
@@ -128,24 +173,51 @@ const Endorsements = () => {
     };
   }, []);
 
-
   const active = candidates[activeIndex] ?? candidates[0];
 
   const selectCandidate = (name: string) => {
     const i = candidates.findIndex((c) => c.name === name);
     if (i < 0) return;
     setActiveIndex(i);
+    lastHashRef.current = candidates[i].slug;
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}#${candidates[i].slug}`
+    );
+    suppressScrollSpy.current = true;
     trackEvent("endorsements_map_select", { name });
     cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => {
+      suppressScrollSpy.current = false;
+    }, 500);
   };
 
+  const copyLink = (slug: string) => {
+    const url = `${BASE_URL}/endorsements#${slug}`;
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        toast.success("Link copied", {
+          description: `Share ${candidates.find((c) => c.slug === slug)?.name}'s endorsement.`,
+        });
+        trackEvent("endorsements_share_link", { slug, url });
+      })
+      .catch(() => {
+        toast.error("Could not copy link");
+      });
+  };
+
+  const canonical = active.slug
+    ? `${BASE_URL}/endorsements#${active.slug}`
+    : `${BASE_URL}/endorsements`;
 
   return (
     <div className="min-h-screen bg-background">
       <Head
         title="Endorsements — Tax Florida Billionaires"
         description="Florida candidates fighting for working-class people and taxing extreme wealth. Scroll the state and meet every endorsement."
-        canonical="https://taxfloridabillionaires.com/endorsements"
+        canonical={canonical}
         ogTitle="Endorsements — Florida Candidates Who Back Taxing Extreme Wealth"
         ogDescription="Meet every endorsed Florida candidate fighting for workers and a billionaire wealth tax, mapped across the state with websites, platforms and donation links."
         ogType="article"
@@ -201,6 +273,7 @@ const Endorsements = () => {
                   return (
                     <motion.article
                       key={c.name}
+                      id={c.slug}
                       data-index={i}
                       ref={(el) => (cardRefs.current[i] = el)}
                       initial={{ opacity: 0, y: 24 }}
@@ -237,10 +310,24 @@ const Endorsements = () => {
                         {hostLabel(c.url)} <ExternalLink className="w-3 h-3 shrink-0" />
                       </span>
 
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words pr-12 sm:pr-16">
+                          {c.name}
+                        </h3>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            copyLink(c.slug);
+                          }}
+                          aria-label={`Copy link to ${c.name}'s endorsement`}
+                          title="Copy shareable link"
+                          className="shrink-0 w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
+                        >
+                          <Link2 className="w-4 h-4" />
+                        </button>
+                      </div>
 
-                      <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words pr-36 sm:pr-40">
-                        {c.name}
-                      </h3>
                       <div className="text-gold text-xs sm:text-sm mt-2 font-mono uppercase tracking-widest break-words pr-36 sm:pr-40">
                         {c.role}
                       </div>
@@ -313,8 +400,6 @@ const Endorsements = () => {
                           );
                         })}
                       </div>
-
-
                     </motion.article>
                   );
                 })}
