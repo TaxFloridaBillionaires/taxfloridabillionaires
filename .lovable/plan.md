@@ -4,7 +4,8 @@ Generate shareable 1080x1350 endorsement graphics, one per endorsed candidate, i
 
 ## Card design
 
-Same layout language as the sample:
+Exact same look and feel as the Angie Nixon sample — same layout, proportions, colors, type treatment and star placement. Only the name, office line and photo change per candidate:
+
 
 - Dark navy/black background with the subtle wavy line texture.
 - Candidate first name huge in white, last name below in a lighter weight.
