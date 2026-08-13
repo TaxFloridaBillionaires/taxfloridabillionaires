@@ -114,11 +114,6 @@ const Endorsements = () => {
       clearTimeout(clear);
     };
   }, []);
-    return () => {
-      clearTimeout(t);
-      clearTimeout(clear);
-    };
-  }, []);
 
   useEffect(() => {
     let frame = 0;
