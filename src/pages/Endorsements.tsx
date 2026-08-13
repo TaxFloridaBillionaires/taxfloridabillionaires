@@ -344,12 +344,13 @@ const Endorsements = () => {
                         {regionLabels[c.region]}
                       </div>
                       {c.blurb && (
-                        <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
+                        <p className="text-muted-foreground text-sm mt-4 leading-relaxed line-clamp-4">
                           {c.blurb}
                         </p>
                       )}
 
-                      <div className="mt-5 flex flex-wrap items-center gap-3">
+                      <div className="mt-auto pt-5 flex flex-wrap items-center gap-3">
+
                         {c.donateUrl && (
                           <a
                             href={c.donateUrl}
