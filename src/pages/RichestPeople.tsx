@@ -112,9 +112,7 @@ const RichestPeople = ({ variant = "richest", showReasons = true }: RichestPeopl
           <strong className="text-foreground">
             ${(totalBillionaireWealth / 1000).toFixed(2)} trillion
           </strong>{" "}
-          in net worth. The {isTop26 ? "wealthiest" : "richest"} person in Florida is{" "}
-          <strong className="text-foreground">{ranked[0].name}</strong> (~$
-          {ranked[0].netWorth}B). {transplants} of these {ranked.length} billionaires moved here
+          in net worth. {transplants} of these {ranked.length} billionaires moved here
           from another state — Florida charges no income tax, no estate tax and no inheritance tax.
         </p>
 
