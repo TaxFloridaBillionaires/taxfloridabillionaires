@@ -166,6 +166,19 @@ export const candidates: Candidate[] = [
     blurb: "South Florida candidate campaigning against corporate power and for working families.",
   },
   {
+    slug: "bernard-taylor",
+    name: "Bernard Taylor",
+    role: "FL-21",
+    url: "https://bernardtaylorforcongress.com",
+    donateUrl: "https://secure.actblue.com/donate/bernard-taylor-1",
+    region: "southeast",
+    center: [-80.1, 26.7],
+    area: "Palm Beach & Treasure Coast",
+    level: "federal",
+    blurb:
+      "A fourth-generation Floridian EMT/paramedic running on affordable healthcare, housing that puts families ahead of hedge funds, and a campaign that takes no corporate, lobbyist or Super PAC money.",
+  },
+  {
     slug: "amanda-marie-green",
     name: "Amanda Marie Green",
     role: "FL-02",
