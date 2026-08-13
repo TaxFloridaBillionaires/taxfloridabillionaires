@@ -177,6 +177,7 @@ const Endorsements = () => {
       "",
       `${window.location.pathname}#${candidates[i].slug}`
     );
+    skipHashSync.current = 12;
     trackEvent("endorsements_map_select", { name });
     cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
