@@ -96,6 +96,8 @@ const Endorsements = () => {
     if (i < 0) return;
     setActiveIndex(i);
     lastHashRef.current = hash;
+    // Pause hash syncing while the smooth scroll settles so the spy doesn't override the URL.
+    skipHashSync.current = 12; // ~12 frames @ 60fps ≈ 200ms
     // Wait a tick for layout, then scroll the card into the center of view.
     const t = setTimeout(() => {
       cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
