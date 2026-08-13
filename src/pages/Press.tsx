@@ -113,15 +113,15 @@ const Press = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Head
-        title="Press — Tax Florida Billionaires Endorses 17-Candidate 2026 Slate"
-        description="Press release: Tax Florida Billionaires endorses 17 federal, state legislative and local candidates across Florida who support investing in Florida families and workers."
+        title="Press — Tax Florida Billionaires Endorses 18-Candidate 2026 Slate"
+        description="Press release: Tax Florida Billionaires endorses 18 federal, state legislative and local candidates across Florida who support investing in Florida families and workers."
         canonical="https://taxfloridabillionaires.com/press"
       />
 
       <main className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
         <p className="font-display text-sm tracking-[0.3em] text-gold sm:text-base">PRESS</p>
         <h1 className="mt-3 font-display text-4xl leading-[0.95] tracking-wide sm:text-6xl">
-          TAX FLORIDA BILLIONAIRES ENDORSES 17-CANDIDATE 2026 SLATE
+          TAX FLORIDA BILLIONAIRES ENDORSES 18-CANDIDATE 2026 SLATE
         </h1>
         <p className="mt-4 text-base text-muted-foreground sm:text-lg">
           Federal, state legislative and local candidates from Pensacola to Miami support policies
@@ -141,7 +141,7 @@ const Press = () => {
         <article className="mt-10 space-y-6 text-base leading-relaxed text-foreground/90 sm:text-lg">
           <p>
             <span className="font-bold uppercase tracking-wide">Miami, Fla.</span> — Tax Florida
-            Billionaires today announced its endorsement of 17 candidates for federal, state
+            Billionaires today announced its endorsement of 18 candidates for federal, state
             legislative and local office in the 2026 Florida elections. The slate spans the
             Panhandle, North Florida, Tampa Bay, Central Florida and South Florida, and shares one
             commitment: building an economy that invests in Florida families and expands
