@@ -17,8 +17,9 @@ const TickerBar = ({ onClick }: { onClick: () => void }) => {
       type="button"
       onClick={onClick}
       className="inline-flex items-center gap-2 bg-crimson px-4 py-2 rounded-sm mb-3 sm:mb-8 max-w-full overflow-hidden cursor-pointer hover:brightness-110 transition-all text-left"
-      aria-label="Open election endorsements panel"
+      aria-label="Breaking news ticker: View our endorsed candidates for Florida elections"
     >
+
       <span className="animate-pulse-gold text-foreground font-bold text-xs tracking-widest uppercase shrink-0">
         ⚡ Breaking
       </span>
