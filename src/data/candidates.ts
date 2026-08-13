@@ -213,6 +213,7 @@ export const candidates: Candidate[] = [
     name: "Jayden D'Onofrio",
     role: "FL House District 102",
     url: "https://jaydenforflorida.com",
+    donateUrl: "https://secure.anedot.com/jayden-dononfrio-for-state-house/web-donate",
     region: "southeast",
     center: [-80.24, 26.06],
     area: "Broward / Davie & West Broward",
