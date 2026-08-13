@@ -100,6 +100,11 @@ const slate: { group: string; items: { name: string; office: string; note: strin
         office: "Mayor of Orlando — Orange County / Orlando",
         note: "Medicaid expansion advocacy, unemployment reform, anti-eviction work, earned sick time and consistent union support.",
       },
+      {
+        name: "Adam Roberti",
+        office: "Hollywood City Commission, District 5 — Broward / Hollywood",
+        note: "Grew up in District 5 and runs on cost of living, flood-ready neighborhoods, safer streets and youth programs — a City Hall that answers to residents.",
+      },
     ],
   },
 ];
