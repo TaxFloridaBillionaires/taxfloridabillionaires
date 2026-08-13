@@ -151,10 +151,7 @@ const Endorsements = () => {
 
     const syncHash = (slug?: string) => {
       if (!slug) return;
-      if (skipHashSync.current > 0) {
-        skipHashSync.current -= 1;
-        return;
-      }
+      if (suppressScrollSpy.current) return;
       const next = `#${slug}`;
       if (lastHashRef.current !== slug && window.location.hash !== next) {
         lastHashRef.current = slug;
