@@ -169,7 +169,7 @@ const Press = () => {
           <p>
             The endorsed candidates were selected for their public platforms and records supporting
             higher wages, stronger worker rights, healthcare access, affordable housing and
-            equitable tax policy. Several — including Nicole Locklin, Brandt Robinson and Amanda
+            equitable tax policy. Several — including Angie Nixon, Oliver Larkin and Amanda
             Marie Green — have called for billionaires to pay their fair share. Others bring strong
             records of delivering results for working families.
           </p>
