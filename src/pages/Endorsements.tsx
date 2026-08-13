@@ -310,22 +310,23 @@ const Endorsements = () => {
                         {hostLabel(c.url)} <ExternalLink className="w-3 h-3 shrink-0" />
                       </span>
 
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          copyLink(c.slug);
+                        }}
+                        aria-label={`Copy link to ${c.name}'s endorsement`}
+                        title="Copy shareable link"
+                        className="absolute bottom-4 right-4 z-10 w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors bg-card"
+                      >
+                        <Link2 className="w-4 h-4" />
+                      </button>
+
                       <div className="flex items-start justify-between gap-3">
                         <h3 className="font-display text-3xl sm:text-4xl text-foreground leading-none tracking-wide break-words pr-12 sm:pr-16">
                           {c.name}
                         </h3>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            copyLink(c.slug);
-                          }}
-                          aria-label={`Copy link to ${c.name}'s endorsement`}
-                          title="Copy shareable link"
-                          className="shrink-0 w-9 h-9 grid place-items-center rounded-sm border border-border text-muted-foreground hover:text-gold hover:border-gold transition-colors"
-                        >
-                          <Link2 className="w-4 h-4" />
-                        </button>
                       </div>
 
                       <div className="text-gold text-xs sm:text-sm mt-2 font-mono uppercase tracking-widest break-words pr-36 sm:pr-40">
