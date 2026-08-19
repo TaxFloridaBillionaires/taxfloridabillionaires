@@ -108,23 +108,6 @@ export const candidates: Candidate[] = [
     socials: [{ platform: "instagram", url: "https://www.instagram.com/amgforcongress" }],
   },
   {
-    slug: "brice-barnes",
-    name: "Brice Barnes",
-    role: "FL-02",
-    url: "https://bricebarnes.com",
-    donateUrl: "https://secure.actblue.com/donate/barnes-website",
-    region: "north",
-    center: [-84.28, 30.44],
-    area: "Tallahassee / North Florida",
-    level: "federal",
-    blurb:
-      'Backed by union leaders and longtime organizers across North Florida, running on the plain fact that "life simply isn\'t working for people in North Florida."',
-    socials: [
-      { platform: "facebook", url: "https://www.facebook.com/brice.barnes.12" },
-      { platform: "instagram", url: "https://www.instagram.com/bricebarnes" },
-    ],
-  },
-  {
     slug: "gay-valimont",
     name: "Gay Valimont",
     role: "FL-01",
