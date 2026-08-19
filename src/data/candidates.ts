@@ -125,33 +125,6 @@ export const candidates: Candidate[] = [
     ],
   },
   {
-    slug: "jayden-donofrio",
-    name: "Jayden D'Onofrio",
-    role: "FL House District 102",
-    url: "https://jaydenforflorida.com",
-    donateUrl: "https://secure.anedot.com/jayden-dononfrio-for-state-house/web-donate",
-    region: "southeast",
-    center: [-80.24, 26.06],
-    area: "Broward / Davie & West Broward",
-    level: "state",
-    blurb:
-      "The sharpest union platform in this field: repeal Florida's anti-union laws, defend the voter-approved $15 minimum wage, win paid family and medical leave, expand Medicaid.",
-  },
-  {
-    slug: "antione-fields",
-    name: "Antione Fields",
-    role: "FL House District 21",
-    url: "https://fieldsforflorida.com",
-    donateUrl: "https://secure.actblue.com/donate/fieldsforflorida-web",
-    region: "northeast",
-    center: [-82.27, 29.55],
-    area: "Alachua & Marion / Gainesville & Ocala",
-    level: "state",
-    blurb:
-      'A "Good Jobs and Worker Power" agenda — raise wages, expand Medicaid toward universal healthcare, hold insurers accountable. Takes no corporate PAC or lobbyist money.',
-    socials: [{ platform: "linkedin", url: "https://www.linkedin.com/in/antione-fields" }],
-  },
-  {
     slug: "ben-braver",
     name: "Ben Braver",
     role: "FL House District 65",
