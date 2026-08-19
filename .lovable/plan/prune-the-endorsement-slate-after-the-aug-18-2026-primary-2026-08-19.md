@@ -5,6 +5,7 @@ Florida's primary was held August 18, 2026. Based on news reporting, most of the
 ## Confirmed results
 
 **Advancing to November — keep**
+
 - Angie Nixon (U.S. Senate) — won the Democratic primary, faces Ashley Moody
 - Amanda Marie Green (FL-02) — won a four-way field with ~33%
 - Gay Valimont (FL-01) — unopposed nominee, faces Jimmy Patronis
@@ -12,10 +13,12 @@ Florida's primary was held August 18, 2026. Based on news reporting, most of the
 - Johnny Austin Thompson (FL House 2) — unified Democratic nominee
 
 **Race not on the Aug 18 ballot — keep**
+
 - Anna V. Eskamani (Mayor of Orlando) — Orlando's mayoral election is Nov 2, 2027
 - Adam Roberti (Hollywood City Commission D5) — Hollywood municipal election is Nov 3, 2026
 
 **Lost — remove**
+
 - Brandt Robinson (FL-13) — lost to Leela Gray
 - Britt Robinson (FL-04) — lost to L.J. Holloway
 - Jon Harris (FL-16) — lost to Kelly Kirschner
@@ -28,8 +31,9 @@ Florida's primary was held August 18, 2026. Based on news reporting, most of the
 - Jasmine Brown (Mayor of Pensacola) — D.C. Reeves won outright with 53.45%
 
 **Unverified — resolve before removing**
-- Ben Braver (FL House 65, Hillsborough)
-- Rey Sordo (FL House 119, Miami-Dade)
+
+- Ben Braver (FL House 65, Hillsborough) (keep on list)
+- Rey Sordo (FL House 119, Miami-Dade) (keep on list)
 
 Both were on the Aug 18 ballot but no result surfaced in news coverage. First step of the build is a targeted check of the county Supervisor of Elections results for these two races. If either lost, they are removed with the rest; if either won or the result still can't be confirmed, they stay and I'll flag it.
 
