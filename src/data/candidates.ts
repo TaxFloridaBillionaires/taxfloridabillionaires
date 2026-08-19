@@ -163,19 +163,6 @@ export const candidates: Candidate[] = [
       'Pensacola campaign built on quality healthcare, good jobs and a clean Gulf Coast — "a representative working for all of us, not just the well-connected."',
   },
   {
-    slug: "jasmine-brown",
-    name: "Jasmine Brown",
-    role: "Mayor of Pensacola",
-    url: "https://www.jasminebrownformayor.com",
-    donateUrl: "https://www.paypal.com/donate/?hosted_button_id=MQMD5BAE22Z9Q",
-    region: "north",
-    center: [-87.22, 30.42],
-    area: "Escambia / Pensacola",
-    level: "local",
-    blurb:
-      'A community organizer running on "Pensacola for the people, not the developers" — working people are squeezed every month while landlords and developers get richer off the city\'s resources.',
-  },
-  {
     slug: "anna-v-eskamani",
     name: "Anna V. Eskamani",
     role: "Mayor of Orlando",
