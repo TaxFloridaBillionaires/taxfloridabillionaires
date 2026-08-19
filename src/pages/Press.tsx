@@ -16,44 +16,9 @@ const slate: { group: string; items: { name: string; office: string; note: strin
         note: "Florida AFL-CIO endorsed through the Northwest Florida Federation of Labor; campaigns to make the economy work for everyday folks, “not billionaires.”",
       },
       {
-        name: "Brice Barnes",
-        office: "U.S. House, FL-02 — Tallahassee / North Florida",
-        note: "Backed by union leaders and longtime organizers across North Florida.",
-      },
-      {
         name: "Gay Valimont",
         office: "U.S. House, FL-01 — Escambia & Santa Rosa / Pensacola",
         note: "Runs on household affordability, insurance and health costs, and a full-service VA hospital for Northwest Florida.",
-      },
-      {
-        name: "Britt Robinson",
-        office: "U.S. House, FL-04 — Jacksonville / Duval",
-        note: "Livable wages, healthcare access, and an economy that rewards work and expands opportunity for everyone.",
-      },
-      {
-        name: "Brandt Robinson",
-        office: "U.S. House, FL-13 — Pinellas / St. Petersburg & Clearwater",
-        note: "A 29-year public school teacher: “It’s not radical to say that billionaires MUST pay their fair share.”",
-      },
-      {
-        name: "Jon Harris",
-        office: "U.S. House, FL-16 — Hillsborough & Manatee",
-        note: "Affordability-first agenda: lower household bills, an expanded child tax credit, paid leave and student loan relief.",
-      },
-      {
-        name: "Elijah Manley",
-        office: "U.S. House, FL-20 — Broward / Fort Lauderdale",
-        note: "Organizer and educator running to restore the American Dream for working families.",
-      },
-      {
-        name: "Bernard Taylor",
-        office: "U.S. House, FL-21 — Palm Beach & Treasure Coast",
-        note: "A fourth-generation Floridian EMT/paramedic running on affordable healthcare and housing, and taking no corporate, lobbyist or Super PAC money.",
-      },
-      {
-        name: "Oliver Larkin",
-        office: "U.S. House, FL-25 — Broward / Palm Beach",
-        note: "Campaigning for working families and for an economy that puts community interests ahead of corporate profits.",
       },
       {
         name: "Nicole Locklin",
@@ -71,19 +36,9 @@ const slate: { group: string; items: { name: string; office: string; note: strin
         note: "Quality healthcare, good jobs and a clean Gulf Coast — “a representative working for every family in the community.”",
       },
       {
-        name: "Antione Fields",
-        office: "Florida House District 21 — Alachua & Marion / Gainesville & Ocala",
-        note: "A “Good Jobs and Worker Power” agenda; takes no corporate PAC or lobbyist money.",
-      },
-      {
         name: "Ben Braver",
         office: "Florida House District 65 — Tampa Bay / Hillsborough",
         note: "Focused on housing costs, public schools and utility bills.",
-      },
-      {
-        name: "Jayden D’Onofrio",
-        office: "Florida House District 102 — Broward / Davie & West Broward",
-        note: "Repeal Florida’s anti-union laws, defend the voter-approved $15 minimum wage, win paid family and medical leave.",
       },
       {
         name: "Rey Sordo",
@@ -95,11 +50,6 @@ const slate: { group: string; items: { name: string; office: string; note: strin
   {
     group: "Local",
     items: [
-      {
-        name: "Jasmine Brown",
-        office: "Mayor of Pensacola — Escambia / Pensacola",
-        note: "“Pensacola for working families and long-time residents” — organizing for a city economy that lifts up neighborhoods and small businesses.",
-      },
       {
         name: "Anna V. Eskamani",
         office: "Mayor of Orlando — Orange County / Orlando",
@@ -114,19 +64,20 @@ const slate: { group: string; items: { name: string; office: string; note: strin
   },
 ];
 
+
 const Press = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Head
-        title="Press — Tax Florida Billionaires Endorses 19-Candidate 2026 Slate"
-        description="Press release: Tax Florida Billionaires endorses 19 federal, state legislative and local candidates across Florida who support investing in Florida families and workers."
+        title="Press — Tax Florida Billionaires Endorses 9-Candidate General Election Slate"
+        description="Press release: after Florida's August 18 primary, Tax Florida Billionaires endorses nine federal, state legislative and local candidates who support investing in Florida families and workers."
         canonical="https://taxfloridabillionaires.com/press"
       />
 
       <main className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
         <p className="font-display text-sm tracking-[0.3em] text-gold sm:text-base">PRESS</p>
         <h1 className="mt-3 font-display text-4xl leading-[0.95] tracking-wide sm:text-6xl">
-          TAX FLORIDA BILLIONAIRES ENDORSES 19-CANDIDATE 2026 SLATE
+          TAX FLORIDA BILLIONAIRES ENDORSES 9-CANDIDATE GENERAL ELECTION SLATE
         </h1>
         <p className="mt-4 text-base text-muted-foreground sm:text-lg">
           Federal, state legislative and local candidates from Pensacola to Miami support policies
@@ -134,7 +85,7 @@ const Press = () => {
         </p>
 
         <div className="mt-8 border-y border-gold/30 py-4 text-sm uppercase tracking-widest text-muted-foreground">
-          <p>For Immediate Release — August 12, 2026</p>
+          <p>For Immediate Release — August 19, 2026</p>
           <p className="mt-1 normal-case tracking-normal">
             Contact: Robert Davis, Project Lead, Tax Florida Billionaires ·{" "}
             <a href="tel:+19549008728" className="text-gold hover:underline">
@@ -145,12 +96,12 @@ const Press = () => {
 
         <article className="mt-10 space-y-6 text-base leading-relaxed text-foreground/90 sm:text-lg">
           <p>
-            <span className="font-bold uppercase tracking-wide">Miami, Fla.</span> — Tax Florida
-            Billionaires today announced its endorsement of 19 candidates for federal, state
-            legislative and local office in the 2026 Florida elections. The slate spans the
-            Panhandle, North Florida, Tampa Bay, Central Florida and South Florida, and shares one
-            commitment: building an economy that invests in Florida families and expands
-            opportunity for workers across the state.
+            <span className="font-bold uppercase tracking-wide">Miami, Fla.</span> — Following
+            Florida’s August 18 primary, Tax Florida Billionaires today announced its endorsement of
+            nine candidates carrying forward into the fall: federal, state legislative and local
+            contenders whose races remain ahead. The slate spans the Panhandle, North Florida, Tampa
+            Bay, Central Florida and South Florida, and shares one commitment: building an economy
+            that invests in Florida families and expands opportunity for workers across the state.
           </p>
           <p>
             Florida is now home to roughly $1.40 trillion in billionaire wealth, a total that has
@@ -174,10 +125,12 @@ const Press = () => {
           <p>
             The endorsed candidates were selected for their public platforms and records supporting
             higher wages, stronger worker rights, healthcare access, affordable housing and
-            equitable tax policy. Several — including Angie Nixon, Oliver Larkin and Amanda
-            Marie Green — have called for billionaires to pay their fair share. Others bring strong
-            records of delivering results for working families.
+            equitable tax policy. Several — including Angie Nixon, Nicole Locklin and Amanda Marie
+            Green — have called for billionaires to pay their fair share. Others bring strong
+            records of delivering results for working families. Tax Florida Billionaires thanks
+            every candidate who carried this message through the primary.
           </p>
+
         </article>
 
         <section className="mt-14">
