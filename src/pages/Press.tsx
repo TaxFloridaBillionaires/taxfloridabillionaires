@@ -16,44 +16,9 @@ const slate: { group: string; items: { name: string; office: string; note: strin
         note: "Florida AFL-CIO endorsed through the Northwest Florida Federation of Labor; campaigns to make the economy work for everyday folks, “not billionaires.”",
       },
       {
-        name: "Brice Barnes",
-        office: "U.S. House, FL-02 — Tallahassee / North Florida",
-        note: "Backed by union leaders and longtime organizers across North Florida.",
-      },
-      {
         name: "Gay Valimont",
         office: "U.S. House, FL-01 — Escambia & Santa Rosa / Pensacola",
         note: "Runs on household affordability, insurance and health costs, and a full-service VA hospital for Northwest Florida.",
-      },
-      {
-        name: "Britt Robinson",
-        office: "U.S. House, FL-04 — Jacksonville / Duval",
-        note: "Livable wages, healthcare access, and an economy that rewards work and expands opportunity for everyone.",
-      },
-      {
-        name: "Brandt Robinson",
-        office: "U.S. House, FL-13 — Pinellas / St. Petersburg & Clearwater",
-        note: "A 29-year public school teacher: “It’s not radical to say that billionaires MUST pay their fair share.”",
-      },
-      {
-        name: "Jon Harris",
-        office: "U.S. House, FL-16 — Hillsborough & Manatee",
-        note: "Affordability-first agenda: lower household bills, an expanded child tax credit, paid leave and student loan relief.",
-      },
-      {
-        name: "Elijah Manley",
-        office: "U.S. House, FL-20 — Broward / Fort Lauderdale",
-        note: "Organizer and educator running to restore the American Dream for working families.",
-      },
-      {
-        name: "Bernard Taylor",
-        office: "U.S. House, FL-21 — Palm Beach & Treasure Coast",
-        note: "A fourth-generation Floridian EMT/paramedic running on affordable healthcare and housing, and taking no corporate, lobbyist or Super PAC money.",
-      },
-      {
-        name: "Oliver Larkin",
-        office: "U.S. House, FL-25 — Broward / Palm Beach",
-        note: "Campaigning for working families and for an economy that puts community interests ahead of corporate profits.",
       },
       {
         name: "Nicole Locklin",
@@ -71,19 +36,9 @@ const slate: { group: string; items: { name: string; office: string; note: strin
         note: "Quality healthcare, good jobs and a clean Gulf Coast — “a representative working for every family in the community.”",
       },
       {
-        name: "Antione Fields",
-        office: "Florida House District 21 — Alachua & Marion / Gainesville & Ocala",
-        note: "A “Good Jobs and Worker Power” agenda; takes no corporate PAC or lobbyist money.",
-      },
-      {
         name: "Ben Braver",
         office: "Florida House District 65 — Tampa Bay / Hillsborough",
         note: "Focused on housing costs, public schools and utility bills.",
-      },
-      {
-        name: "Jayden D’Onofrio",
-        office: "Florida House District 102 — Broward / Davie & West Broward",
-        note: "Repeal Florida’s anti-union laws, defend the voter-approved $15 minimum wage, win paid family and medical leave.",
       },
       {
         name: "Rey Sordo",
@@ -95,11 +50,6 @@ const slate: { group: string; items: { name: string; office: string; note: strin
   {
     group: "Local",
     items: [
-      {
-        name: "Jasmine Brown",
-        office: "Mayor of Pensacola — Escambia / Pensacola",
-        note: "“Pensacola for working families and long-time residents” — organizing for a city economy that lifts up neighborhoods and small businesses.",
-      },
       {
         name: "Anna V. Eskamani",
         office: "Mayor of Orlando — Orange County / Orlando",
@@ -113,6 +63,7 @@ const slate: { group: string; items: { name: string; office: string; note: strin
     ],
   },
 ];
+
 
 const Press = () => {
   return (
