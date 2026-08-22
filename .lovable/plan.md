@@ -3,6 +3,9 @@
 ## Important constraint
 Lovable Git sync can only **create a new repository** on first connect. It cannot be pointed directly at the existing `TaxFloridaBillionaires` repo. This plan uses a two-step workaround: let Lovable create a fresh synced repo, then force-push that code into `github.com/TaxFloridaBillionaires` on the target branch.
 
+## Domain goal
+Keep `taxfloridabillionaires.com` registered at Namecheap, but point its DNS at GitHub Pages instead of Lovable hosting.
+
 ---
 
 ## Pre-migration checks
@@ -60,6 +63,37 @@ git push target main --force
 4. Click **Save**.
 5. Wait 1–5 minutes, then visit the GitHub Pages URL shown in the Pages settings.
 6. Confirm the site loads. If routes return 404 on refresh, the React Router `BrowserRouter` may need to be switched to `HashRouter` for static GitHub Pages hosting, or a `404.html` redirect trick can be added.
+
+---
+
+## Point the Namecheap domain at GitHub Pages
+
+### In GitHub
+1. In the `TaxFloridaBillionaires` repo, go to **Settings → Pages**.
+2. Under **Custom domain**, enter `taxfloridabillionaires.com` and click **Save**.
+3. GitHub will create a `CNAME` file in the repo root with the domain name. Do not delete this file.
+4. Wait for the DNS check in GitHub Pages to show a green checkmark (can take minutes to hours).
+
+### In Namecheap DNS settings
+1. Log in to Namecheap and open **Domain List → Manage** for `taxfloridabillionaires.com`.
+2. Go to the **Advanced DNS** tab.
+3. Remove the existing Lovable records:
+   - A record `@` → `185.158.133.1`
+   - A record `www` → `185.158.133.1`
+   - TXT record `_lovable` → any `lovable_verify=...` value
+4. Add GitHub Pages A records for the apex (`@`):
+   - Type: A Record | Host: @ | Value: `185.199.108.153`
+   - Type: A Record | Host: @ | Value: `185.199.109.153`
+   - Type: A Record | Host: @ | Value: `185.199.110.153`
+   - Type: A Record | Host: @ | Value: `185.199.111.153`
+5. Add the `www` CNAME record:
+   - Type: CNAME Record | Host: www | Value: `TaxFloridaBillionaires.github.io`
+6. Save changes and wait for DNS propagation (up to 24–48 hours, often much faster).
+
+### Verification
+- Visit `https://taxfloridabillionaires.com` and confirm it loads the GitHub Pages site.
+- Check `https://TaxFloridaBillionaires.github.io` — it should redirect to the custom domain once the CNAME file is committed.
+- Use a tool like `dig taxfloridabillionaires.com` or an online DNS checker to confirm the A records point to the four GitHub IPs.
 
 ---
 
