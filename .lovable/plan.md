@@ -3,6 +3,9 @@
 ## Important constraint
 Lovable Git sync can only **create a new repository** on first connect. It cannot be pointed directly at the existing `TaxFloridaBillionaires` repo. This plan uses a two-step workaround: let Lovable create a fresh synced repo, then force-push that code into `github.com/TaxFloridaBillionaires` on the target branch.
 
+## Domain goal
+Keep `taxfloridabillionaires.com` registered at Namecheap, but point its DNS at GitHub Pages instead of Lovable hosting.
+
 ---
 
 ## Pre-migration checks
