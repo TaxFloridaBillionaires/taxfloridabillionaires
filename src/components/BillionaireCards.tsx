@@ -90,10 +90,7 @@ export const BillionaireCards = ({ onContinue }: BillionaireCardsProps) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         {shown.map((b, i) => (
-          <div
-            key={b.name}
-            className={i >= cols * 2 ? "opacity-60 hover:opacity-100 focus-within:opacity-100 transition-opacity" : ""}
-          >
+          <div key={b.name}>
             <BillionaireCard b={b} index={i % cols} />
           </div>
         ))}
