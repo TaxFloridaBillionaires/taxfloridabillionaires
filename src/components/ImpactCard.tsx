@@ -192,11 +192,6 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
                           <p className="text-muted-foreground text-sm leading-tight">
                             {pluralize(label, total)}
                           </p>
-                          {multiplier > 1 && (
-                            <p className="text-muted-foreground/60 text-xs leading-tight mt-0.5">
-                              {qty.toLocaleString()} × {item.unit}
-                            </p>
-                          )}
                         </>
                       );
                     })()}
