@@ -36,10 +36,11 @@ export const billionaires: Billionaire[] = [
   { name: "Stephen Bisciotti", netWorth: 8.5, source: "Staffing / Ravens", industry: "Sports", city: "Hobe Sound", movedFrom: "Maryland", movedYear: "Unknown", whyMoved: "Established FL residence", emoji: "🏈" },
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
+  { name: "Carl Icahn", netWorth: 3.8, source: "Icahn Enterprises", industry: "Finance", city: "Sunny Isles Beach", movedFrom: "New York, NY", movedYear: "2020", whyMoved: "Moved himself and his firm from Manhattan to Florida; reported as a tax-driven relocation", emoji: "🦈" },
   { name: "Howard Schultz", netWorth: 3.5, source: "Starbucks", industry: "Food & Beverage", city: "Surfside", movedFrom: "Seattle, WA", movedYear: "2026", whyMoved: "Bought $44M penthouse; said he's 'enjoying the sunshine of South Florida'", emoji: "☕" },
 ];
 
-export const totalBillionaireWealth = 1399; // in billions, updated with Page, Brin, Schultz
+export const totalBillionaireWealth = 1403; // in billions, updated with Page, Brin, Schultz, Icahn
 
 // Breaking news headlines
 export const breakingHeadlines = [
@@ -98,6 +99,18 @@ export const spendingItems: SpendingItem[] = [
   // Housing
   { id: "affordable_housing", name: "Affordable Housing Units", description: "Build 10 affordable housing units", costPerUnit: 2.5, unit: "10 units", category: "housing", emoji: "🏘️" },
   { id: "homelessness_program", name: "Homelessness Prevention", description: "Fund rapid rehousing for 200 individuals", costPerUnit: 1.5, unit: "200 people", category: "housing", emoji: "🏠" },
+
+  // Added options
+  { id: "school_meals", name: "Free School Breakfast & Lunch", description: "Feed 1,000 students two meals a day for a full school year", costPerUnit: 0.9, unit: "1,000 students", category: "education", emoji: "🍎", realWorldContext: "Florida districts raised lunch prices again in 2026 as food costs climbed" },
+  { id: "summer_food", name: "Summer Food Benefits", description: "Give 10,000 kids $120 in summer grocery benefits", costPerUnit: 1.2, unit: "10,000 kids", category: "education", emoji: "🥪", realWorldContext: "Florida opted out of the federal SUN Bucks summer grocery program" },
+  { id: "college_tuition", name: "Full College Tuition", description: "Cover a year of in-state tuition and fees for one student (~$6,400)", costPerUnit: 0.0064, unit: "student", category: "education", emoji: "🎓", realWorldContext: "Florida has the lowest average in-state tuition in the country — and still leaves students in debt" },
+  { id: "afterschool_site", name: "After-School Program Site", description: "Run an after-school and summer program at one school for a year", costPerUnit: 0.3, unit: "site", category: "education", emoji: "📚" },
+  { id: "mobile_crisis_team", name: "Mobile Mental Health Crisis Team", description: "Fund a 24/7 mobile crisis response team for one year", costPerUnit: 1, unit: "team", category: "healthcare", emoji: "🚐" },
+  { id: "school_nurse", name: "School Nurses", description: "Put a full-time nurse in a public school for a year (~$60K)", costPerUnit: 0.06, unit: "nurse", category: "healthcare", emoji: "🩺" },
+  { id: "home_hardening", name: "Home Hardening Grants", description: "Storm-proof 100 homes with $10,000 wind-mitigation grants", costPerUnit: 1, unit: "100 homes", category: "housing", emoji: "🔨", realWorldContext: "My Safe Florida Home grants max out at $10,000 and run out of funding every year" },
+  { id: "shelter_retrofit", name: "Hurricane Shelter Upgrades", description: "Retrofit a public school to serve as a certified storm shelter", costPerUnit: 2, unit: "school", category: "infrastructure", emoji: "🌀" },
+  { id: "everglades_restoration", name: "Everglades & Water Quality", description: "Fund a wetland restoration or stormwater treatment project", costPerUnit: 50, unit: "project", category: "infrastructure", emoji: "🐊" },
+  { id: "electric_school_bus", name: "Electric School Buses", description: "Replace a diesel bus with an air-conditioned electric one", costPerUnit: 0.375, unit: "bus", category: "infrastructure", emoji: "🚍" },
 ];
 
 export const categoryLabels: Record<string, { label: string; color: string }> = {
