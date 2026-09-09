@@ -28,7 +28,7 @@ const parseUnit = (unit: string): { multiplier: number; label: string } => {
 
 const pluralize = (label: string, total: number): string => {
   if (total === 1) return label;
-  if (label === "person") return "people";
+  if (label === "person" || label === "people") return "people";
   if (label === "facility") return "facilities";
   if (label === "municipality") return "municipalities";
   if (label === "county") return "counties";
