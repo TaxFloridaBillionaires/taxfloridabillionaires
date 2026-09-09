@@ -111,7 +111,7 @@ export const spendingItems: SpendingItem[] = [
   { id: "school_counselor", name: "School Counselors", description: "Hire a school counselor for one year", costPerUnit: 0.075, unit: "counselor", category: "education", emoji: "🧠" },
 
   // Healthcare / Medicaid
-  { id: "medicaid_gap", name: "Fill Medicaid Gap", description: "Cover the $3B hole Medicaid cuts would create in FL's economy", costPerUnit: 3000, unit: "full gap", category: "healthcare", emoji: "🏥", realWorldContext: "Proposed cuts could trigger 33,000 layoffs and a $3B economic downturn per Commonwealth Fund" },
+  { id: "medicaid_gap", name: "Fill Medicaid Gap", description: "Cover the $3B hole Medicaid cuts would create in FL's economy", costPerUnit: 3000, unit: "Medicaid funding gap", category: "healthcare", emoji: "🏥", realWorldContext: "Proposed cuts could trigger 33,000 layoffs and a $3B economic downturn per Commonwealth Fund" },
   { id: "medicaid_enrollee", name: "Medicaid Coverage", description: "Cover one Medicaid enrollee for a year (~$8,400 avg)", costPerUnit: 0.0084, unit: "person", category: "healthcare", emoji: "💉" },
   { id: "community_health_center", name: "Community Health Center", description: "Build and operate a community health center for one year", costPerUnit: 5, unit: "center", category: "healthcare", emoji: "🏨" },
   { id: "nursing_home_staff", name: "Nursing Home Staff", description: "Fund proper staffing at one nursing home for a year", costPerUnit: 2, unit: "facility", category: "healthcare", emoji: "🧑‍⚕️" },
