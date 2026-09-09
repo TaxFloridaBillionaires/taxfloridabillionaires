@@ -35,6 +35,8 @@ const pluralize = (label: string, total: number): string => {
   if (label === "full gap") return "full gaps";
   if (label === "job saved") return "jobs saved";
   if (label === "bus") return "buses";
+  if (label === "Medicaid gap funded") return "Medicaid gaps funded";
+  if (label === "tax revenue gap filled") return "tax revenue gaps filled";
   if (label.endsWith("s") || label.endsWith("d")) return label;
   return label + "s";
 };
