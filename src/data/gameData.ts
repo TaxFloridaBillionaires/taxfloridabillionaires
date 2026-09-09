@@ -111,7 +111,7 @@ export const spendingItems: SpendingItem[] = [
   { id: "school_counselor", name: "School Counselors", description: "Hire a school counselor for one year", costPerUnit: 0.075, unit: "counselor", category: "education", emoji: "🧠" },
 
   // Healthcare / Medicaid
-  { id: "medicaid_gap", name: "Fill Medicaid Gap", description: "Cover the $3B hole Medicaid cuts would create in FL's economy", costPerUnit: 3000, unit: "Medicaid funding gap", category: "healthcare", emoji: "🏥", realWorldContext: "Proposed cuts could trigger 33,000 layoffs and a $3B economic downturn per Commonwealth Fund" },
+  { id: "medicaid_gap", name: "Fill Medicaid Gap", description: "Cover the $3B hole Medicaid cuts would create in FL's economy", costPerUnit: 3000, unit: "Medicaid gap funded", category: "healthcare", emoji: "🏥", realWorldContext: "Proposed cuts could trigger 33,000 layoffs and a $3B economic downturn per Commonwealth Fund" },
   { id: "medicaid_enrollee", name: "Medicaid Coverage", description: "Cover one Medicaid enrollee for a year (~$8,400 avg)", costPerUnit: 0.0084, unit: "person", category: "healthcare", emoji: "💉" },
   { id: "community_health_center", name: "Community Health Center", description: "Build and operate a community health center for one year", costPerUnit: 5, unit: "center", category: "healthcare", emoji: "🏨" },
   { id: "nursing_home_staff", name: "Nursing Home Staff", description: "Fund proper staffing at one nursing home for a year", costPerUnit: 2, unit: "facility", category: "healthcare", emoji: "🧑‍⚕️" },
@@ -121,7 +121,7 @@ export const spendingItems: SpendingItem[] = [
   { id: "save_teacher_jobs", name: "Save Public School Teachers", description: "Fund a public school teacher position for one year (~$55K)", costPerUnit: 0.055, unit: "teacher", category: "jobs", emoji: "🧑‍🏫" },
   { id: "first_responder_retention", name: "First Responder Retention", description: "Keep a firefighter or EMT from leaving due to low pay (~$60K/yr)", costPerUnit: 0.06, unit: "first responder", category: "jobs", emoji: "👮" },
   { id: "park_rangers", name: "State Park Rangers", description: "Fund a state park ranger position for one year (~$45K)", costPerUnit: 0.045, unit: "ranger", category: "jobs", emoji: "🌴" },
-  { id: "local_tax_gap", name: "Fill Local Tax Revenue Gap", description: "Replace the $177M in local tax revenue jeopardized by cuts", costPerUnit: 177, unit: "local tax revenue gap", category: "infrastructure", emoji: "🏛️", realWorldContext: "$177M in FL local tax revenue at risk per Commonwealth Fund study" },
+  { id: "local_tax_gap", name: "Fill Local Tax Revenue Gap", description: "Replace the $177M in local tax revenue jeopardized by cuts", costPerUnit: 177, unit: "tax revenue gap filled", category: "infrastructure", emoji: "🏛️", realWorldContext: "$177M in FL local tax revenue at risk per Commonwealth Fund study" },
   { id: "public_transit", name: "Public Transit Expansion", description: "Fund a new bus or rail route for a metro area", costPerUnit: 50, unit: "route", category: "infrastructure", emoji: "🚌" },
   { id: "flood_resilience", name: "Flood & Hurricane Resilience", description: "Build seawalls, drainage, and storm hardening projects", costPerUnit: 25, unit: "project", category: "infrastructure", emoji: "🌊" },
   { id: "rural_broadband", name: "Rural Broadband", description: "Bring high-speed internet to an underserved FL county", costPerUnit: 10, unit: "county", category: "infrastructure", emoji: "📶" },
