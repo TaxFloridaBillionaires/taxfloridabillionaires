@@ -36,11 +36,44 @@ export const billionaires: Billionaire[] = [
   { name: "Stephen Bisciotti", netWorth: 8.5, source: "Staffing / Ravens", industry: "Sports", city: "Hobe Sound", movedFrom: "Maryland", movedYear: "Unknown", whyMoved: "Established FL residence", emoji: "🏈" },
   { name: "Paul Tudor Jones II", netWorth: 8.1, source: "Hedge funds", industry: "Finance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Tax-advantaged relocation", emoji: "📊" },
   { name: "Igor Olenicoff", netWorth: 8.0, source: "Real estate", industry: "Real Estate", city: "Lighthouse Point", movedFrom: "California", movedYear: "Unknown", whyMoved: "Real estate investments in FL", emoji: "🏢" },
-  { name: "Carl Icahn", netWorth: 3.8, source: "Icahn Enterprises", industry: "Finance", city: "Sunny Isles Beach", movedFrom: "New York, NY", movedYear: "2020", whyMoved: "Moved himself and his firm from Manhattan to Florida; reported as a tax-driven relocation", emoji: "🦈" },
+  { name: "Michael Saylor", netWorth: 8.8, source: "MicroStrategy / Bitcoin", industry: "Technology", city: "Miami Beach", movedFrom: "Virginia", movedYear: "2012", whyMoved: "Publicly said moving to Florida saved him millions in state income tax", emoji: "₿" },
+  { name: "Sami Mnaymneh", netWorth: 7.8, source: "H.I.G. Capital", industry: "Private Equity", city: "Miami", movedFrom: "New York, NY", movedYear: "1993", whyMoved: "Co-founded H.I.G. Capital in Miami", emoji: "💼" },
+  { name: "Leonid Radvinsky", netWorth: 7.8, source: "OnlyFans", industry: "Technology", city: "Bal Harbour", movedFrom: "Chicago, IL", movedYear: "~2018", whyMoved: "Relocated to South Florida", emoji: "💻" },
+  { name: "Donald Trump", netWorth: 7.3, source: "Real estate / media", industry: "Real Estate", city: "Palm Beach", movedFrom: "New York, NY", movedYear: "2019", whyMoved: "Changed his official residence to Mar-a-Lago, citing New York taxes", emoji: "🏛️" },
+  { name: "James Clark", netWorth: 7.2, source: "Netscape, investments", industry: "Technology", city: "Palm Beach", movedFrom: "California", movedYear: "Unknown", whyMoved: "Made Palm Beach his base", emoji: "🌐" },
+  { name: "Dirk Ziff", netWorth: 7.2, source: "Ziff Brothers Investments", industry: "Finance", city: "Palm Beach", movedFrom: "New York, NY", movedYear: "Unknown", whyMoved: "Family investment office relocated south", emoji: "📚" },
+  { name: "Tom Golisano", netWorth: 6.5, source: "Paychex", industry: "Finance", city: "Naples", movedFrom: "Rochester, NY", movedYear: "2009", whyMoved: "Said the move saved him about $5M a year in New York taxes", emoji: "🧾" },
+  { name: "Robert Rich Jr.", netWorth: 6.5, source: "Rich Products", industry: "Food & Beverage", city: "Islamorada", movedFrom: "Buffalo, NY", movedYear: "Unknown", whyMoved: "Made Florida his primary residence", emoji: "🍦" },
+  { name: "William Berkley & family", netWorth: 6.2, source: "W.R. Berkley insurance", industry: "Insurance", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Established Florida residence", emoji: "🛡️" },
+  { name: "Reinhold Schmieding", netWorth: 6.0, source: "Arthrex", industry: "Healthcare", city: "Naples", movedFrom: "Michigan", movedYear: "1991", whyMoved: "Moved Arthrex headquarters to Naples", emoji: "🦴" },
+  { name: "Ronald Wanek", netWorth: 6.0, source: "Ashley Furniture", industry: "Retail", city: "Arcadia", movedFrom: "Wisconsin", movedYear: "Unknown", whyMoved: "Winters and residence moved to Florida", emoji: "🛋️" },
+  { name: "Rakesh Gangwal", netWorth: 5.9, source: "IndiGo airline", industry: "Airlines", city: "Miami", movedFrom: "North Carolina", movedYear: "Unknown", whyMoved: "Relocated to South Florida", emoji: "✈️" },
+  { name: "John Henry", netWorth: 5.7, source: "Red Sox, Liverpool FC", industry: "Sports", city: "Boca Raton", movedFrom: "Illinois", movedYear: "Unknown", whyMoved: "Long-time Florida resident", emoji: "⚾" },
+  { name: "Charles B. Johnson", netWorth: 5.6, source: "Franklin Templeton", industry: "Finance", city: "Palm Beach", movedFrom: "San Mateo, CA", movedYear: "Unknown", whyMoved: "Moved primary residence to Palm Beach", emoji: "📈" },
+  { name: "Jeff Skoll", netWorth: 5.4, source: "eBay", industry: "Technology", city: "Miami Beach", movedFrom: "California", movedYear: "~2021", whyMoved: "Bought Miami Beach property and shifted residence", emoji: "🛒" },
+  { name: "Russell Savage", netWorth: 5.4, source: "Celsius energy drinks", industry: "Food & Beverage", city: "Boca Raton", movedFrom: "Florida-based", movedYear: "N/A", whyMoved: "Built the business in Florida", emoji: "🥤" },
+  { name: "Isaac Perlmutter", netWorth: 5.2, source: "Marvel Entertainment", industry: "Media", city: "Palm Beach", movedFrom: "New York, NY", movedYear: "Unknown", whyMoved: "Long-time Palm Beach resident", emoji: "🦸" },
+  { name: "Scott Kapnick", netWorth: 5.0, source: "HPS Investment Partners", industry: "Private Equity", city: "Palm Beach", movedFrom: "New York, NY", movedYear: "Unknown", whyMoved: "Established Florida residence", emoji: "💼" },
+  { name: "Peter Cancro", netWorth: 4.9, source: "Jersey Mike's Subs", industry: "Food & Beverage", city: "Manalapan", movedFrom: "New Jersey", movedYear: "Unknown", whyMoved: "Bought Florida estate and shifted residence", emoji: "🥪" },
+  { name: "Carl Icahn", netWorth: 4.6, source: "Icahn Enterprises", industry: "Finance", city: "Sunny Isles Beach", movedFrom: "New York, NY", movedYear: "2020", whyMoved: "Moved himself and his firm from Manhattan to Florida; reported as a tax-driven relocation", emoji: "🦈" },
+  { name: "Richard Schulze", netWorth: 4.4, source: "Best Buy", industry: "Retail", city: "Naples", movedFrom: "Minnesota", movedYear: "Unknown", whyMoved: "Made Naples his primary home", emoji: "🔌" },
+  { name: "Rajiv Jain", netWorth: 4.2, source: "GQG Partners", industry: "Finance", city: "Fort Lauderdale", movedFrom: "Chicago, IL", movedYear: "2016", whyMoved: "Founded GQG Partners in Fort Lauderdale", emoji: "📊" },
+  { name: "Daniel Och", netWorth: 4.2, source: "Och-Ziff / Sculptor", industry: "Finance", city: "Miami Beach", movedFrom: "New York, NY", movedYear: "~2021", whyMoved: "Relocated to Miami Beach", emoji: "🏦" },
+  { name: "Nick Caporella", netWorth: 4.1, source: "National Beverage (LaCroix)", industry: "Food & Beverage", city: "Fort Lauderdale", movedFrom: "Florida-based", movedYear: "N/A", whyMoved: "Built National Beverage in Florida", emoji: "🥫" },
+  { name: "Todd Christopher", netWorth: 4.1, source: "Vogue International hair care", industry: "Consumer Goods", city: "Clearwater", movedFrom: "Florida-based", movedYear: "N/A", whyMoved: "Built the company in Clearwater", emoji: "💇" },
+  { name: "C. Dean Metropoulos", netWorth: 4.1, source: "Investments (Hostess, Pabst)", industry: "Food & Beverage", city: "Palm Beach", movedFrom: "Connecticut", movedYear: "Unknown", whyMoved: "Made Palm Beach his base", emoji: "🧁" },
+  { name: "Steve Wynn", netWorth: 3.9, source: "Casinos, hotels", industry: "Hospitality", city: "Palm Beach", movedFrom: "Las Vegas, NV", movedYear: "2019", whyMoved: "Moved to Florida after leaving Wynn Resorts", emoji: "🎰" },
+  { name: "Edward DeBartolo Jr.", netWorth: 3.8, source: "Shopping centers, 49ers", industry: "Real Estate", city: "Tampa", movedFrom: "Youngstown, OH", movedYear: "Unknown", whyMoved: "Long-time Tampa resident", emoji: "🛍️" },
+  { name: "Robert Wood Johnson & family", netWorth: 3.8, source: "Johnson & Johnson, NY Jets", industry: "Healthcare/Sports", city: "Palm Beach", movedFrom: "New York, NY", movedYear: "Unknown", whyMoved: "Family residence in Palm Beach", emoji: "🏈" },
+  { name: "Michael Jordan", netWorth: 3.8, source: "Endorsements, Hornets stake", industry: "Sports", city: "Jupiter", movedFrom: "Chicago, IL", movedYear: "~2013", whyMoved: "Built Jupiter estate and became a Florida resident", emoji: "🏀" },
+  { name: "Herbert Wertheim", netWorth: 3.8, source: "Investments, optometry", industry: "Finance", city: "Coral Gables", movedFrom: "Florida-based", movedYear: "N/A", whyMoved: "Native Floridian investor and philanthropist", emoji: "👓" },
   { name: "Howard Schultz", netWorth: 3.5, source: "Starbucks", industry: "Food & Beverage", city: "Surfside", movedFrom: "Seattle, WA", movedYear: "2026", whyMoved: "Bought $44M penthouse; said he's 'enjoying the sunshine of South Florida'", emoji: "☕" },
 ];
 
-export const totalBillionaireWealth = 1403; // in billions, updated with Page, Brin, Schultz, Icahn
+export const totalBillionaireWealth = Math.round(
+  billionaires.reduce((sum, b) => sum + b.netWorth, 0)
+); // in billions, from Forbes 400 Florida residents
+
 
 // Breaking news headlines
 export const breakingHeadlines = [
