@@ -18,10 +18,10 @@ const formatMoney = (millions: number): string => {
   return `$${(millions * 1000).toFixed(0)}K`;
 };
 
-// Parse units like "100 families" → { multiplier: 100, label: "families" }
+// Parse units like "1,000 students" → { multiplier: 1000, label: "students" }
 // and "person" → { multiplier: 1, label: "person" }
 const parseUnit = (unit: string): { multiplier: number; label: string } => {
-  const match = unit.match(/^(\d+)\s+(.+)$/);
+  const match = unit.replace(/,/g, "").match(/^(\d+)\s+(.+)$/);
   if (match) return { multiplier: parseInt(match[1], 10), label: match[2] };
   return { multiplier: 1, label: unit };
 };
@@ -34,6 +34,7 @@ const pluralize = (label: string, total: number): string => {
   if (label === "county") return "counties";
   if (label === "full gap") return "full gaps";
   if (label === "job saved") return "jobs saved";
+  if (label === "bus") return "buses";
   if (label.endsWith("s") || label.endsWith("d")) return label;
   return label + "s";
 };
@@ -191,6 +192,11 @@ export const ImpactCard = ({ purchases, taxRate, spent, totalBudget }: ImpactCar
                           <p className="text-muted-foreground text-sm leading-tight">
                             {pluralize(label, total)}
                           </p>
+                          {multiplier > 1 && (
+                            <p className="text-muted-foreground/60 text-xs leading-tight mt-0.5">
+                              {qty.toLocaleString()} × {item.unit}
+                            </p>
+                          )}
                         </>
                       );
                     })()}
