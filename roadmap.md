@@ -1,6 +1,8 @@
 # Deployment repair
 
 - [x] Validate the locked dependency installation used by GitHub Pages.
-- [ ] Verify the corrected workflow reaches GitHub and completes successfully (requires GitHub access or repository sync).
+- [x] Verify the corrected workflow reaches GitHub and completes successfully.
 - [x] Provide Namecheap website record changes while preserving existing email and verification records.
-- [ ] Confirm taxfloridabillionaires.com as GitHub Pages custom domain and enable HTTPS when available.
+- [x] Confirm taxfloridabillionaires.com as GitHub Pages custom domain; HTTP serves the built app from GitHub.
+- [ ] Enable HTTPS when available — blocked by GitHub certificate provisioning (API reports certificate does not exist yet).
+- [ ] Add the www CNAME at Namecheap — requires the user's DNS update; no public www CNAME was found.
