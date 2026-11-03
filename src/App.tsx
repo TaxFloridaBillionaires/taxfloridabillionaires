@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { NavPanel, NavTrigger } from "@/components/NavPanel";
+import { trackPageView } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Endorsements from "./pages/Endorsements";
