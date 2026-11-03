@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
   useEffect(() => {
+    trackPageView(pathname + hash);
     if (hash) return; // let deep links (#candidate-slug) control scroll position
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname, hash]);
