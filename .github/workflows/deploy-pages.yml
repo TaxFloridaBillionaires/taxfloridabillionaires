@@ -25,6 +25,8 @@ jobs:
       - name: Install locked dependencies
         run: bun install --frozen-lockfile
       - run: bun run build
+        env:
+          VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY: ${{ secrets.GOOGLE_ANALYTICS_MEASUREMENT_ID }}
       - name: Add SPA fallback
         run: cp dist/index.html dist/404.html
       - name: Preserve custom domain
