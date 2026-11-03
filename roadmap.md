@@ -1,7 +1,7 @@
 # Deployment repair
 
 - [x] Correct Google Analytics command format; Google accepted initial and navigated page views with HTTP 204 in browser verification, and three regression tests passed.
-- [ ] Verify the corrected tracking reaches the GitHub-hosted site — awaiting automatic code sync and GitHub deployment after this edit.
+- [x] Verify the corrected tracking reaches the GitHub-hosted site — live browser visits to the homepage and Endorsements sent page_view requests accepted by Google with HTTP 204 on Nov 3, 2026.
 
 - [x] Validate the locked dependency installation used by GitHub Pages.
 - [x] Verify the corrected workflow reaches GitHub and completes successfully.
