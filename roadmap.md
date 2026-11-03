@@ -1,7 +1,7 @@
 # Deployment repair
 
-- [ ] Correct Google Analytics command format and verify initial and navigated page views are sent.
-- [ ] Verify the corrected tracking reaches the GitHub-hosted site.
+- [x] Correct Google Analytics command format; Google accepted initial and navigated page views with HTTP 204 in browser verification, and three regression tests passed.
+- [ ] Verify the corrected tracking reaches the GitHub-hosted site — awaiting automatic code sync and GitHub deployment after this edit.
 
 - [x] Validate the locked dependency installation used by GitHub Pages.
 - [x] Verify the corrected workflow reaches GitHub and completes successfully.
