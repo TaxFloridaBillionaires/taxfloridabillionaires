@@ -3,13 +3,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { NavPanel, NavTrigger } from "@/components/NavPanel";
 import { trackPageView } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
-import Endorsements from "./pages/Endorsements";
-import Press from "./pages/Press";
 import RichestPeople from "./pages/RichestPeople";
 import NotFound from "./pages/NotFound";
 
@@ -41,8 +39,8 @@ const App = () => {
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/endorsements" element={<Endorsements />} />
-            <Route path="/press" element={<Press />} />
+            <Route path="/endorsements" element={<Navigate to="/" replace />} />
+            <Route path="/press" element={<Navigate to="/" replace />} />
             <Route path="/richest-person-in-florida" element={<RichestPeople />} />
             <Route path="/billionaires-list" element={<RichestPeople variant="top26" showReasons={false} />} />
             <Route path="/admin" element={<Admin />} />

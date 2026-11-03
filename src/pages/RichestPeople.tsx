@@ -260,11 +260,7 @@ const RichestPeople = ({ variant = "richest", showReasons = true }: RichestPeopl
         </dl>
         <p className="text-sm text-muted-foreground mt-10">
           Net worth figures are approximate and compiled from public billionaire trackers; they
-          fluctuate with markets. See also our{" "}
-          <Link to="/endorsements" className="text-gold underline underline-offset-4">
-            endorsed pro-worker candidates
-          </Link>
-          .
+          fluctuate with markets.
         </p>
       </section>
     </main>

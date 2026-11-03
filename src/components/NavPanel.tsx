@@ -6,9 +6,7 @@ import { trackEvent } from "@/lib/publicSubmit";
 
 const navItems = [
   { title: "Home", url: "/", exact: true },
-  { title: "Endorsements", url: "/endorsements" },
   { title: "Richest People in Florida", url: "/richest-person-in-florida" },
-  { title: "Press", url: "/press" },
 ];
 
 interface NavPanelProps {
@@ -65,18 +63,6 @@ const PanelContent = ({ onClose }: { onClose: () => void }) => {
         </ul>
       </nav>
 
-      <div className="pt-8 border-t border-background/20">
-        <p className="text-background/60 text-xs uppercase tracking-widest font-bold mb-3">
-          Take Action
-        </p>
-        <NavLink
-          to="/endorsements"
-          onClick={() => handleClick("Take Action", "/endorsements")}
-          className="inline-flex items-center gap-2 border-2 border-background text-background font-display text-lg tracking-wider px-5 py-2.5 rounded-sm hover:bg-background hover:text-gold transition-colors"
-        >
-          VOTE 2026 →
-        </NavLink>
-      </div>
     </div>
   );
 };

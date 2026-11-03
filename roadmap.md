@@ -1,5 +1,7 @@
 # Deployment repair
 
+- [x] Remove Press and Endorsements pages, links, and scrolling banner; verified both old addresses return Home and their menu links are absent.
+
 - [x] Correct Google Analytics command format; Google accepted initial and navigated page views with HTTP 204 in browser verification, and three regression tests passed.
 - [x] Verify the corrected tracking reaches the GitHub-hosted site — live browser visits to the homepage and Endorsements sent page_view requests accepted by Google with HTTP 204 on Nov 3, 2026.
 
