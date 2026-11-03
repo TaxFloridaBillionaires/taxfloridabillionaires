@@ -1,5 +1,8 @@
 # Deployment repair
 
+- [ ] Correct Google Analytics command format and verify initial and navigated page views are sent.
+- [ ] Verify the corrected tracking reaches the GitHub-hosted site.
+
 - [x] Validate the locked dependency installation used by GitHub Pages.
 - [x] Verify the corrected workflow reaches GitHub and completes successfully.
 - [x] Provide Namecheap website record changes while preserving existing email and verification records.

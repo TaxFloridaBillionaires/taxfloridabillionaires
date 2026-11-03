@@ -19,17 +19,21 @@ export function initAnalytics() {
   if (initialized || !measurementId) return;
   initialized = true;
 
+  const dataLayer = window.dataLayer || [];
+  window.dataLayer = dataLayer;
+  window.gtag = function gtag(..._args: unknown[]) {
+    // gtag.js recognizes command entries as Arguments objects, not arrays.
+    // eslint-disable-next-line prefer-rest-params
+    dataLayer.push(arguments);
+  };
+  window.gtag("set", "developer_id.dZjgwMW", true);
+  window.gtag("js", new Date());
+  window.gtag("config", measurementId, { send_page_view: false });
+
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
   document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer!.push(args);
-  };
-  window.gtag("js", new Date());
-  window.gtag("config", measurementId);
 }
 
 // SPA route changes: gtag only auto-tracks the initial page load.
