@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { NavPanel, NavTrigger } from "@/components/NavPanel";
+import { trackPageView } from "@/lib/analytics";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import Endorsements from "./pages/Endorsements";
@@ -15,6 +16,7 @@ import NotFound from "./pages/NotFound";
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
   useEffect(() => {
+    trackPageView(pathname + hash);
     if (hash) return; // let deep links (#candidate-slug) control scroll position
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname, hash]);
